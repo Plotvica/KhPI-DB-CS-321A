@@ -9,7 +9,16 @@ using namespace std;
 
 void pointer(int *a, int *b, int *c){
 
+	if ( ( (*a) > (*c) and (*b) > (*c) and (*a) >= (*b) ) or  ( (*c) > (*a) and (*b) > (*a) and (*c) >= (*b) ) or ( (*a) > (*c) and (*a) > (*b) and (*b) == (*c) ) or ( (*c) > (*a) and (*c) > (*b) and (*b) == (*a) )  ) {
+		swap((*a),(*c));
+	} 
+	else if (((*b) > (*c) and (*a) > (*c) and (*b) >= (*a)) or ( (*c) > (*b) and (*a) > (*b) and (*c) >=(*a)) or ((*b) > (*c) and (*b) > (*a) and (*c) == (*a)) or ((*c) > (*b) and (*c) > (*a) and (*b)==(*a))){
+		swap ((*b),(*c));
+	}
+	else if (((*a) > (*b) and (*c) > (*b) and (*a) >= (*c)) or ((*b) > (*a) and (*c) > (*a) and (*b) >= (*c)) or ((*a) > (*b) and (*a) > (*c) and (*b)==(*c)) or ((*b) > (*a) and (*c) > (*a) and (*b)==(*c))) {
+		swap((*a),(*b));
 
+	}
 
 }
 
@@ -39,9 +48,8 @@ void link(int &a, int &b, int &c){
 
 
 
-// сделать меню по выбору ссылка или указатель
-// посмотреть видос про указатель и доделать
-// добавить ввод пользователем
+
+// добавить ввод пользователем в USER INPUT
 
 int main() {
 
@@ -52,12 +60,91 @@ int main() {
 
 	while(true){
 
-		a = rand()%10+1;  b = rand()%10+1; c = rand()%10+1; 
-		cout << "Rand nums are: " << a << ' ' << b << ' ' << c << endl;
-		link(a, b, c);
-		cout << "!Rand nums are: " << a << ' ' << b << ' ' << c << endl;
-		break;
+		cout << "Choose input:" << endl << "Random - 1 \nKeyboard - 2 \nExit - 0" << "\n--->"; cin >> button;
+		switch(button){
 
+//Random numbers
+			case 1:
+				system("cls");
+				cout << "Choose type of data procesing:" << endl << "Pointer - 1 \nLink - 2 \nBack - 0" << "\n--->"; cin >> button;
+				switch(button){
+					case 1:
+						system("cls");
+						a = rand()%10+1;  b = rand()%10+1; c = rand()%10+1; 
+						cout << "\nRand nums are: " << a << ' ' << b << ' ' << c << endl << endl;
+						pointer(&a, &b, &c);
+						cout << "New stage: " << a << ' ' << b << ' ' << c << endl << endl;
+					break;
+
+					case 2:
+						system("cls");
+						a = rand()%10+1;  b = rand()%10+1; c = rand()%10+1; 
+						cout << "\nRand nums are: " << a << ' ' << b << ' ' << c << endl << endl;
+						link(a, b, c);
+						cout << "New stage: " << a << ' ' << b << ' ' << c << endl << endl;
+					break;
+
+					case 0 : 
+					system("cls");
+					break;
+
+					default:
+					system("cls");
+					cout << " \t\t\tIncorrect input! ERROR! " << endl;
+					break;
+
+				}
+				
+			break;
+
+// User input
+			case 2:
+				system("cls");
+				cout << "Choose type of data procesing:" << endl << "Pointer - 1 \nLink - 2 \nBack - 0" << "\n--->"; cin >> button;
+				switch(button){
+					case 1:
+						system("cls");
+						cout << "Input your numbers ---> "; cin >> a >> b >> c;
+						//a = rand()%10+1;  b = rand()%10+1; c = rand()%10+1; 
+						cout << "\nRand nums are: " << a << ' ' << b << ' ' << c << endl << endl;
+						pointer(&a, &b, &c);
+						cout << "New stage: " << a << ' ' << b << ' ' << c << endl << endl;
+					break;
+
+					case 2:
+						system("cls");
+						cout << "Input your numbers ---> "; cin >> a >> b >> c;
+						//a = rand()%10+1;  b = rand()%10+1; c = rand()%10+1; 
+						cout << "\nRand nums are: " << a << ' ' << b << ' ' << c << endl << endl;
+						link(a, b, c);
+						cout << "New stage: " << a << ' ' << b << ' ' << c << endl << endl;
+					break;
+
+					case 0 : 
+					system("cls");
+					break;
+
+					default:
+					system("cls");
+					cout << " \t\t\tIncorrect input! ERROR! " << endl;
+					break;
+				}
+			break;
+
+
+			case 0 : 
+				system("cls");
+			exit(0);
+
+			break;
+
+			default:
+				system("cls");
+				cout << " \t\t\tIncorrect input! ERROR! " << endl;
+			break;
+
+
+		}
 	}
 
 
