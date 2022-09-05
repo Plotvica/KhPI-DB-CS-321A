@@ -7,7 +7,7 @@ using namespace std;
 // RECTANGLE - 2 ARGS ARE WORKING, FOR SQUARE JUST ONE!
 // just one a for sqr and ab are for rec
 
- void square (int a = 0, int b = 0) 
+ void square (float a = 0, float b = 0) 
  {
 
 
@@ -44,7 +44,8 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-	int a, b, button;
+	float a, b;
+	int button;
 	while(true) {
 
 			cout << "\n Example - 1 \n Rectangle - 2 \n Square - 3 \n Exit - 0 \n --->";
