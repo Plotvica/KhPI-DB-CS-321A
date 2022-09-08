@@ -9,47 +9,38 @@ using namespace std;
 
 void pointer(int *a, int *b, int *c){
 
-	if ( ( (*a) > (*c) and (*b) > (*c) and (*a) >= (*b) ) or  ( (*c) > (*a) and (*b) > (*a) and (*c) >= (*b) ) or ( (*a) > (*c) and (*a) > (*b) and (*b) == (*c) ) or ( (*c) > (*a) and (*c) > (*b) and (*b) == (*a) )  ) {
+	if ( ( (*a) > (*c) and (*b) >= (*c) and (*a) >= (*b) ) or ( (*c) > (*a) and (*b) >= (*a) and (*c) >= (*b) ) ) {
 		swap((*a),(*c));
 	} 
-	else if (((*b) > (*c) and (*a) > (*c) and (*b) >= (*a)) or ( (*c) > (*b) and (*a) > (*b) and (*c) >=(*a)) or ((*b) > (*c) and (*b) > (*a) and (*c) == (*a)) or ((*c) > (*b) and (*c) > (*a) and (*b)==(*a))){
+	else if ( ( (*b) > (*c) and (*a) >= (*c) and (*b) >= (*a) ) or ( (*c) > (*b) and (*a) >= (*b) and (*c) >=(*a) ) ){
 		swap ((*b),(*c));
 	}
-	else if (((*a) > (*b) and (*c) > (*b) and (*a) >= (*c)) or ((*b) > (*a) and (*c) > (*a) and (*b) >= (*c)) or ((*a) > (*b) and (*a) > (*c) and (*b)==(*c)) or ((*b) > (*a) and (*c) > (*a) and (*b)==(*c))) {
+	else if ( ( (*a) > (*b) and (*c) >= (*b) and (*a) >= (*c) ) or ( (*b) > (*a) and (*c) >= (*a) and (*b) >= (*c) ) ){
 		swap((*a),(*b));
-
 	}
-
 }
-
-
-
 
 
 
 
 
 void link(int &a, int &b, int &c){
-
 	
-	if ((a > c and b > c and a >= b) or (c > a and b > a and c >= b) or (a > c and a > b and b==c) or (c>a and c > b and b==a)) {
+	if ((a > c and b >= c and a >= b) or (c > a and b >= a and c >= b)) {
 		swap(a,c);
 	} 
-	else if ((b > c and a > c and b >= a) or ( c > b and a > b and c >=a) or (b > c and b > a and c == a) or (c > b and c > a and b==a)){
+	else if ((b > c and a >= c and b >= a) or ( c > b and a >= b and c >=a)){
 		swap (b,c);
 	}
-	else if ((a > b and c > b and a >= c) or (b > a and c > a and b >= c) or (a > b and a > c and b==c) or (b > a and c > a and b==c)){
+	else if ((a > b and c >= b and a >= c) or (b > a and c >= a and b >= c)){
 		swap(a,b);
-
 	}
-
 
 }
 
 
 
 
-// добавить ввод пользователем в USER INPUT
 
 int main() {
 
