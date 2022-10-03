@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>L4T5</title>
+	<link rel="stylesheet" type="text/css" href="5.css">
+</head>
+<body>
+
+
+<form class="container">
+	
+	<div>
+
+	<fieldset>
+      <legend>
+      Контактна інформація
+      </legend>
+      <table>
+
+		<tr>
+			<td width="250" align = "left">Ім'я</td>
+			<td width="100" align="center"><input type="text" placeholder="🧑 Введіть ваше ім'я"></td>
+		</tr>
+
+		<tr>
+			<td>Телефон</td>
+			<td><input type="text" placeholder="📱 +380 00 000 00"></td>
+		</tr>
+
+		<tr>
+			<td>Пошта</td>
+			<td><input type="text" placeholder="✉ poshta@mail.com"></td>
+		</tr>
+
+		<tr>
+			<td>Дата відвідування</td>
+			<td><input type="text" placeholder="📅 05.01.2022"></td>
+		</tr>
+	
+	</table>
+	</fieldset>
+
+	</div>
+
+
+
+
+	<div>
+
+	<fieldset>
+      <legend>
+      Персональна інформація
+      </legend>
+      <table>
+      	<tr>
+			<td width="250" align = "left">Вік</td>
+			<td width="100" align="left">
+			<select id = "spis" class = "sel">
+     		<option selected disabled>📊Оберіть вашу вікову категорію</option>
+     		<option>🧒Менше 18 років</option>
+     		<option> 🧑18-30 років  </option>
+     		<option> 👨30-50 років </option>
+     		<option> 👨‍🦳Більше 50 років </option>
+     		</select>
+     		</td>
+		</tr>
+
+		<tr>
+			<td>Улюблена кухня</td>
+			<td>
+				<select id = "spis" class = "sel">
+				<option selected disabled>🔪Оберіть кухню</option>
+			    <option>Грецька</option>
+			  	<option>Українська</option>
+			    <option>Грузинська</option>
+			    <option>Французька</option>
+			    <option>Італійська</option>
+			 	</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td>Які страви ви б хотіли побачити у меню?</td>
+			<td><textarea id="textarea" placeholder="&#128488; Максимум 100 символів" maxlength="100" rows="5" cols="50"></textarea></td>
+		</tr>
+     </table>
+	</fieldset>
+
+	</div>
+
+
+
+
+
+	<div>
+
+	<fieldset>
+      <legend>
+      Оцінка нашої установи
+      </legend >
+ 		Чому обрали нашу заклад?
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Недалеко від роботи/дому</label>
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Побачив(ла) рекламу</label>
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Порада від друзів/знайомих</label>
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Оптимальне співвідношення ціни та якості</label>
+ 		<p></p>Чи будете рекомендувати наш заклад друзям чи знайомим?
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Так</label>
+ 		<div></div><label><input type="radio" class = "radiobutton"> <span class="radio"></span> Ні</label>
+	</fieldset>
+
+	</div>
+
+
+
+	<input type="button" value="Відправити" class = "button">
+	<input type="reset" value="Очистити" class = "button">
+
+</form>
+
+</body>
+</html>

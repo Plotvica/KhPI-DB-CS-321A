@@ -1,0 +1,8 @@
+.gradient{
+	width: 100%;
+	height: 935px;
+
+	align-self: center;
+	background:  radial-gradient(orange, grey, brown);
+	
+}

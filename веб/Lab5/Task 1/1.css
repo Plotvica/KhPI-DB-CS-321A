@@ -1,0 +1,16 @@
+a{
+	text-decoration: none;
+}
+
+a:link
+{
+	color: pink;
+}
+a:visited
+{
+	color: grey;
+}
+a:active
+{
+	color: brown;
+}

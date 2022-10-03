@@ -1,0 +1,25 @@
+
+table{
+
+	width: 60%;
+	
+
+}
+
+td {
+	padding-top:  30px ;
+	padding-right: 50px ;
+	padding-bottom: 30px ;
+	padding-left: 50px;
+}
+
+tr {
+	
+}
+
+.col{
+	
+	background-color: lightblue; 
+	border: 4px dotted blue;
+	
+}

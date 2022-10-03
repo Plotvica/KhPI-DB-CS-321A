@@ -1,0 +1,38 @@
+table{
+	width: 100%;
+}
+
+
+
+.head{
+	height: 100px;
+	background-color: yellow ;
+}
+
+.nav{
+	height: 450px;
+	width: 20%;
+	background-color: #C1EBEF;
+	font-weight: bold;
+}
+
+.nav2{
+	height: 450px;
+	width: 20%;
+	background-color: #C1EBEF;
+	font-weight: bold;
+}
+
+
+.content{
+	height: 450px;
+	background-color: #CFFBFF;
+	z-index: 1;
+}
+
+.footer{
+	height: 150px;
+	background-color: #ACC7CA;
+	width:100%;
+	font-weight: bold;
+}

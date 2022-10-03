@@ -1,0 +1,110 @@
+body{
+background-image: url(https://cdn.pixabay.com/photo/2022/09/21/17/02/blue-background-7470781_960_720.jpg);
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: 100%;
+}
+
+.dws-menu *{
+margin:0 ;
+padding: 0;
+
+}
+
+header{
+	
+	margin-top: 10px;
+	font-family: Arial, sans-serif;
+
+}
+
+.dws-menu ul, .dws-menu ol{
+	list-style: none;
+
+
+}
+.dws-menu>ul{
+	display: flex;
+	justify-content: center;
+
+
+}
+/* Main line */
+.dws-menu >ul li a{
+	border-radius: 10px;
+	display: block;
+	background-color: seashell;
+	padding: 15px 30px 15px 40px;
+	min-width: 100px;
+	height: 20px;
+	font-size: 20px;
+	color: black;
+	text-decoration: none;
+	transition: all 0.3s;
+	
+
+}
+
+.dws-menu>ul li{
+	position: relative;
+	margin-right: 10px;
+	margin-left: 10px;
+
+	border: 2px solid #262626;
+	border-radius: 9px;
+}
+.dws-menu>ul li >a i.fa
+{
+	position: absolute;
+	left: 12px;
+	top: 14px;
+	font-size: 20px;
+}
+
+
+
+.dws-menu>ul>li:last-child{
+	border-right: none;
+}
+
+
+/*hover*/
+.dws-menu li a:hover{
+	background-color: orange;
+	color: black ;
+	transform: scale(1.08);
+	z-index: 5;	
+}
+
+
+
+.dws-menu li:hover>ul{
+	display: block;
+	z-index: 15;
+}
+
+/*Sub menu*/
+.dws-menu li ul{
+	position: absolute;
+	top: 52px;
+	min-width: 200px;
+	z-index: 10;
+	display: none;
+}
+.dws-menu li  ul  li{
+	border-right: none;
+	border-bottom: 1px solid #262626 ;
+}
+
+.dws-menu li> ul li a{
+	padding: 10px;
+	background-color: seashell;
+}
+
+.dws-menu li>ul li ul{
+	position: absolute;
+	right: -201px;
+	
+	top: 0;
+	
+}

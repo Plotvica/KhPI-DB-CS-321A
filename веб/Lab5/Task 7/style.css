@@ -1,0 +1,110 @@
+body{
+	padding: 30px;
+}
+.main{
+	background: radial-gradient(white, lightgrey);
+	border-radius: 10px;
+	width: 100%;
+	height: 600px;
+}
+.check{
+	display: none;
+}
+.checkfake{
+	display: inline-block;
+	width: 150px;
+	line-height: 80px;
+	text-align: center;
+	margin: 20px 100px 0px 20px;
+
+	color: pink;
+	font-size: 40px;
+	font-family: sans-serif;
+	font-weight: bold;
+
+	background-color: grey;
+	box-shadow: 0px 8px 1px darkgrey;	
+	
+	border-radius: 4px;
+
+	position: relative;
+	cursor: pointer;
+	top: 0;
+	transition: all 0.5s ease;
+}
+.checkfake:hover{
+	background-color:lightgrey
+}
+.check:checked~ .block{
+	
+	transform: scale(1.0);
+}
+
+.check:checked~ .checkfake{
+	top: 5px;
+	box-shadow: 0px 3px 1px #040E14;
+	background-color: #D92929;
+}
+
+
+
+.block{
+	line-height: 100px;	
+	width: 150px;
+	padding: 10px;
+	background-color: #402B8C;
+
+	color: white;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+
+	border-radius: 10px;
+	box-shadow: 0 0 10px black;
+
+	transform: scale(0);
+	transition: 0.4s ease-out;
+	
+
+
+
+	
+	
+}
+.block_1{
+	background-color:cyan ;		
+	position: absolute;
+	z-index: 1;
+	bottom: 450px;
+	left: 510px;
+}
+.block_2{
+	background-color:blue ;	
+	position: absolute;
+	z-index: 1;
+	bottom: 270px;
+	left: 530px;
+}
+.block_3{
+	background-color:purple ;
+	position: absolute;
+	z-index: 0;
+	bottom: 350px;
+	left: 650px;
+}
+.block_4{
+	background-color: pink;
+	position: absolute;
+	z-index: 1;
+	bottom: 270px;
+	left: 770px;
+}
+.block_5{
+	background-color: yellow;
+	position: absolute;
+	z-index: 1;
+	bottom: 450px;
+	left: 790px;
+}
+

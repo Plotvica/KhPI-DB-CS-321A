@@ -1,0 +1,67 @@
+body{
+	padding: 30px;
+}
+.general{	
+	max-width: 600px;
+	margin: 0px auto;
+	height: 400px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: white;
+	position: relative;
+}
+
+.general div{
+	line-height: 100px;
+	width: 150px;
+	font-size: 20px;
+	font-weight: 700;
+	text-align: center;
+}
+.one
+{
+	background-color: aquamarine ;		
+	position: absolute;
+	z-index: 0;
+	bottom: 170px;
+	left: 60px;
+}
+.two
+{
+	background-color: purple ;	
+	position: absolute;
+	z-index: 0;
+	bottom: 30px;
+	left: 60px;
+}
+.three
+{
+	background-color: greenyellow ;
+	position: absolute;
+	z-index: 1;
+	bottom: 100px;
+	left: 170px;
+}
+.four
+{
+	background-color: gold;
+	position: absolute;
+	z-index: 0;
+	bottom: 30px;
+	left: 300px;
+}
+
+.five
+{
+	background-color: seagreen;
+	position: absolute;
+	z-index: 0;
+	bottom: 170px;
+	left: 300px;
+}
+.pls
+{
+	border-width: 3px;
+	border-color: black;
+	border-style: double;
+}
+
