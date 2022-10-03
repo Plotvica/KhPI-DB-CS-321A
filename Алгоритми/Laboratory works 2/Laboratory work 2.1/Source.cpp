@@ -313,7 +313,7 @@ void Stack::write()
 		cout << "Stack: ";
 		Stack* current = this->root;
 		while (current != NULL) {
-			dataFile << current->data << " ";
+			dataFile << " " << current->data;
 			current = current->next;
 		} 
 
