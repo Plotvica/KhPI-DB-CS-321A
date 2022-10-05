@@ -1,22 +1,22 @@
 p:first-letter
 {
-	font-size: 20mm;
-	color: yellow;
+	font-size: 2pin;
+	color: orange;
 }
 p:first-line
 {
-	font-size: 13pt;
+	font-size: 15px;
 	color: grey;
 }
-.cpr p:nth-child(3n+1):after
+.cpr p:nth-child(2):after
 {
 	content: "new";
 	color:green;
-	font-size: 30px;
+	font-size: 12pt;
 }
-.third p:before
+.after p:nth-child(7):after
 {
 	content: "old";
 	color: red;
-	font-size: 30px;
+	font-size: 12pt;
 

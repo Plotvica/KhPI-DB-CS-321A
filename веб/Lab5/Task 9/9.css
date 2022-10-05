@@ -1,0 +1,67 @@
+:root{
+	--circlecolor: #4B0082;
+	--textcolor: #7B68EE;
+	--bg: #DDA0DD;
+}
+body{
+	background-color: var(--bg);
+}
+.circle{
+	background-color: var(--circlecolor);
+	line-height: 100px;
+	width: 100px;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	color: var(--textcolor);
+	text-align: center;
+	position: relative;
+	left: 0;
+	animation-name: white-square, tranformation;
+	animation-duration: 3.5s ;
+	animation-iteration-count: 5;
+	animation-fill-mode: normal;
+	
+
+}
+
+@keyframes white-square{
+
+	0%
+	{
+		margin-left: 0%;
+		margin-top: 0%;
+	}
+	25%
+	{
+		margin-left: 0%;
+		margin-top: 20%;
+	}
+	
+	
+	50%
+	{
+		margin-left: 50%;
+		margin-top: 20%;
+	}
+	
+	75%
+	{
+		margin-left: 50%;
+		margin-top: 0%;
+	}
+	100%
+	{
+		margin-left: 0%;
+		margin-top: 0%;
+	}
+}
+@keyframes tranformation{
+	0%{
+		transform: scale(1.0);
+	}
+
+	100%{
+		transform: scale(1.15);
+	}
+}

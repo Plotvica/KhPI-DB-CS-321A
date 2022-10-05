@@ -4,13 +4,6 @@
 string pathData = "data.txt";
 
 
-void test(float* test, int size) {
-	cout << "\nTEST\n";
-	for (size_t i = 0; i < size; i++)
-	{
-		cout << test[i] << " ";
-	} cout << "\n";
-}
 
 
 void Stack::PushStack(float& newData)
@@ -284,6 +277,7 @@ void Stack::read()
 			dataFile >> temp;
 			PushStack(temp);
 		}
+		reverse();
 	}
 		
 	else
@@ -318,8 +312,10 @@ void Stack::write()
 		} 
 
 
-		if (dataFile.is_open())
-			cout << "\tWriting to the file was successful!\n";
+		if (dataFile.is_open()) {
+			//cout << "\tWriting to the file was successful!\n";
+		}
+			
 		else
 			cout << "\tWriting to the file was not successful!\n";
 	}

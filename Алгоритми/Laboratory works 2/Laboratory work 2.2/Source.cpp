@@ -131,10 +131,10 @@ void Queue::beforeMIN()
 				
 
 		} 
-		if ( flag >= size - 1)
+		if ( flag == 0)
 			cout << "This element dose not exit yet.\n";
 		else
-			cout << "Next to min element: " << tempQueu[flag + 1] << endl;
+			cout << "Next to min element: " << tempQueu[flag - 1] << endl;
 
 	}
 	else
@@ -200,10 +200,10 @@ void Queue::write()
 		}
 
 
-		if (dataFile.is_open())
-			cout << "\tWriting to the file was successful!\n";
-		else
-			cout << "\tWriting to the file was not successful!\n";
+		//if (dataFile.is_open())
+		//	cout << "\tWriting to the file was successful!\n";
+		//else
+		//	cout << "\tWriting to the file was not successful!\n";
 	}
 
 	dataFile.close();

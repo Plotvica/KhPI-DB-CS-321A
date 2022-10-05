@@ -3,10 +3,10 @@
 
 string dataPath = "data.txt";
 
-void Dack::PushBack(const float& data)
+void Deque::PushBack(const float& data)
 {
 
-	Dack* temp = new Dack;
+	Deque* temp = new Deque;
 	temp->next = NULL;
 	temp->data = data;
 	temp->prev = tail;
@@ -20,10 +20,10 @@ void Dack::PushBack(const float& data)
 
 }
 
-void Dack::PushFront(const float& data)
+void Deque::PushFront(const float& data)
 {
 
-	Dack* temp = new Dack;
+	Deque* temp = new Deque;
 	temp->data = data;
 	temp->prev = NULL;
 	if (size == 0)
@@ -38,12 +38,12 @@ void Dack::PushFront(const float& data)
 
 }
 
-void Dack::show()
+void Deque::show()
 {
 
 	if (size != 0) {
 
-		Dack* temp = head;
+		Deque* temp = head;
 
 		while (temp->next != 0)
 		{
@@ -60,7 +60,7 @@ void Dack::show()
 }
 
 
-void Dack::read()
+void Deque::read()
 {
 
 	ifstream dataFile;
@@ -86,7 +86,7 @@ void Dack::read()
 
 }
 
-void Dack::write()
+void Deque::write()
 {
 	ofstream dataFile;
 
@@ -101,7 +101,7 @@ void Dack::write()
 
 
 	else {
-		Dack* current = this->head;
+		Deque* current = this->head;
 		while (current != NULL) {
 			dataFile << " ";
 			dataFile << current->data;
@@ -109,10 +109,10 @@ void Dack::write()
 		}
 
 
-		if (dataFile.is_open())
+		/*if (dataFile.is_open())
 			cout << "\tWriting to the file was successful!\n";
 		else
-			cout << "\tWriting to the file was not successful!\n";
+			cout << "\tWriting to the file was not successful!\n";*/
 	}
 
 	dataFile.close();

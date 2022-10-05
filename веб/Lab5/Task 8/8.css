@@ -1,5 +1,4 @@
 body{
-background-image: url(https://cdn.pixabay.com/photo/2022/09/21/17/02/blue-background-7470781_960_720.jpg);
 background-attachment: fixed;
 background-repeat: no-repeat;
 background-size: 100%;
@@ -33,7 +32,6 @@ header{
 .dws-menu >ul li a{
 	border-radius: 10px;
 	display: block;
-	background-color: seashell;
 	padding: 15px 30px 15px 40px;
 	min-width: 100px;
 	height: 20px;
@@ -63,14 +61,12 @@ header{
 
 
 
-.dws-menu>ul>li:last-child{
-	border-right: none;
-}
+
 
 
 /*hover*/
 .dws-menu li a:hover{
-	background-color: orange;
+	background-color: lightblue;
 	color: black ;
 	transform: scale(1.08);
 	z-index: 5;	
@@ -92,13 +88,12 @@ header{
 	display: none;
 }
 .dws-menu li  ul  li{
-	border-right: none;
+	
 	border-bottom: 1px solid #262626 ;
 }
 
 .dws-menu li> ul li a{
 	padding: 10px;
-	background-color: seashell;
 }
 
 .dws-menu li>ul li ul{

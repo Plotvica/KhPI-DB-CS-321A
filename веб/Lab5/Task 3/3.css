@@ -10,7 +10,7 @@
 			border: 2px solid dimgray;
 			padding: 5px;
 		}
-	tr:nth-child(even) td:nth-child(odd){
+	 td:nth-child(2n+1){
 		background-color: grey;
 	}
 	

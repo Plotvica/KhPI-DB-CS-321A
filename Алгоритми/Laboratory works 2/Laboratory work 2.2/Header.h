@@ -37,7 +37,7 @@ public:
 			delete deletedITM; deletedITM = NULL;
 			size--;
 		}
-		cout << "\tStack have been deleted!\n";
+		cout << "\tQueue have been deleted!\n";
 	}
 
 	Queue() { head = NULL; tail = NULL; size = 0; }
