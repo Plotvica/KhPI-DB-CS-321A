@@ -1,13 +1,15 @@
 .page{
+	background-color: gray;
 	display: grid;
-	grid-template-columns: 20% 60% 20%;
-	grid-template-rows: 100px 450px 150px;
-}
+	grid-template-columns: 300px 1fr 200px ;
+	grid-template-rows: 100px 450px 100px 150px;
 
+}
 .page>div{
 	padding: 20px;
 	font-family: Arial;
 	line-height: 25px;
+	
 }
 
 
@@ -25,6 +27,7 @@
 .content{
 	background: #CFFBFF;
 	grid-column: span 1;
+	grid-row: span 2;
 }
 
 .footer{

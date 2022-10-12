@@ -34,7 +34,7 @@ public:
 			return false;
 		
 	}
-	float readLast(){ return tail->data; };
+	float readLast(){ return tail->data;};
 	void read();
 	void write();
 

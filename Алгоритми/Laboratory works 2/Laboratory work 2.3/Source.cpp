@@ -72,7 +72,7 @@ void Deque::read()
 		float temp;
 		while (!dataFile.eof()) {
 			dataFile >> temp;
-			PushFront(temp);
+			PushBack(temp);
 		}
 
 	}
