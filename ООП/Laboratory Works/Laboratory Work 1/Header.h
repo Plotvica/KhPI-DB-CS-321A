@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -28,9 +29,10 @@ public:
 
 	void show();
 
-
-	//~Abiturient(){};
-
+	~Abiturient(){};
+	friend void Sort(Abiturient** head, short int set);
+	friend void LoadFromFileList(Abiturient** head, Abiturient** tail);
+	friend void SaveInFileList(Abiturient* head);
 };
 
 
@@ -53,6 +55,7 @@ public:
 	bool DcheckNULL(Abiturient* head);
 	void FreeList(Abiturient** head);
 	void table_header();
+	
 	// main tasks
 	void unsatisfactory(Abiturient** head);
 	void byGrade(Abiturient** head, short int setted);
@@ -60,8 +63,8 @@ public:
 
 	// working method
 	void main();
-
-
+	
+	~Main() {};
 };
 
 
