@@ -197,12 +197,6 @@ void Abiturient::setterAll(const string& FullName, const string& address, const 
 
 }
 
-void Abiturient::setterFullname(const string& FullName) { this->FullName = FullName; }
-
-void Abiturient::setterAddress(const string& address) { this->address = address; }
-
-void Abiturient::setterGrade(const short int& grade) { this->grade = grade; }
-
 
 // get methods
 string Abiturient::getterFullname() const { return this->FullName; }
@@ -264,7 +258,7 @@ void Main::byGrade(Abiturient** head, short int setted )
 	if (DcheckNULL((*head)) == 0) { return; }
 	else {
 		while (current) {
-			if (current->getterGrade() < setted) {
+			if (current->getterGrade() > setted) {
 				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade());
 				count++;
 			}
@@ -273,7 +267,7 @@ void Main::byGrade(Abiturient** head, short int setted )
 	}
 
 	if (count != 0) {
-		cout << "\t Students with grades under " << setted << ": " << count << endl;
+		cout << "\t Students with grades higher " << setted << ": " << count << endl;
 		table_header();
 		for (size_t i = 0; i < count; i++) {
 			byGrade[i].show(); cout << endl;

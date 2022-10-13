@@ -21,9 +21,9 @@ public:
 	Abiturient* next, * prev;
 	//Abiturient();
 
-	// setters
+	// setter
 	void setterAll(const string& FullName, const string& address, const short int& grade);
-	void setterFullname(const string& FullName); void setterAddress(const string& address); void setterGrade(const short int& grade);
+
 	//getters
 	string getterFullname() const; string getterAddress() const; short int getterGrade() const;
 
@@ -42,8 +42,6 @@ class Main
 private:
 	int size;
 	
-
-
 public:
 	Main() : size(0) {};
 	
