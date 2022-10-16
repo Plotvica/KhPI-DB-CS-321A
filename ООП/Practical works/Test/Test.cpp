@@ -1,14 +1,15 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+#include<string>
+#include<direct.h>
+#include<io.h>
+#include<Windows.h>
 #include <fstream>
 #include <vector>
 #include <filesystem>
-
 #define NO_OF_CHARS 256
-
 using namespace std;
 ifstream fin;
-
 void get_files(vector<string>& paths, const string& current_path)
 {
 	for (const auto& file : filesystem::directory_iterator(current_path))
@@ -73,14 +74,14 @@ bool Boyer(char* txt, char* pat)
 	return false;
 }
 
-void AntivirusCheck(const char* path) {
+void find(const char* path) {
 	fin.open(path);
 	char* block;
 	int iter = 40;
 	char virus[] = "virus";
 	int size = strlen(virus) * 2;
 	char* sub_virus = new char[size * 2];
-	bool vir1 = false, vir2 = false;
+	bool vir1, vir2 = false;
 	int idx = 0;
 	int block_index = 1;
 	while (!fin.eof()) {
@@ -111,8 +112,8 @@ void AntivirusCheck(const char* path) {
 		delete[] block;
 		if (vir1 || vir2)break;
 	}
-	if (vir1 or vir2) {
-		cout << "\t---> Virus has been detected!\n";
+	if (vir1 || vir2) {
+		cout << "\t--->\tФайл містить вірус\n";
 	}
 	else cout << endl;
 	delete[] sub_virus;
@@ -125,20 +126,23 @@ void main(int argc, char** argv) {
 	for (int i = 0; i < argc; i++) {
 		cout << argv[i] << endl;
 	}
-
-	const char path[] = { "D:\\KhPI-DB-CS-321A" };
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const char path[] = { "C:\\viruses" };
 	vector<string> paths;
 	get_files(paths, path);
 	int size = paths.size();
-
-	for (int i = 0; i < size; i++) {
-		const char* fileName = paths[i].c_str();
-		cout << "File path: " << fileName;
-		AntivirusCheck(fileName);
+	/*for (int i = 0; i < size; i++)
+	{
+		cout << paths[i] << endl;
+	}*/
+	for (int i = 0; i < size; i++)
+	{
+		const char* pth = paths[i].c_str();
+		cout << "PTH: " << pth;
+		find(pth);
 	}
 	system("pause");
 	return;
 }
-
-
 
