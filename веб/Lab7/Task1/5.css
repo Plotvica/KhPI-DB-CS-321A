@@ -1,0 +1,144 @@
+body{
+	background-image: url(1.jpg);
+	background-attachment: fixed;
+	background-size: 100%;
+}
+
+
+.container{
+
+	width: 95%;
+	height: 720px;
+
+	background-color: #9370DB;
+	color: #FFFFFF;
+
+	margin: 0 auto;
+	border-radius: 4px 4px 20px 20px;
+	box-shadow: 3px 3px 10px black;
+
+
+	font-family: sans-serif;
+	font-size: 20px;
+}
+
+
+textarea{
+	border: 0px solid black;
+
+	box-shadow: 0px 0px 1px black;
+
+	width: 400px;
+	height: 100px;
+	font-size: 18px;
+	
+	border-radius: 5px;
+	margin-top: 15px;
+	
+	padding: 5px;
+	transition: all 0.5s;
+}
+
+textarea:hover{
+	transition: all 0.5s;
+	box-shadow: 0px 0px 10px black;
+}
+textarea:focus{
+	box-shadow: 0px 0px 15px black;
+	background-color: white;	
+	transform: scale(1.1);
+}
+
+
+
+.spis{
+	margin-bottom: 25px;
+	position: relative;
+
+}
+option{
+	color: black;
+}
+
+.sel{
+	
+	color: gray;
+	border: none;
+	border-radius: 4px;
+	box-shadow: 0px 0px 1px black;
+
+	width: 330px;
+	height: 30px;
+	font-size: 18px;
+
+	padding-left: 10px;
+
+	cursor: pointer;
+	transition: all 0.3s;
+}
+.sel:hover{
+	transition: all 0.3s;
+	box-shadow: 0px 0px 10px black;
+}
+.sel:focus{
+	box-shadow: 0px 0px 15px black;
+	transform: scale(1.1);
+}
+
+
+.radiobutton{
+	display: none;
+}
+
+.radio{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #D9D0C7;
+	border-radius: 50%;
+	position: relative;
+	top: 5px;
+
+}
+
+.radio::before{
+	content: "";
+	position: absolute;
+	top: 15%;
+	left: 15%;
+	transform: scale(0);	
+	display: block;
+	width: 14px;
+	height: 14px;
+	background-color: #CCCCFF;
+	
+	border-radius: 50%;
+	
+	transition: all 0.5s cubic-bezier(0.68, 0.55, 0.76, 1.65);
+
+}
+
+.radiobutton:checked + .radio::before{
+	transform: scale(1);
+
+}
+
+
+
+.button{
+	color: #FFFFFF;
+	background-color: #8B008B;
+	font-weight: bold;
+	border: none;
+	border-radius: 4px;
+
+	box-shadow: 0px 0px 5px black;
+	margin: 6px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.05s;
+}
+
+.button:hover{
+	box-shadow: 0px 0px 1px black;
+}

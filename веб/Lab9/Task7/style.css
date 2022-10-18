@@ -1,0 +1,26 @@
+.corners{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    position: absolute;
+}
+
+#e3{
+  right: 0px;  
+}
+#e1{
+    bottom: 0px;
+}
+#e2{
+    bottom: 0px;
+    right: 0px;
+}
+
+.buttons {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #FFFF00;
+    padding: 10px;
+    }

@@ -1,0 +1,23 @@
+:root{
+	--circlecolor: #4B0082;
+	--textcolor: #7B68EE;
+	--bg: #DDA0DD;
+}
+body{
+	background-color: var(--bg);
+}
+.circle{
+	background-color: var(--circlecolor);
+	line-height: 100px;
+	width: 100px;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	color: var(--textcolor);
+	text-align: center;
+	position: relative;
+	left: 0;
+
+
+}
+

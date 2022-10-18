@@ -9,21 +9,47 @@
 using namespace std;
 ifstream fin;
 
+void get_files(vector<string>& paths, const string& current_path);
+int maxim(int a, int b); // A utility function to get maximum of two integers
+void badCharHeuristic(char* str, int size, int badchar[NO_OF_CHARS]);
+bool Boyer(char* txt, char* pat);
+void AntivirusCheck(const char* path);
+
+
+void main(int argc, char** argv) {
+
+	for (int i = 0; i < argc; i++) {
+		cout << argv[i] << endl;
+	}
+	system("chcp 1251");
+
+	const char path[] = { "D:\\KhPI-DB-CS-321A" };
+	vector<string> paths;
+	get_files(paths, path);
+	int size = paths.size();
+
+	for (int i = 0; i < size; i++) {
+		const char* fileName = paths[i].c_str();
+		cout << "File path: " << fileName;
+		AntivirusCheck(fileName);
+	}
+	system("pause");
+	return;
+}
+
+
+
 void get_files(vector<string>& paths, const string& current_path)
 {
-	for (const auto& file : filesystem::directory_iterator(current_path))
-	{
+	for (const auto& file : filesystem::directory_iterator(current_path)){
 		if (filesystem::is_directory(file))
-		{
 			get_files(paths, file.path().string());
-		}
 		else
-		{
-			paths.push_back(file.path().string());
-		}
+			paths.push_back(file.path().string());	
 	}
 }
-// A utility function to get maximum of two integers
+
+
 int maxim(int a, int b)
 {
 	return (a > b) ? a : b;
@@ -59,86 +85,57 @@ bool Boyer(char* txt, char* pat)
 		while (j >= 0 && pat[j] == txt[s + j])
 			j--;
 
-		if (j < 0)
-		{
-
+		if (j < 0) {
 			s += (s + m < n) ? m - badchar[txt[s + m]] : 1;
 			return true;
 		}
 
-		else {
+		else 
 			s += maxim(1, j - badchar[txt[s + j]]);
-		}
 	}
 	return false;
 }
 
 void AntivirusCheck(const char* path) {
 	fin.open(path);
-	char* block;
-	int iter = 40;
+	
 	char virus[] = "virus";
-	int size = strlen(virus) * 2;
-	char* sub_virus = new char[size * 2];
-	bool vir1 = false, vir2 = false;
+
+	int iter = 40;
+	char* VirusChecker = new char[strlen(virus) * 2];
+	bool case1 = false, case2 = false;
 	int idx = 0;
-	int block_index = 1;
+	float blockIndex = 1;
+	char* block = new char[iter];
+
 	while (!fin.eof()) {
-		block = new char[iter];
+		
 		fin.read(block, iter);
-		if (block_index % 2 != 0) {
+	
+		if ( (blockIndex / 2) != 0) {
 			idx = 0;
-			for (int i = iter - 10; i < iter; i++)
-			{
-				sub_virus[idx] = block[i];
-				idx++;
-			}
-
+			for (int i = iter - 10; i < iter; i++,idx++)
+				VirusChecker[idx] = block[i];
 		}
-		else
-		{
+		else {
 			idx = 10;
-			for (int i = 0; i < 10; i++)
-			{
-				sub_virus[idx] = block[i];
-
-				idx++;
-			}
+			for (int i = 0; i < 10; i++, idx++)
+				  VirusChecker[idx] = block[i];
 		}
-		block_index++;
-		vir1 = Boyer(block, virus);
-		vir2 = Boyer(sub_virus, virus);
-		delete[] block;
-		if (vir1 || vir2)break;
+		blockIndex++;
+
+		case1 = Boyer(block, virus);
+		case2 = Boyer(VirusChecker, virus);
+
+		if (case1 or case2) break;
 	}
-	if (vir1 or vir2) {
+	if (case1 or case2)
 		cout << "\t---> Virus has been detected!\n";
-	}
-	else cout << endl;
-	delete[] sub_virus;
-	sub_virus = nullptr;
+	else 
+		cout << endl;
+
+	delete[] VirusChecker; VirusChecker = NULL;
+	delete[] block; block = NULL;
+	
 	fin.close();
 }
-
-void main(int argc, char** argv) {
-
-	for (int i = 0; i < argc; i++) {
-		cout << argv[i] << endl;
-	}
-
-	const char path[] = { "D:\\KhPI-DB-CS-321A" };
-	vector<string> paths;
-	get_files(paths, path);
-	int size = paths.size();
-
-	for (int i = 0; i < size; i++) {
-		const char* fileName = paths[i].c_str();
-		cout << "File path: " << fileName;
-		AntivirusCheck(fileName);
-	}
-	system("pause");
-	return;
-}
-
-
-
