@@ -1,8 +1,5 @@
 #include "Header.h"
 
-///////////////////////////////////////////////////////////////////////////////////////
-//////////////// --------- Defualt BN TREEEEEE --------- //////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
 
 
 bool Empty(BinaryTree* Root) {
@@ -125,7 +122,25 @@ void Print(BinaryTree** Root, int l) { // test print
 }
 
 
+int tabs = 0;
+void write_trea_in_file(BinaryTree* Root) {
+	ofstream fout;
+	fout.open("data.txt", fstream::app);
+	if (!Root) return;
+	tabs += 5;
+	write_trea_in_file(Root->RightBranch);
+	for (int i = 0; i < tabs; i++) fout << " ";
+	fout << Root->FullName << endl;
+	for (int i = 0; i < tabs; i++) fout << " ";
+	fout << Root->IDpass << endl;
+	for (int i = 0; i < tabs; i++) fout << " ";
+	fout << Root->age << endl;
+	write_trea_in_file(Root->LeftBranch);
+	tabs -= 5;
+	return;
+	fout.close();
+}
 
-///////////////////////////////////////////////////////////////////////////////////////
-//////////////// --------- RB TREEEEEE --------- //////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
+
+
+
