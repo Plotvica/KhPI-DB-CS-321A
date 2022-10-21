@@ -2,7 +2,13 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-#include<fstream>
+#include <fstream>
+#include <vector>
+#include <functional>
+#include <algorithm>
+#include <tuple>
+#include <stdexcept>
+#include <memory>
 
 using namespace std;
 
@@ -42,3 +48,4 @@ void del_branch(BinaryTree*& Root, int age);
 void write_trea_in_file(BinaryTree* Root);
 
 
+void PrintTest(BinaryTree const* node);

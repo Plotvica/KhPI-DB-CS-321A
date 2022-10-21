@@ -20,7 +20,7 @@ void CreateTree(BinaryTree*& Root, string FullName, int IDpass, short int age) {
 	if (Root->age > age)
 		CreateTree(Root->LeftBranch, FullName, IDpass, age);
 	else 
-		CreateTree(Root->LeftBranch, FullName, IDpass, age);
+		CreateTree(Root->RightBranch, FullName, IDpass, age);
 
 }
 
@@ -141,6 +141,61 @@ void write_trea_in_file(BinaryTree* Root) {
 	fout.close();
 }
 
+static std::string ch_hor = "-", ch_ver = "|", ch_ddia = "/", ch_rddia = "\\", ch_udia = "\\", ch_ver_hor = "|-", ch_udia_hor = "\\-", ch_ddia_hor = "/-", ch_ver_spa = "| ";
+
+void PrintTest(BinaryTree const* node) {
+#define _MAX(x, y) ((x) > (y) ? (x) : (y))
+#define _MIN(x, y) ((x) < (y) ? (x) : (y))
+
+	auto RepStr = [](std::string const& s, size_t cnt) {
+		if (ptrdiff_t(cnt) < 0)
+			throw std::runtime_error("RepStr: Bad value " + std::to_string(ptrdiff_t(cnt)) + "!");
+		std::string r;
+		for (size_t i = 0; i < cnt; ++i)
+			r += s;
+		return r;
+	};
+	std::function<std::tuple<std::vector<std::string>, size_t, size_t>(BinaryTree const* node, bool)> Rec;
+	Rec = [&RepStr, &Rec](BinaryTree const* node, bool left) {
+		std::vector<std::string> lines;
+		if (!node)
+			return std::make_tuple(lines, size_t(0), size_t(0));
+		auto sval = " | " + node->FullName + " | " + std::to_string(node->IDpass) + " | " + std::to_string(node->age) + " | ";
+		//if (sval.size() % 2 != 1) sval += " ";
+		auto resl = Rec(node->LeftBranch, true), resr = Rec(node->RightBranch, false);
+		auto const& vl = std::get<0>(resl);
+		auto const& vr = std::get<0>(resr);
+		auto cl = std::get<1>(resl), cr = std::get<1>(resr), lss = std::get<2>(resl), rss = std::get<2>(resr);
+		size_t lv = sval.size();
+		size_t ls = vl.size() > 0 ? lss : size_t(0);
+		size_t rs = vr.size() > 0 ? rss : size_t(0);
+		size_t lis = ls == 0 ? lv / 2 : _MAX(int(lv / 2 + 1 - (ls - cl)), 0);
+		size_t ris = rs == 0 ? (lv + 1) / 2 : _MAX(int((lv + 1) / 2 - cr), (lis > 0 ? 0 : 1));
+		size_t dashls = (ls == 0 ? 0 : ls - cl - 1 + lis - lv / 2), dashrs = (rs == 0 ? 0 : cr + ris - (lv + 1) / 2);
+		//DEB(node->value); DEB(lv); DEB(ls); DEB(rs); DEB(cl); DEB(cr); DEB(lis); DEB(ris); DEB(dashls); DEB(dashrs); std::cout << std::endl;
+		lines.push_back(
+			(ls == 0 ? "" : (RepStr(" ", cl) + ch_ddia + RepStr(ch_hor, dashls))) +
+			sval + (rs == 0 ? "" : (RepStr(ch_hor, dashrs) + ch_rddia + RepStr(" ", rs - cr - 1)))
+		);
+		//if (lines.back().size() != ls + lis + ris + rs)
+		//    throw std::runtime_error("Dump: First line wrong size, got " + std::to_string(lines.back().size()) + ", expected " + std::to_string(ls + lis + ris + rs));
+		for (size_t i = 0; i < _MAX(vl.size(), vr.size()); ++i) {
+			std::string sl = RepStr(" ", ls), sr = RepStr(" ", rs);
+			if (i < vl.size()) sl = vl[i];
+			if (i < vr.size()) sr = vr[i];
+			sl = sl + RepStr(" ", lis);
+			sr = RepStr(" ", ris) + sr;
+			lines.push_back(sl + sr);
+		}
+		return std::make_tuple(lines, (left || ls + lis == 0 || lv % 2 == 1) ? ls + lis : ls + lis - 1, ls + lis + ris + rs);
+	};
+	auto v = std::get<0>(Rec(node, true));
+	for (size_t i = 0; i < v.size(); ++i)
+		std::cout << v[i] << std::endl;
+
+#undef _MAX
+#undef _MIN
+}
 
 
 

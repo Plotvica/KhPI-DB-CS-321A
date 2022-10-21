@@ -49,7 +49,7 @@ int main()
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
 				else
-					Print(&Root);
+					PrintTest(Root);
 				break;
 
 			case 2: {
@@ -65,20 +65,19 @@ int main()
 				BinaryTree* data = new BinaryTree[count];
 				dataFile.open("data.txt");
 				for (int i = 0; i < count; i++) {
-					FullName = " ";
-					IDpass = 0;
-					age = 0;
 					dataFile >> FullName;
 					dataFile >> IDpass;
 					dataFile >> age;
-					data[i].FullName = FullName;
-					data[i].IDpass = IDpass;
-					data[i].age = age;
+					CreateTree(Root, FullName, IDpass, age);
+					FullName = "Person";
 				}
 				dataFile.close();
-				for (int i = 0; i < count; i++) {
-					CreateTree(Root, data[i].FullName, data[i].IDpass, data[i].age);
-				}
+
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 				break;
 			}	
 
@@ -87,10 +86,16 @@ int main()
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
 				else
-					Print(&Root);
+					PrintTest(Root);
 				break;
 
 			case 4:
+
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 				cout << "Прямий обхід дерева: " << endl;
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
@@ -100,6 +105,12 @@ int main()
 			break;
 
 			case 5:
+
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 				cout << "Симетричний обхід дерева: " << endl;
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
@@ -109,6 +120,11 @@ int main()
 				break;
 
 			case 6:
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 				cout << "Зворотній обхід дерева: " << endl;
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
@@ -118,6 +134,12 @@ int main()
 			break;
 
 			case 7:
+
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
 				else
@@ -125,12 +147,19 @@ int main()
 			break;
 
 			case 8:
+
 				cout << "Видалення лівого піддерева й занулення гілки" << endl;
 				if (!Empty)
 					cout << "Дерево не знайдено!\n";
 				else
 					del_left_tree(Root);
+
 				cout << endl;
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
+
 			break;
 
 			case 9:
@@ -140,6 +169,10 @@ int main()
 				else
 					del_right_tree(Root);
 				cout << endl;
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
 			break;
 
 			case 10:
@@ -149,6 +182,10 @@ int main()
 					cout << "Дерево не знайдено!\n";
 				else
 					del_branch(Root, age);
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
 			break;
 
 			case 11:
@@ -157,6 +194,10 @@ int main()
 					cout << "Дерево не знайдено!\n";
 				else
 					del(Root);
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else
+					PrintTest(Root);
 				break;
 
 			case 12:
