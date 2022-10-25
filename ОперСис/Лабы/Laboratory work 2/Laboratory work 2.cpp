@@ -9,133 +9,159 @@
 using namespace std;
 ifstream fin;
 
-void get_files(vector<string>& paths, const string& current_path);
-int maxim(int a, int b); // A utility function to get maximum of two integers
+void find_virus(const char* filepath);
+bool Boyer(char* txt, char* pat, int size);
 void badCharHeuristic(char* str, int size, int badchar[NO_OF_CHARS]);
-bool Boyer(char* txt, char* pat);
-void AntivirusCheck(const char* path);
+void get_file_paths(const string& current_path);
 
 
 void main(int argc, char** argv) {
 
+	system("chcp 1251");
+
 	for (int i = 0; i < argc; i++) {
 		cout << argv[i] << endl;
 	}
-	system("chcp 1251");
+	system("cls");
+	
+	const char directory[] = { "D:\\KhPI-DB-CS-321A" };
+	get_file_paths(directory);
 
-	const char path[] = { "D:\\KhPI-DB-CS-321A" };
-	vector<string> paths;
-	get_files(paths, path);
-	int size = paths.size();
-
-	for (int i = 0; i < size; i++) {
-		const char* fileName = paths[i].c_str();
-		cout << "File path: " << fileName;
-		AntivirusCheck(fileName);
-	}
 	system("pause");
 	return;
 }
 
-
-
-void get_files(vector<string>& paths, const string& current_path)
+void get_file_paths(const string& current_path)
 {
-	for (const auto& file : filesystem::directory_iterator(current_path)){
+	for (const auto& file : filesystem::directory_iterator(current_path))
+	{
 		if (filesystem::is_directory(file))
-			get_files(paths, file.path().string());
+		{
+			get_file_paths(file.path().string());
+		}
 		else
-			paths.push_back(file.path().string());	
+		{
+			find_virus(file.path().string().c_str());
+		}
 	}
-}
-
-
-int maxim(int a, int b)
-{
-	return (a > b) ? a : b;
 }
 
 void badCharHeuristic(char* str, int size, int badchar[NO_OF_CHARS])
 {
-	int i;
-
-	// Initialize all occurrences as -1
-	for (i = 0; i < NO_OF_CHARS; i++)
+	for (int i = 0; i < NO_OF_CHARS; i++)
 		badchar[i] = -1;
 
-	// Fill the actual value of last occurrence of a character
-	for (i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 		badchar[(int)str[i]] = i;
 }
 
-bool Boyer(char* txt, char* pat)
+bool Boyer(char* block, char* virus_word, int n)
 {
-	int m = strlen(pat);
-	int n = strlen(txt);
+	int m = strlen(virus_word);
 
 	int badchar[NO_OF_CHARS];
 
-	badCharHeuristic(pat, m, badchar);
+	badCharHeuristic(virus_word, m, badchar);
 
-	int s = 0; // s is shift of the pattern with respect to text
+	int s = 0;
 	while (s <= (n - m))
 	{
 		int j = m - 1;
 
-		while (j >= 0 && pat[j] == txt[s + j])
+		while (j >= 0 && virus_word[j] == block[s + j])
 			j--;
 
-		if (j < 0) {
-			s += (s + m < n) ? m - badchar[txt[s + m]] : 1;
+		if (j < 0)
+		{
+			s += (s + m < n) ? m - badchar[block[s + m]] : 1;
 			return true;
 		}
 
-		else 
-			s += maxim(1, j - badchar[txt[s + j]]);
+		else {
+			s += max(1, j - badchar[block[s + j]]);
+		}
 	}
 	return false;
 }
 
-void AntivirusCheck(const char* path) {
-	fin.open(path);
-	
-	char virus[] = "virus";
+void find_virus(const char* filepath) {
 
-	int iter = 40;
-	char* VirusChecker = new char[strlen(virus) * 2];
-	bool case1 = false, case2 = false;
-	int idx = 0;
-	float blockIndex = 1;
-	char* block = new char[iter];
+	char virus_word[] = "virus";
+	int size = strlen(virus_word);
+
+
+	int block_size = 60;
+
+	char* blockread = new char[block_size];
+	blockread[block_size] = '\0';
+
+	int temp_read_size = block_size + size;
+	char* blocktempread = new char[temp_read_size];
+	blocktempread[temp_read_size] = '\0';
+
+	char* blocktemp = new char[size];
+	blocktemp[size] = '\0';
+
+	bool flagFirstBlock = true;
+	bool is_virus = false;
+
+	fin.open(filepath);
 
 	while (!fin.eof()) {
-		
-		fin.read(block, iter);
-	
-		if ( (blockIndex / 2) != 0) {
-			idx = 0;
-			for (int i = iter - 10; i < iter; i++,idx++)
-				VirusChecker[idx] = block[i];
+
+		if (flagFirstBlock) {
+			fin.read(blockread, block_size);
+			is_virus = Boyer(blockread, virus_word, fin.gcount());
+
+			if (is_virus) {
+				cout << filepath;
+				cout << "\t----->\tVirus detected!\n";
+				break;
+			}
+			else {
+			
+				for (int i = block_size - size, c = 0; i < block_size; i++, c++)
+				{
+					blocktemp[c] = blockread[i];
+				}
+			}
+			flagFirstBlock = false;
 		}
 		else {
-			idx = 10;
-			for (int i = 0; i < 10; i++, idx++)
-				  VirusChecker[idx] = block[i];
+			fin.read(blockread, block_size);
+
+			for (int i = 0, j = 0; i < temp_read_size; i++)
+			{
+				if (i < size) {
+					blocktempread[i] = blocktemp[i];
+				}
+				else
+				{
+					blocktempread[i] = blockread[j];
+					j++;
+				}
+			}
+			is_virus = Boyer(blocktempread, virus_word, temp_read_size);
+
+			if (is_virus) {
+				cout << filepath;
+				cout << "\t----->\tVirus detected!\n";
+				break;
+			}
+			else {
+				for (int i = temp_read_size - size, c = 0; i < temp_read_size; i++, c++)
+				{
+					blocktemp[c] = blocktempread[i];
+				}
+
+			}
 		}
-		blockIndex++;
-
-		case1 = Boyer(block, virus);
-		case2 = Boyer(VirusChecker, virus);
-
-		if (case1 or case2) break;
 	}
-	if (case1 or case2)
-		cout << "\t---> Virus has been detected!\n";
-	else 
-		cout << endl;
 
-	delete[] VirusChecker; VirusChecker = NULL;
-	delete[] block; block = NULL;
-	
+
 	fin.close();
+
+	//delete[] blockread; blockread = NULL;
+	//delete[] blocktempread; blocktempread = NULL;
+	//delete[] blocktemp; blocktemp = NULL;
 }
