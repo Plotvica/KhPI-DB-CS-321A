@@ -24,7 +24,7 @@ public:
 	};
 
 	// stream operators 
-	friend ostream& operator << (ostream& out, const Fraction& ob) { out << setprecision(10) << ob.denominator / ob.numerator << endl; return out; };
+	friend ostream& operator << (ostream& out, const Fraction& ob) { out << ob.denominator << " / " << ob.numerator << " = " << setprecision(10) << ob.denominator / ob.numerator; return out; };
 	friend istream& operator >> (istream& in, Fraction& ob) { cout << "Denominator --> "; in >> ob.denominator; cout << "Numerator --> "; in >> ob.numerator; return in; };
 
 	// ar operation 
@@ -45,8 +45,9 @@ public:
 
 
 	// tt function
-	void task(Fraction mass[], int& size);
+	void task(Fraction arr[], int& size);
 	float operator[](const int i) { return denominator / numerator; };
+	void print(Fraction arr[], int size);
 };
 
 
@@ -56,7 +57,7 @@ public:
 class Main
 {
 public:
-	 void main() const;
+	void main() const;
 };
 
 
