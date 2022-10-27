@@ -15,7 +15,7 @@ int main()
 
 	ifstream dataFile;
 
-
+	
 
 	while (true){
 
@@ -31,6 +31,7 @@ int main()
 			<< "10 - Видалити вузол й занулити його вказівник\n" 
 			<< "11 - Видалити все дерево\n" 
 			<< "12 - Записати бінарне дерево в файл\n"
+			<< "13 - Пересипати у нове бінарне дерево (за ID паспорта)\n"
 			<< "0 - Завершити роботу програми\n" 
 			<< "---> ";
 		cin >> button;
@@ -208,6 +209,21 @@ int main()
 					write_trea_in_file(Root);
 			break;
 
+			case 13:
+				
+				if (!Empty)
+					cout << "Дерево не знайдено!\n";
+				else {
+					int TreeSize = size(Root);
+					BinaryTree* NewTreeArray = new BinaryTree[TreeSize];
+					BinaryTree* NewTree = NULL;
+					get_data(Root, NewTreeArray, TreeSize);
+					for (size_t i = 0; i < TreeSize; i++){
+						CreateNewTree(NewTree, NewTreeArray[i].FullName, NewTreeArray[i].IDpass, NewTreeArray[i].age);
+					}
+					PrintTest(NewTree);
+				}
+			break;
 
 			default: {
 				break;

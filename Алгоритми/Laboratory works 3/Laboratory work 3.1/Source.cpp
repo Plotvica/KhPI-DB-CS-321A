@@ -1,5 +1,28 @@
 #include "Header.h"
 
+static int count1 = 0;
+int size(BinaryTree*& Root) {
+	if (Root == NULL) return 0;
+	count1++;
+	size(Root->LeftBranch);
+	size(Root->RightBranch);
+	return count1;
+}
+
+
+void get_data(BinaryTree* Root, BinaryTree* mass, int count) {
+	if (Root != NULL) {
+		static int i = 0;
+		mass[i].FullName = Root->FullName;
+		mass[i].IDpass = Root->IDpass;
+		mass[i].age = Root->age;
+		i++;
+		get_data(Root->LeftBranch, mass, count);
+		get_data(Root->RightBranch, mass, count);
+	}
+	
+}
+
 
 
 bool Empty(BinaryTree* Root) {
@@ -20,6 +43,24 @@ void CreateTree(BinaryTree*& Root, string FullName, int IDpass, short int age) {
 	if (Root->age > age)
 		CreateTree(Root->LeftBranch, FullName, IDpass, age);
 	else 
+		CreateTree(Root->RightBranch, FullName, IDpass, age);
+
+}
+
+void CreateNewTree(BinaryTree*& Root, string FullName, int IDpass, short int age) {
+
+	if (!Root) {
+		Root = new BinaryTree;
+		Root->FullName = FullName;
+		Root->IDpass = IDpass;
+		Root->age = age;
+		Root->LeftBranch = NULL;
+		Root->RightBranch = NULL;
+		return;
+	}
+	if (Root->IDpass > IDpass)
+		CreateTree(Root->LeftBranch, FullName, IDpass, age);
+	else
 		CreateTree(Root->RightBranch, FullName, IDpass, age);
 
 }

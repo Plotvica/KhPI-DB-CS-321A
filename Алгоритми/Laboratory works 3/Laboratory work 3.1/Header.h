@@ -25,6 +25,11 @@ struct BinaryTree
 
 };
 
+int size(BinaryTree*& Root);
+
+void get_data(BinaryTree* Root, BinaryTree* mass, int count);
+
+void CreateNewTree(BinaryTree*& Root, string FullName, int IDpass, short int age);
 
 void Print(BinaryTree** Root, int l = 0); // print test
 
