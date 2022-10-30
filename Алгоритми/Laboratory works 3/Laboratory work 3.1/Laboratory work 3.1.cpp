@@ -36,7 +36,7 @@ int main()
 			<< "---> ";
 		cin >> button;
 		switch (button) {
-			case 1:
+			case 1: 
 
 				cout << "Введіть кількість елементів дерева: ";
 				cin >> button;
