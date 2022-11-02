@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Lab_10</title>
+</head>
+<body>
+    
+    <div class="font">
+<select name="selec" id="vid">
+    <option>v </option>
+    <option>Form</option>
+    <option>Table</option>
+</select>
+
+    <label id="firstL">1</label>
+    <input type="radio" name="sel" id="first" value="1">
+    <label id="secondL">2</label>
+    <input type="radio" name="sel" id="second" value="2">
+    <label id="thirdL">3</label>
+    <input type="radio" name="sel" id="third" value="3">
+    <button type="button" class="button "id="button">Sort</button>
+    <div class="div"><input type="text" name="input" id="input" placeholder="Введите текст" disabled></div>
+    <div class="div">
+        <button type="button" class="button "id="add">Добавить</button>
+        <button type="button" class="button "id="delete">Удалить</button>
+        <button type="button" class="button "id="change">Заменить</button>
+    </div >
+    <div class="div">
+        <input type="text" name="input" id="inputtext" placeholder="Введите текст" disabled>
+    </div>
+    <div class="div">
+        <button type="button" class="button "id="math">Расчитать</button>
+
+    </div>
+</div>
+
+    <div id="div" class="fontform"></div>
+    <div id="divnew" class="fontform"></div>
+    <div id="mathdiv" class="fontform"></div>
+
+<script>
+    var i = document.getElementById("vid")
+    i.addEventListener("change", select0)
+    i = document.getElementById("first")
+    i.addEventListener("change", createlistOb)
+    i = document.getElementById("second")
+    i.addEventListener("change", createlistOb1)
+    i = document.getElementById("third")
+    i.addEventListener("change", createlistOb2)
+    i = document.getElementById("button")
+    i.addEventListener("click", sortingName)
+    var f = document.getElementById("input")
+    f.addEventListener("keyup", printf)
+    f = document.getElementById("first")
+    f.addEventListener("change", toggleBilling0)
+    f = document.getElementById("second")
+    f.addEventListener("change", toggleBilling0)
+    f = document.getElementById("third")
+    f.addEventListener("change", toggleBilling0)
+    f = document.getElementById("add")
+    f.addEventListener("click", add)
+    f = document.getElementById("delete")
+    f.addEventListener("click", clear)
+    var div = document.getElementById("div")
+    div.addEventListener("click", choice)
+    f = document.getElementById("change")
+    f.addEventListener("click", change)
+    f = document.getElementById("math")
+    f.addEventListener("click", math)
+</script>
+
+<div class="font top"><b>
+    Завдання 8.
+</b></div>
+<a href="Web10.1.html">00000000000</a>
+</body>
+</html>

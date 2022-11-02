@@ -1,0 +1,68 @@
+.font{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+.top{
+    margin-top: 500px;
+}
+
+.div{
+    margin-top: 10px;
+}
+
+.fontform{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.border{
+    border: 2px solid black;
+}
+
+.color{
+    color:red;
+}
+
+.font0{
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 550px;
+    margin-right: 550px;
+}
+
+.dop1{
+    margin-top: 10px;
+    margin-left:15px;
+    transition-duration: 2s;
+}
+.dop2{
+    transition-duration: 2s;
+}
+
+.dop3{
+    margin-top: 10px;
+    margin-left:50px;
+    transition-duration: 2s;
+}
+
+.button{
+
+    font-size: 15px;
+    margin-left: 30px;
+    box-shadow: 10px 10px 10px ;
+    transition-duration: 2s;
+    border-radius: 5px;
+    background-color: #CCC;
+}
+
+.button:hover{
+    margin-left: 20px;
+    box-shadow: 10px 10px 10px coral;
+    transition-duration: 2s;
+    border-radius: 20px;
+    /* transform: translateY(-5px); */
+    /* padding: 5px 20px; */
+    background-color: whitesmoke;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="font0">
+    <form>
+        <fieldset class="form">
+            <label id="namey"for="x">Гепотинуза: </label>
+            <input class="dop2" placeholder="Гепотинуза" type="number" name="x"  id="x"/>
+            <br>
+            <label id="namey"for="y">Катет: </label>
+            <input class="dop3"placeholder="Катет" type="number" name="y"  id="y"/>
+            <br>
+            <label id="namez"for="z">Результат: </label>
+            <input class="dop1" placeholder="Результа" type="number" name="z"  id="z" readonly/>
+            <br>
+
+            <select name="shape" id="shape">
+                <option>Select</option>
+                <option>Perimeter</option>
+                <option>S</option>
+            </select>
+        </fieldset>
+    </form>
+</div>
+<script>
+    var triangle = new Math0(0, 0)
+    var sel =document.getElementById("shape")
+    sel.addEventListener("change", function(){
+        var h =+ document.getElementById("x").value
+        var c =+ document.getElementById("y").value
+        triangle.hepotinuse=h
+        triangle.catet=c
+        var sel =document.getElementById("shape")
+        var index = sel.selectedIndex
+        console.log(triangle.hepotinuse = h)
+        console.log(triangle.catet=c)
+        if(index==1){
+            var res= triangle.P()
+            document.getElementById("z").value = res;
+        }
+        if(index==2){
+            var res= triangle.S()
+            document.getElementById("z").value = res;
+        }
+    })
+
+
+
+</script>
+</body>
+</html>
