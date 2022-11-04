@@ -119,7 +119,7 @@ void Main::byGrade(Abiturient** List, int size, int setted)
 	int count = 0;
 
 	for (size_t i = 0; i < size; i++) {
-		if (List[i]->getGrade() < 60)
+		if (List[i]->getGrade() >= setted)
 			count++;
 	}
 
