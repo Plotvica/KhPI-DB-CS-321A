@@ -11,176 +11,165 @@ using namespace std;
 
 
 
-class Abiturient {
+class Human {
 protected:
 	string dataNames[32] = { "Ethan", "Josh", "Sam", "Tom", "Bruse", "Michael", "Diego", "Adrian", "Brian", "Carl", "Caleb", "Charles", "Daniel", "Derek", "Elliot", "Kuel", 
 	                       "Sophia", "Amelia", "Ella", "Chloe", "Penelope", "Emma", "Ava", "Isabella", "Elizabath", "Ginna", "Layla", "Zoey", "Olivia", "Sarah", "Rachel", "Emily"};
 	string dataSecondNames[50] = { "Smith", "Johnson", "Williams", "Jones", "Brown","Davis","Miller", "Wilson","Moore","Taylor", "Anderson","Thomas","Jackson", "White","Harris","Martin", "Thompson","Garcia","Martinez", "Robinson","Clark","Rodriguez", "Lewis","Lee","Walker", "Hall","Allen","Young", "Hernandez","King","Wright", "Lopez","Hill","Scott", "Green","Adams","Baker", 
 		"Gonzalez", "Nelson","Carter","Mitchell", "Perez","Roberts","Turner", "Phillips","Campbell","Parker", "Evans","Edwards","Collins"};
+
+
 	string Name;
 	string SecondName;
-	int grade;
+	string passID;
+
 public:
-	virtual int getGrade() const { return grade; };
+
 	virtual string getName() const { return Name; }
+	virtual string getpassID() const { return passID; }
 	virtual string getSecond() const { return SecondName; }
-	virtual string getAddress() = 0;
-	virtual string getGrupe() = 0;
 	virtual void print() = 0;
 	virtual void setterAll() = 0;
 
 };
 
-class CSgrupe: public Abiturient
+class Sutedent: public Human
 {
 protected:
 	string address;
-	string grupe = "CS-321";
-public:
-	string getAddress() override { return address; }
+	string study;
+
 };
 
-class CSgrupeA: public CSgrupe
+class Extramural: public Sutedent
 {
+	long int studyCost;
 public:
 	void setterAll() override {
 
 		this->Name = dataNames[rand()%32];
 		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@cs.edu.ua";
-		this->grade = rand() % 90 + 10;
-
-		this->grupe = grupe + 'A';
+		this->address = Name + SecondName + "@khpi.edu.ua";
+		this->study = "To pay for study";
+		this->passID = "ETStudent";
+		this->studyCost = (rand() %90000 + 1000);
 	}
 	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
+		cout << "|" << setw(10)  << this->Name << setw(10)  << this->SecondName << "|" << setw(33) << this->address;
+		cout << "|" << setw(12) << this->passID  << setw(4) << "|" << setw(11) << "Debt: " << setw(6) << this->studyCost << setw(10) << "|" << setw(23) << this->study << setw(4) << "|" << endl;
 	}
-	string getGrupe() override { return grupe; }
+	
 };
-class CSgrupeB : public CSgrupe
+class FullTime : public Sutedent
 {
+private:
+	string department;
+	string Crops[6] = { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5", "Building 6" };
+	string Grupe[6] = { "CS-321a", "CS-321b", "CS-321c", "PE-321a", "PE-321b", "PE-321c" };
 public:
 	void setterAll() override {
 
 		this->Name = dataNames[rand() % 32];
 		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@cs.edu.ua";
-		this->grade = rand() % 90 + 10;
-
-		this->grupe = grupe + 'B';
+		this->department = Grupe[rand() % 6];
+		if(this->department == Grupe[0] or this->department == Grupe[1] or this->department == Grupe[2])
+			this->address = Name + SecondName + "@cs.khpi.edu.ua";
+		else
+			this->address = Name + SecondName + "@pe.khpi.edu.ua";
+		this->passID = "FTStudent";
+		this->study = Crops[rand() % 6];
+		
 	}
 	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
+		cout << "|" << setw(10) << this->Name << setw(10) << this->SecondName << "|" << setw(33) << this->address;
+		cout << "|"  << setw(12) << this->passID <<setw(4) << "|" << setw(15) << this->department << setw(12) << "|" << setw(20) << this->study << setw(7) << "|" << endl;
 	}
-	string getGrupe() override { return grupe; }
+	
 };
-class CSgrupeC : public CSgrupe
-{
+
+class Abiturient : public Sutedent {
+	int grade;
 public:
 	void setterAll() override {
+
 		this->Name = dataNames[rand() % 32];
 		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@cs.edu.ua";
-		this->grade = rand() % 90 + 10;
+		this->address = Name + SecondName + "@gmail.com";
+		this->passID = "Abiturient";
+		this->grade = rand() % 81 + 120;
+		this->study = "To apply the documents";
 
-
-		this->grupe = grupe + 'C';
 	}
 	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
+		cout << "|" << setw(10) << this->Name << setw(10) << this->SecondName << "|" << setw(33) << this->address;
+		cout << "|" << setw(13) << this->passID <<setw(3) << "|" << setw(12) << "EIE: " << grade << setw(12) << "|" <<setw(24) << this->study << setw(3) << "|" << endl;
 	}
-	string getGrupe() override { return grupe; }
+
+
 };
 
-
-
-
-class ENGgrupe : public Abiturient
+class Staff : public Human
 {
 protected:
-	string address;
-	string grupe = "PE-321";
-public:
-	string getAddress() override { return address; }
-};
+	string number = "+380";
+	string work;
 
-class ENGgrupeA : public ENGgrupe
-{
-public:
-	void setterAll() override {
-		this->Name = dataNames[rand() % 32];
-		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@pe.edu.ua";
-		this->grade = rand() % 90 + 10;
-
-		this->grupe = grupe + 'A';
-	}
-	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
-	}
-	string getGrupe() override { return grupe; }
 };
-class ENGgrupeB : public ENGgrupe
-{
+class Teacher : public Staff {
+	bool parkingPlace;
+	string workOps[4] = { "Paper work", "Lection work", "Practical work", "Laboratory work" };
 public:
 	void setterAll() override {
+
 		this->Name = dataNames[rand() % 32];
 		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@pe.edu.ua";
-		this->grade = rand() % 90 + 10;
-
-		this->grupe = grupe + 'B';
+		this->number += (to_string(rand()%10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10));
+		this->work = workOps[rand()%4];
+		this->passID = "Teacher";
+		this->parkingPlace = rand() % 2;
 	}
 	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
+		cout << "|" << setw(10) << this->Name << setw(10) << this->SecondName << "|" << setw(33) << this->number;
+		cout << "|" << setw(12) << this->passID << setw(4) << "|" << setw(12) << "Parking: " << boolalpha << setw(9) << this->parkingPlace << setw(6) << "|" << setw(23) << this->work << setw(4) << "|" << endl;
 	}
-	string getGrupe() override { return grupe; }
 };
-class ENGgrupeC : public ENGgrupe
-{
+class Security : public Staff {
+	
+	int shift;
 public:
 	void setterAll() override {
+
 		this->Name = dataNames[rand() % 32];
 		this->SecondName = dataSecondNames[rand() % 50];
-		this->address = Name + SecondName + "@pe.edu.ua";
-		this->grade = rand() % 90 + 10;
-
-
-		this->grupe = grupe + 'C';
+		this->number += (to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10) + to_string(rand() % 10));
+		this->shift = rand() % 6 + 1;
+		this->passID = "Security";
+		this->work = "CHECKPOINT " + to_string(rand()%8+1);
 	}
 	void print() override {
-		cout << "|" << setw(10) << left << this->Name << setw(10) << left << this->SecondName << "|" << setw(30) << this->address;
-		cout << "|" << setw(3) << " " << this->grade << "   " << setw(4) << "|" << setw(6) << this->grupe << "  |" << endl;
+		cout << "|" << setw(10) << this->Name << setw(10) << this->SecondName << "|" << setw(33) << this->number;
+		cout << "|" << setw(12) << this->passID << setw(4) << "|" << setw(12) << "Shift: "  << this->shift << setw(14) << "|" << setw(20) << this->work << setw(7) << "|" << endl;
 	}
-	string getGrupe() override { return grupe; }
 };
+
+
+
+
 
 
 class Main {
 
 private:
-	int size;
-
-
-	// main tasks
-	void unsatisfactory(Abiturient** List, int size);
-	void byGrade(Abiturient** List, int size, int setted);
-	void hightesGradeandHalf(Abiturient** List, int size);
-
 
 	// working method
-	void Sort(Abiturient** List, int size, int button);
-	void create(Abiturient** List, int size);
-	void printList(Abiturient** List, int size);
+	void deleteOneElement(Human** List, int& size, int check);
+	void addOneElement(Human** List, int& size, int check);
+	void rewriteOneElement(Human** List, int& size, int check);
+	void Sort(Human** List, int size, int button);
+	void create(Human** List, int size);
+	void printList(Human** List, int size);
 
 public:
 	void main();
-
-
 	~Main() {};
 };
