@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab11_4</title>
+	<script type="text/javascript">
+		var date=new Date();
+		var options = {
+		  //era: 'long',
+		  //year: 'numeric',
+		  //month: 'long',
+		  //day: 'numeric',
+		  //weekday: 'long',
+		  //timezone: 'UTC',
+		  hour: 'numeric',
+		  minute: 'numeric',
+		  second: 'numeric'
+		};
+
+	</script>
+	<style type="text/css">
+		div {
+			text-align: center;
+			color: #808000;
+			font-size: 40px;
+		}
+		select {
+			background-color: #ffcc00;
+			color: #b38f00;
+			font-size: 20px;
+			box-shadow: 0px 0px 10px 5px #665200;
+			width: 20%;
+			border: 1px inset #ff8000;
+
+		}
+		.disabled {
+			display: none;
+		}
+		.abled {
+			display: block;
+		}
+		input[type=button] {
+			color: #663300;
+			background-color: #ff8c1a;
+			box-shadow: 0px 0px 10px 5px #b35900;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body bgcolor="#ffffb3">
+	<div id="timeToday"></div>
+	<select id="timeSelect" onchange="changeTime();">
+		<option selected disabled value="Options">Options</option>
+		<option id="hour">Hour (select)</option>
+		<option id="minute">Minute (input)</option>
+		<option id="second">Second (random)</option>
+	</select><br><br>
+	<select id="hourSelect" class="disabled" onchange="setNewHour();">
+		<option selected disabled value="option">Options</option>
+		<option>1</option>
+		<option>2</option>	
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+		<option>9</option>
+		<option>10</option>
+		<option>11</option>
+		<option>12</option>
+		<option>13</option>
+		<option>14</option>
+		<option>15</option>
+		<option>16</option>
+		<option>17</option>
+		<option>18</option>
+		<option>19</option>
+		<option>20</option>
+		<option>21</option>
+		<option>22</option>
+		<option>23</option>
+		<option>24</option>
+	</select>
+	<input type="button" id="minuteButton" value="Set new minute" class="disabled" onclick="setNewMinute();"> <br>
+	<input type="text" id="minuteText" class="disabled">
+	<br>
+	<input type="button" id="secondButton" class="disabled" value="set new second" onclick="setNewSecond();">
+
+
+	<script type="text/javascript">
+		function formatAMPM(date) {
+		  var hours = date.getHours();
+		  var minutes = date.getMinutes();
+		  var seconds = date.getSeconds();
+		  var ampm = hours >= 12 ? 'pm' : 'am';
+		  hours = hours % 12;
+		  hours = hours ? hours : 12; 
+		  minutes = minutes < 10 ? '0'+minutes : minutes;
+		  var strTime = hours + ':' + minutes  + ampm +':'+seconds;
+		  return strTime;
+		}
+		function changeTime() {
+			if(document.getElementById('hour').selected) {
+				hourSelect.className='abled';
+				minuteText.className='disabled';
+				minuteButton.className='disabled';
+				secondButton.className='disabled';
+			} else if(document.getElementById('minute').selected) {
+				hourSelect.className='disabled';
+				minuteText.className='abled';
+				minuteButton.className='abled';
+				secondButton.className='disabled';
+
+			} else if(document.getElementById('second').selected) {
+				hourSelect.className='disabled';
+				minuteText.className='disabled';
+				minuteButton.className='disabled';
+				secondButton.className='abled';
+
+			}
+		}
+		function setNewHour() {
+			let numberHour=hourSelect.selectedIndex;
+			var newTime= new Date(date.setHours(numberHour));
+			document.getElementById('timeToday').innerHTML=formatAMPM(newTime);
+		}
+		function setNewMinute() {
+			var min=document.getElementById('minuteText').value;
+			console.log(min);
+			if(min>=1 && min<61) {
+				var newTime=new Date(date.setMinutes(min));
+				document.getElementById('timeToday').innerHTML=formatAMPM(newTime);
+				document.getElementById('minuteButton').value="Set new minute";
+			} else if(min<1 || min>60) {
+				document.getElementById('minuteButton').value="ERROR";
+			}
+		}
+		function setNewSecond(){
+			var newSecond = Math.random()*(60-1)+1;
+			var newTime=new Date(date.setSeconds(newSecond));
+			document.getElementById('timeToday').innerHTML=formatAMPM(newTime);
+		}
+
+
+
+
+
+		document.getElementById('timeToday').innerHTML= formatAMPM(date);//date.toLocaleString('ru', options);	
+	</script>
+
+</body>
+</html>

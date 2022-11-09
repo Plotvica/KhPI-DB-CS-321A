@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab12_5</title>
+</head>
+<body>
+ <script>
+         let array = [];
+    for(let i=0; i < 20; i++){
+      array[i] = Math.floor((Math.random()*30)-15);
+      for(let j=0; j<20; j++){
+        array[i][j] = Math.floor((Math.random()*30)-15);
+       }
+    }
+    var min=1000;
+    var max=-1000;
+   for(let a of array){
+   	if(a>0){
+   		if(a<min){
+   			min=a;
+   		}
+   	} else if(a<0) {
+   		if(a>max){
+   			max=a;
+   		}
+   	}
+   	console.log(a);
+   }
+   if(min==1000) {
+    console.log("ERR");
+   } else {
+
+   	console.log("MIN", min);
+   }
+   if(max==-1000) {
+    console.log("ERR");
+   } else {
+
+   	console.log("MAX", max);
+   }
+    </script>
+</body>
+</html>

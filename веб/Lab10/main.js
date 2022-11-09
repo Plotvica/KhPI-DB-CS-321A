@@ -1,34 +1,34 @@
 
 //task1
-class Doctor{
-    #namedoc
-    #spec
-    #cval
-    constructor(namedoc, spec, cval){
-        this.#namedoc = namedoc;
-        this.#spec = spec;
-        this.#cval = cval;
+class Tovar{
+    #tovname
+    #amount
+    #costoftov
+    constructor(tovname, amount, costoftov){
+        this.#tovname = tovname;
+        this.#amount = amount;
+        this.#costoftov = costoftov;
     }
-    get namedoc(){
-        return this.#namedoc
+    get tovname(){
+        return this.#tovname
     }
-    get spec(){
-        return this.#spec
+    get amount(){
+        return this.#amount
     }
-    get cval(){
-        return this.#cval
+    get costoftov(){
+        return this.#costoftov
     }
 }
-class Pacient{
+class Company{
     #kod
     #name 
     #address
-    #age
-    constructor(kod, name, address, age){
+    #phonenum
+    constructor(kod, name, address, phonenum){
         this.#kod = kod;
         this.#name = name;
         this.#address = address;
-        this.#age = age;
+        this.#phonenum = phonenum;
     }
     get kod(){
         return this.#kod
@@ -39,8 +39,8 @@ class Pacient{
     get address(){
         return this.#address
     }
-    get age(){
-        return this.#age
+    get phonenum(){
+        return this.#phonenum
     }
 }
 
@@ -74,52 +74,52 @@ class R {
     }
 }
 let ob = [
-    new Doctor("Den", "School", "BAD"),
-    new Doctor("Andrey", "School", "BAD"),
-    new Doctor("Piter", "Bac", "Harosh"),
-    new Doctor("Djeck", "Bac", "Harosh"),
-    new Doctor("Sam", "Mag", "Ahyet")
+    new Tovar("Candys", 3405, 100),
+    new Tovar("Cookies", 543, 30),
+    new Tovar("Cakes", 3, 15),
+    new Tovar("Chocolate bars", 5, 5),
+    new Tovar("Cola", 10, 20)
 ];
 let ob1 = [
-    new Pacient(05645, "Oleg", "Kharkov", 25),
-    new Pacient(65666, "Evgen", "Zaporozhhhhh", 25),
-    new Pacient(15246, "Bob", "Kiev", 25),
-    new Pacient(14831, "John", "Kharkov", 18),
-    new Pacient(01247, "Paper", "Kharkov", 22)
+    new Company(05645, "Roshen", "Kiev", "45-54-65"),
+    new Company(65666, "AVC", "Odesa", "34-13-41"),
+    new Company(15246, "KFC", "Omeryca", "13-41-55"),
+    new Company(14831, "Chocolate BABI TANI", "selo Valuiki", "12-34-44"),
+    new Company(01247, "Coca-Cola", "Lviv", "22-81-47")
 ];
 let ob2 = [
-    new R("bad", 30, "Dead", ob[0],ob1[0]),
-    new R("Pizdec", 30, "Aliluya",ob[1], ob1[1]),
-    new R("Pizdec", 30, "Alilluya", ob[2],ob1[2]),
-    new R("Pizdec", 12, "Dead", ob[3],ob1[3]),
-    new R("Pizdec", 1, "Dead", ob[4], ob1[4]),
+    new R("Candys", 30, "Roshen", ob[0],ob1[0]),
+    new R("Cookies", 30, "AVC",ob[1], ob1[1]),
+    new R("Cakes", 30, "KFC", ob[2],ob1[2]),
+    new R("Chocolate bars", 12, "Chocolate BABI TANI", ob[3],ob1[3]),
+    new R("Cola", 1, "Coca-Cola", ob[4], ob1[4]),
 ];
-// console.log("------------------------------")
-// for(var i=0; i<ob2.length;i++){
-//     console.log("BLANC:", i+1)
-//     console.log("Diagnoz: ",ob2[i].diagnoz)
-//     console.log("Date: ",ob2[i].date)
-//     console.log("Result: ",ob2[i].result)
-//     console.log("Doctor: ",ob2[i].doc.namedoc)
-//     console.log("Spec: ",ob2[i].doc.spec)
-//     console.log("Cval: ",ob2[i].doc.cval)
-//     console.log("Kod: ",ob2[i].pac.kod)
-//     console.log("Pacient: ",ob2[i].pac.name)
-//     console.log("Address: ",ob2[i].pac.address)
-//     console.log("Age: ",ob2[i].pac.age)
-//     console.log("------------------------------")
-// }
+console.log("------------------------------")
+for(var i=0; i<ob2.length;i++){
+    console.log("BLANC:", i+1)
+    console.log("Diagnoz: ",ob2[i].diagnoz)
+    console.log("Date: ",ob2[i].date)
+    console.log("Result: ",ob2[i].result)
+    console.log("Tovar: ",ob2[i].doc.tovname)
+    console.log("amount: ",ob2[i].doc.amount)
+    console.log("costoftov: ",ob2[i].doc.costoftov)
+    console.log("Kod: ",ob2[i].pac.kod)
+    console.log("Company: ",ob2[i].pac.name)
+    console.log("Address: ",ob2[i].pac.address)
+    console.log("phonenum: ",ob2[i].pac.phonenum)
+    console.log("------------------------------")
+}
 //task2
 function createlistOb(){
     deletenew()
-    deleteavarage()
+    deleteavarphonenum()
     deletelistOb()
     if(i==1){
     var div = document.getElementById("div")
     var ul = document.createElement("ul")
     for (let index = 0; index < ob.length; index++) {
         var li= document.createElement("li")
-        li.textContent="| Doctor: "+ob[index].namedoc + " | Spec: "+ob[index].spec+" | Cval: "+ ob[index].cval
+        li.textContent="| Product: "+ob[index].tovname + " | Amount: "+ob[index].amount+" | Cost: "+ ob[index].costoftov
         ul.appendChild(li)
     }
     div.appendChild(ul)
@@ -134,7 +134,7 @@ else {
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent="| Doctor: "+ob[index].namedoc + " | Spec: "+ob[index].spec+" | Cval: "+ ob[index].cval
+        td.textContent="| Product: "+ob[index].tovname + " | Amount: "+ob[index].amount+" | Cost: "+ ob[index].costoftov
         tr.appendChild(td)
         tabl.appendChild(tr)
     }
@@ -146,14 +146,14 @@ else {
 
 function createlistOb1(){
     deletenew()
-    deleteavarage()
+    deleteavarphonenum()
     deletelistOb()
     if(i==1){
         var div = document.getElementById("div")
         var ul = document.createElement("ul")
         for (let index = 0; index < ob1.length; index++) {
             var li= document.createElement("li")
-            li.textContent="| Kod: "+ob1[index].kod + " | Name: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Age: "+ ob1[index].age
+            li.textContent="| Kod: "+ob1[index].kod + " | Company: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Phone: "+ ob1[index].phonenum
             ul.appendChild(li)
         }
         div.appendChild(ul)
@@ -167,7 +167,7 @@ function createlistOb1(){
             var tr= document.createElement("tr")
             var td= document.createElement("td")
             td.className="border"
-            td.textContent="| Kod: "+ob1[index].kod + " | Name: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Age: "+ ob1[index].age
+            td.textContent="| Kod: "+ob1[index].kod + " | Company: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Phone: "+ ob1[index].phonenum
             tr.appendChild(td)
             tabl.appendChild(tr)
         }
@@ -177,7 +177,7 @@ function createlistOb1(){
 
 function createlistOb2(){
     deletenew()
-    deleteavarage()
+    deleteavarphonenum()
     deletelistOb()
     if(i==1){
         var div = document.getElementById("div")
@@ -188,9 +188,9 @@ function createlistOb2(){
             var li1= document.createElement("li")
             var li2= document.createElement("li")
             var li3= document.createElement("li")
-            li1.textContent=" | Doctor: "+ ob2[index].doc.namedoc+" | Spec: "+ ob2[index].doc.spec+" | Cval: "+ ob2[index].doc.cval
-            li2.textContent="| Diagnoz: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Result: "+ ob2[index].result 
-            li3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Pacient: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Age: "+ ob2[index].pac.age
+            li1.textContent=" | Product: "+ ob2[index].doc.tovname+" | Amount: "+ ob2[index].doc.amount+" | Cost: "+ ob2[index].doc.costoftov
+            li2.textContent="| Product: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Company: "+ ob2[index].result 
+            li3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Company: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Phone: "+ ob2[index].pac.phonenum
             ul.appendChild(li1)
             ul.appendChild(li2)
             ul.appendChild(li3)
@@ -213,9 +213,9 @@ function createlistOb2(){
             td1.className="border"
             td2.className="border"
             td3.className="border"
-            td1.textContent=" | Doctor: "+ ob2[index].doc.namedoc+" | Spec: "+ ob2[index].doc.spec+" | Cval: "+ ob2[index].doc.cval
-            td2.textContent="| Diagnoz: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Result: "+ ob2[index].result 
-            td3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Pacient: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Age: "+ ob2[index].pac.age
+            td1.textContent=" | Product: "+ ob2[index].doc.tovname+" | Amount: "+ ob2[index].doc.amount+" | Cost: "+ ob2[index].doc.costoftov
+            td2.textContent="| Product: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Company: "+ ob2[index].result 
+            td3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Company: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Phone: "+ ob2[index].pac.phonenum
 
             tr.appendChild(td1)
             tr.appendChild(td2)
@@ -249,12 +249,12 @@ function select0(){
 }
 //task3
 function sortingName(){
-    ob.sort((a, b) => a.namedoc > b.namedoc ? 1 : -1);
+    ob.sort((a, b) => a.tovname > b.tovname ? 1 : -1);
     ob1.sort((a, b) => a.name > b.name ? 1 : -1);
     ob2.sort((a, b) => a.date > b.date ? 1 : -1);
     var i = document.getElementById("button")
     i.addEventListener("dblclick", function(){
-        ob.sort((a, b) => a.namedoc < b.namedoc ? 1 : -1);
+        ob.sort((a, b) => a.tovname < b.tovname ? 1 : -1);
         ob1.sort((a, b) => a.name < b.name ? 1 : -1);
         ob2.sort((a, b) => a.date < b.date ? 1 : -1);
 
@@ -268,7 +268,7 @@ function fillfirst(){
     var mas=[]
     var c = 0;
     for (let i = 0; i < ob.length; i++) {
-        var word = ob[i].namedoc.toString()
+        var word = ob[i].tovname.toString()
         for(var j= 0; j<text.length;j++){
 
             if(word[j] != text[j]){
@@ -287,7 +287,7 @@ function fillfirst(){
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent="| Doctor: "+mas[index].namedoc + " | Spec: "+mas[index].spec+" | Cval: "+ mas[index].cval
+        td.textContent="| Product: "+mas[index].tovname + " | Amount: "+mas[index].amount+" | Cost: "+ mas[index].costoftov
         tr.appendChild(td)
         table.appendChild(tr)
     }
@@ -317,7 +317,7 @@ function fillsecond(){
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent="| Kod: "+mas[index].kod + " | Name: "+mas[index].name +" | Address: "+ mas[index].address +" | Age: "+ mas[index].age
+        td.textContent="| Kod: "+mas[index].kod + " | Company: "+mas[index].name +" | Address: "+ mas[index].address +" | Phone: "+ mas[index].phonenum
         tr.appendChild(td)
         table.appendChild(tr)
     }
@@ -330,7 +330,7 @@ function fillthird(){
     var mas=[]
     var c = 0;
     for (let i = 0; i < ob2.length; i++) {
-        var word = ob2[i].doc.namedoc.toString()
+        var word = ob2[i].doc.tovname.toString()
         for(var j= 0; j<text.length;j++){
             if(word[j] != text[j]){
                 break
@@ -353,9 +353,9 @@ function fillthird(){
         td1.className="border"
         td2.className="border"
         td3.className="border"
-        td1.textContent=" | Doctor: "+ mas[index].doc.namedoc+" | Spec: "+ mas[index].doc.spec+" | Cval: "+ mas[index].doc.cval
-        td2.textContent="| Diagnoz: "+mas[index].diagnoz + " | Date: "+mas[index].date +" | Result: "+ mas[index].result 
-        td3.textContent=" | Kod: "+ mas[index].pac.kod+" | Pacient: "+ mas[index].pac.name+" | Address: "+ mas[index].pac.address+" | Age: "+ mas[index].pac.age
+        td1.textContent=" | Product: "+ mas[index].doc.tovname+" | Amount: "+ mas[index].doc.amount+" | Cost: "+ mas[index].doc.costoftov
+        td2.textContent="| Product: "+mas[index].diagnoz + " | Date: "+mas[index].date +" | Company: "+ mas[index].result 
+        td3.textContent=" | Kod: "+ mas[index].pac.kod+" | Company: "+ mas[index].pac.name+" | Address: "+ mas[index].pac.address+" | Phone: "+ mas[index].pac.phonenum
 
         tr.appendChild(td1)
         tr.appendChild(td2)
@@ -419,7 +419,7 @@ function add(){
         var  arrayOfStrings = inputtext.split(space);
         //console.log(arrayOfStrings)
         
-        ob.push(new Doctor(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2]))
+        ob.push(new Tovar(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2]))
 
         var div = document.getElementById("div")
         var table = div.firstElementChild
@@ -428,7 +428,7 @@ function add(){
             var tr= document.createElement("tr")
             var td= document.createElement("td")
             td.className="border"
-            td.textContent="| Doctor: "+ob[index].namedoc + " | Spec: "+ob[index].spec+" | Cval: "+ ob[index].cval
+            td.textContent="| Product: "+ob[index].tovname + " | Amount: "+ob[index].amount+" | Cost: "+ ob[index].costoftov
             tr.appendChild(td)
             table.appendChild(tr)
         }
@@ -439,7 +439,7 @@ function add(){
         var  arrayOfStrings = inputtext.split(space);
         //console.log(arrayOfStrings)
         
-        ob1.push( new Pacient(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2],arrayOfStrings[3]))
+        ob1.push( new Company(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2],arrayOfStrings[3]))
         
         var div = document.getElementById("div")
         var table = div.firstElementChild
@@ -448,7 +448,7 @@ function add(){
             var tr= document.createElement("tr")
             var td= document.createElement("td")
             td.className="border"
-            td.textContent="| Kod: "+ob1[index].kod + " | Name: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Age: "+ ob1[index].age
+            td.textContent="| Kod: "+ob1[index].kod + " | Company: "+ob1[index].name +" | Address: "+ ob1[index].address +" | Phone: "+ ob1[index].phonenum
             tr.appendChild(td)
             table.appendChild(tr)
         }
@@ -459,7 +459,7 @@ function add(){
         var  arrayOfStrings = inputtext.split(space);
         //console.log(arrayOfStrings)
         
-        ob2.push(new R(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2],new Doctor(arrayOfStrings[3],arrayOfStrings[4],arrayOfStrings[5]),new Pacient(arrayOfStrings[6],arrayOfStrings[7],arrayOfStrings[8],arrayOfStrings[9]))) 
+        ob2.push(new R(arrayOfStrings[0],arrayOfStrings[1],arrayOfStrings[2],new Tovar(arrayOfStrings[3],arrayOfStrings[4],arrayOfStrings[5]),new Company(arrayOfStrings[6],arrayOfStrings[7],arrayOfStrings[8],arrayOfStrings[9]))) 
 
         var div = document.getElementById("div")
         var table = div.firstElementChild
@@ -473,9 +473,9 @@ function add(){
             td1.className="border"
             td2.className="border"
             td3.className="border"
-            td1.textContent=" | Doctor: "+ ob2[index].doc.namedoc+" | Spec: "+ ob2[index].doc.spec+" | Cval: "+ ob2[index].doc.cval
-            td2.textContent="| Diagnoz: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Result: "+ ob2[index].result 
-            td3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Pacient: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Age: "+ ob2[index].pac.age
+            td1.textContent=" | Product: "+ ob2[index].doc.tovname+" | Amount: "+ ob2[index].doc.amount+" | Cost: "+ ob2[index].doc.costoftov
+            td2.textContent="| Product: "+ob2[index].diagnoz + " | Date: "+ob2[index].date +" | Company: "+ ob2[index].result 
+            td3.textContent=" | Kod: "+ ob2[index].pac.kod+" | Company: "+ ob2[index].pac.name+" | Address: "+ ob2[index].pac.address+" | Phone: "+ ob2[index].pac.phonenum
 
             tr.appendChild(td1)
             tr.appendChild(td2)
@@ -527,7 +527,7 @@ function change(){
     if(select==1){ 
         for(var i=0;i<tr.length;i++){
             if(tr[i].className=="color"){
-                ob[i]=new Doctor(inputtext[0],inputtext[1],inputtext[2])
+                ob[i]=new Tovar(inputtext[0],inputtext[1],inputtext[2])
             }
         }
         createlistOb()
@@ -535,7 +535,7 @@ function change(){
     if(select==2){ 
         for(var i=0;i<tr.length;i++){
             if(tr[i].className=="color"){
-                ob1[i]=new Pacient(inputtext[0],inputtext[1],inputtext[2],inputtext[3])
+                ob1[i]=new Company(inputtext[0],inputtext[1],inputtext[2],inputtext[3])
             }
         }
         createlistOb1()
@@ -545,7 +545,7 @@ function change(){
             if(tr[i].className=="color"){
                 // console.log(tr[i])
                 // console.log(ob2[i])
-                ob2[i]=new R(inputtext[0],inputtext[1],inputtext[2],new Doctor(inputtext[3],inputtext[4],inputtext[5]),new Pacient(inputtext[6],inputtext[7],inputtext[8],inputtext[9]))
+                ob2[i]=new R(inputtext[0],inputtext[1],inputtext[2],new Tovar(inputtext[3],inputtext[4],inputtext[5]),new Company(inputtext[6],inputtext[7],inputtext[8],inputtext[9]))
             }
         }
         createlistOb2()
@@ -554,13 +554,13 @@ function change(){
 
 function math(){
     var select = document.querySelector('input[name = "sel"]:checked').value
-    if(select==1){ 
+    if(select==2){ 
         var dop
-        deleteavarage()
+        deleteavarphonenum()
         var mas="Harosh"
         var c=0
         for (let i = 0; i < ob.length; i++) {
-            var word = ob[i].cval.toString()
+            var word = ob[i].costoftov.toString()
 
             for(var j= 0; j<mas.length;j++){
                 if(word[j] != mas[j]){
@@ -577,64 +577,64 @@ function math(){
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent=" Количество кфалификации хорошо: " + c
+        td.textContent=" Количество заказчиков: " + ob.length
         tr.appendChild(td)
         table.appendChild(tr)
         div.appendChild(table)
     }
-    if(select==2){ 
-        deleteavarage()
-        var average=0
+    if(select==1){ 
+        deleteavarphonenum()
+        var averphonenum=0
         var dop
         var j=0
-        for (let i = 0; i < ob1.length; i++) {
+        for (let i = 0; i < ob.length; i++) {
             dop=0
             
-            if(!isNaN(dop+=+ob1[i].age))
+            if(!isNaN(dop+=+ob[i].costoftov))
             {
-                average+=+ob1[i].age
+                averphonenum+=+ob[i].costoftov
                 j++;
             }
         }
-        average=average/j
+        averphonenum=averphonenum/j
         var div = document.getElementById("mathdiv")
         var table = document.createElement("table")
         table.className="border"
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent=" Средний возраст: " + average
+        td.textContent=" Средняя цена: " + averphonenum
         tr.appendChild(td)
         table.appendChild(tr)
         div.appendChild(table)
     }
     if(select==3){ 
-        deleteavarage()
+        deleteavarphonenum()
         var dop
-        var average=0
+        var averphonenum=0
         var j=0
         for (let i = 0; i < ob2.length; i++) {
             dop=0
-            if(!isNaN(dop+=+ob1[i].age)){
-                average+=ob2[i].date
+            if(!isNaN(dop+=+ob[i].costoftov)){
+                averphonenum+=ob[i].costoftov
                 j++;
             }
         }
-        average=average/j
+        averphonenum=averphonenum/j
         var div = document.getElementById("mathdiv")
         var table = document.createElement("table")
         table.className="border"
         var tr= document.createElement("tr")
         var td= document.createElement("td")
         td.className="border"
-        td.textContent=" Средний возраст: " + average
+        td.textContent=" Средняя цена: " + averphonenum
         tr.appendChild(td)
         table.appendChild(tr)
         div.appendChild(table)
     }
 }
 
-function deleteavarage(){
+function deleteavarphonenum(){
     const list = document.getElementById("mathdiv");
     //console.log(list)
     if (list.hasChildNodes()) {
@@ -643,11 +643,11 @@ function deleteavarage(){
 }
 
 // //TASK 7
-// class ChildDoctor extends Doctor{
+// class ChildTovar extends Tovar{
 //     #secondname
 
-//     constructor(secondname, doctor0, special0, cvalification0){
-//         super(doctor0, special0, cvalification0)
+//     constructor(secondname, Tovar0, amountial0, costoftovification0){
+//         super(Tovar0, amountial0, costoftovification0)
 //         this.#secondname=secondname
 //     }
 
@@ -656,47 +656,47 @@ function deleteavarage(){
 //     }
 
 //     infoCD(){
-//         console.log(" Doctor: "+ this.namedoc+" Spec: "+this.spec+ " Cval: "+ this.cval + " Secondname: " + this.#secondname)
+//         console.log(" Tovar: "+ this.tovname+" amount: "+this.amount+ " costoftov: "+ this.costoftov + " Secondname: " + this.#secondname)
 //     }
 
 // }
 // var objD = [
-//     new ChildDoctor("Bob", "God", "God", "God"),
-//     new ChildDoctor("Dog", "a", "God", "God"),
-//     new ChildDoctor("Cat", "b", "God", "God"),
-//     new ChildDoctor("Bird", "c", "Loh", "God"),
-//     new ChildDoctor("Pig", "d", "Loh", "God"),
+//     new ChildTovar("Bob", "God", "God", "God"),
+//     new ChildTovar("Dog", "a", "God", "God"),
+//     new ChildTovar("Cat", "b", "God", "God"),
+//     new ChildTovar("Bird", "c", "Loh", "God"),
+//     new ChildTovar("Pig", "d", "Loh", "God"),
 // ]
-// console.log("Info about Doctor")
+// console.log("Info about Tovar")
 // for(var i=0; i<objD.length;i++){
 //     objD[i].infoCD()
 // }
 
 
-// class ChildPacient extends Pacient{
+// class ChildCompany extends Company{
 //     #secondn
-//     constructor(id0, pacient0, address0, age0, secondn){
-//         super(id0,pacient0,address0,age0)
+//     constructor(id0, Company0, address0, phonenum0, secondn){
+//         super(id0,Company0,address0,phonenum0)
 //         this.#secondn = secondn
 //     }
 //     get secondn(){
 //         return this.#secondn
 //     }
 //     infoCP(){
-//         console.log(" Kod: "+ this.kod+" Pacient: "+this.name+ " Address: "+ this.address +" Age: "+this.age + " Secondname: " + this.#secondn)
+//         console.log(" Kod: "+ this.kod+" Company: "+this.name+ " Address: "+ this.address +" phonenum: "+this.phonenum + " Secondname: " + this.#secondn)
 //     }
 
 // }
 
 // var objP = [
-//     new ChildPacient(15264, "Den", "Zaporoshec", 19, "God"),
-//     new ChildPacient(15896, "Andrey", "Kiev", 18, "HalfGod"),
-//     new ChildPacient(24587, "Evtihiy", "Zaporoshec", 78, "A"),
-//     new ChildPacient(96483, "Evlampiy", "DONBASS", 12, "D"),
-//     new ChildPacient(48501, "Merssedes", "DONBASS", 1, "S"),
+//     new ChildCompany(15264, "Den", "Zaporoshec", 19, "God"),
+//     new ChildCompany(15896, "Andrey", "Kiev", 18, "HalfGod"),
+//     new ChildCompany(24587, "Evtihiy", "Zaporoshec", 78, "A"),
+//     new ChildCompany(96483, "Evlampiy", "DONBASS", 12, "D"),
+//     new ChildCompany(48501, "Merssedes", "DONBASS", 1, "S"),
 // ]
 // console.log("------------------------------")
-// console.log("Info about Pacient")
+// console.log("Info about Company")
 // for(var i=0; i<objP.length;i++){
 //     objP[i].infoCP()
 // }

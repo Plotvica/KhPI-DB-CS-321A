@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab11_1</title>
+	<script type="text/javascript">
+		var date=new Date();
+		var day=date.getDay();
+		var month=date.getMonth();
+		var year=date.getFullYear();
+		var options = {
+		  year: 'numeric',
+		  month: 'long',
+		  day: 'numeric',
+		};
+	</script>
+	<style type="text/css">
+		div {
+			text-align: center;
+			color: #808000;
+			font-size: 40px;
+		}
+
+	</style>
+</head>
+<body bgcolor="#ffffb3">
+	<div id="todayDate"></div>
+<script type="text/javascript">
+	document.getElementById('todayDate').innerHTML=date.toLocaleString('ru', options);
+</script>
+</body>
+</html>

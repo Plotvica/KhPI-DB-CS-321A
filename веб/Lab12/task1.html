@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab12_1.1</title>
+	<style type="text/css">
+		
+		#div1{
+	      position:fixed;
+	      top:0;
+	      left:0;
+	      width:100%;
+	      height:100%;
+	      background-color: rgb(47, 180, 203);
+	      border: 4px inset rgb(112, 77, 157);
+	    }
+	    #div2{
+	      width: 80%;
+	      height: 80%;
+	      top: 10%;
+	      margin: 0 auto;
+	      position: relative;
+	      background:rgb(58, 53, 163);
+	      border: 4px inset rgb(230, 109, 145);
+	    }
+	    #div4{
+	      width: 60%;
+	      height: 60%;
+	      top: 20%;
+	      margin: 0 auto;
+	      position: relative;
+	      background:rgb(26, 212, 212);
+	      border: 4px inset rgb(66, 58, 107);
+	    }
+	    #div5{
+	      width: 40%;
+	      height: 40%;
+	      top: 30%;
+	      margin: 0 auto;
+	      position: relative;
+	      background:rgb(47, 231, 209);
+	      border: 4px inset rgb(16, 82, 117);
+	    }
+	    #div3{
+	      width: 20%;
+	      height: 20%;
+	      top: 40%;
+	      margin: 0 auto;
+	      position: relative;
+	      background:aqua;
+	      border: 4px inset aqua;
+	    }
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div4">
+				<div id="div5">
+					<div id="div3">						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	var div1=document.getElementById('div1');
+	var div2=document.getElementById('div2');
+	var div3=document.getElementById('div3');
+	var div4=document.getElementById('div4');
+	var div5=document.getElementById('div5');
+	var array=[1,2,4,5,3];
+	document.getElementById('div1').addEventListener('click', ()=>{
+		setTimeout(function(){
+			div1.style.backgroundColor="#f2f2f2";
+			console.log(array[4]);
+		}, 400);
+		setTimeout(function(){
+			div1.style.backgroundColor="pink";
+		}, 600);
+	});
+	document.getElementById('div2').addEventListener('click', ()=>{
+		setTimeout(function(){
+			div2.style.backgroundColor="#purple";
+				console.log(array[3]);	
+		}, 400);
+		setTimeout(function(){
+			div2.style.backgroundColor="blue";
+		}, 700);
+
+	});
+	document.getElementById('div4').addEventListener('click', ()=>{
+		setTimeout(function(){
+			div4.style.backgroundColor="#f2f2f2";
+				console.log(array[2]);	
+		}, 400);
+		setTimeout(function(){
+			div4.style.backgroundColor="red";
+		}, 800);
+
+	});
+	document.getElementById('div5').addEventListener('click', ()=>{
+		setTimeout(function(){
+			div5.style.backgroundColor="#f2f2f2";
+				console.log(array[1]);	
+		}, 400);
+		setTimeout(function(){
+			div5.style.backgroundColor="orange";
+		}, 900);
+
+	});
+	document.getElementById('div3').addEventListener('click', ()=>{
+		setTimeout(function(){
+			div3.style.backgroundColor="#f2f2f2";
+				console.log(array[0]);	
+		}, 400);
+		setTimeout(function(){
+			div3.style.backgroundColor="yellow";
+		}, 1000);
+
+	});
+</script>
+</html> 

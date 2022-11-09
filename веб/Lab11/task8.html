@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab11_8</title>
+	<script type="text/javascript">
+		
+	</script>
+	<style type="text/css">
+		div {
+			text-align: left;
+			color: #808000;
+			font-size: 20px;
+		}
+		input[type=button] {
+			color: #663300;
+			background-color: #ff8c1a;
+			box-shadow: 0px 0px 10px 5px #b35900;
+			font-size: 20px;
+		}
+		input[type='text'] {
+			color: #808000;
+			font-size: 20px;
+			background-color: #ffffcc;
+			box-shadow: 0px 0px 5px 5px #cccc00;
+		}
+	</style>
+</head>
+<body bgcolor="#ffffb3">
+	<input type="text" id="datePlus3"> <input type="button" id="dateButton" onclick="setNewDate()" value="click"><br><br>
+	<div>FORMAT:<br> 1.  Day(numerical) Month(eng., long) Year(numerical) [hh:mm:ss] <br> 2. YYYY-DD-MM [HH:MM:SS] </div>
+	<div style="text-align: center;" id="todayDate"></div>
+	<script type="text/javascript">
+		
+		function setNewDate() {
+			var d = new Date();
+			d.setTime(Date.parse(document.getElementById('datePlus3').value));
+			if(d.toLocaleString()=='Invalid Date'){
+				console.log("ERROR");
+				document.getElementById('todayDate').innerHTML='FALSE input (Invalid Date)';
+				document.getElementById('datePlus3').value="";
+			}
+			else {
+			console.log(d.toLocaleString());
+			var day=d.getDate();
+			var newDay=day+3;
+			console.log(newDay);
+			d.setDate(newDay);
+			console.log(d.toLocaleString());
+			console.log(document.getElementById('datePlus3').value);
+			document.getElementById('todayDate').innerHTML=d.toLocaleString();
+		}
+		}
+	</script>
+
+</body>
+</html>
+

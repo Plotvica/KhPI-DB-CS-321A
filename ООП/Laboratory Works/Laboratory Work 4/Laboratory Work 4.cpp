@@ -1,8 +1,5 @@
 ﻿#include "Header.h"
 
-int main()
-{
-    
-}
+int main() { Main main; main.main(); }
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>lab12_7</title>
+  <script src="task7.js"></script>
+  <style type="text/css"> 
+  </style>
+ </head>
+ <body bgcolor="blue">  
+ 
+  <div class="font0">
+    <p>Міста України
+    <select name="country" id="city">
+        <option value="praga">Київ</option>
+        <option value="ostrava">Харків</option>
+        <option value="plzen">Херсон</option>
+        <option value="liberec">Дніпро</option>
+        <option value="most">Полтава</option>
+        <option value="zlin">Кривий Ріг</option>
+
+      
+    </select>
+    </p>
+</div>
+<fieldset  class="box10">
+
+<div class="top0" id="img">
+    <div class="praga" id="praga" name="1"></div>
+    <div class="ostrava" id="ostrava" name="2"></div>
+    <div class="plzen" id="plzen" name="4"></div>
+    <div class="liberec" id="liberec" name="5"></div>
+    <div class="most" id="most" name="6"> </div>
+    <div class="zlin" id="zlin" name="7"></div>
+    <!-- <div class="dechin" id="dechin" name="8"></div> -->
+</div>
+<div class="text_p" id="text">
+    <div class="praga0" id="praga0">Київ</div>
+    <div class="ostrava0" id="ostrava0">Харків</div>
+    <div class="plzen0" id="plzen0">Херсон</div>
+    <div class="liberec0" id="liberec0">Дніпро</div>
+    <div class="most0" id="most0">Полтава</div>
+    <div class="zlin0" id="zlin0">Кривий Ріг</div>
+    <!-- <div class="dechin0" id="dechin0">Дечин</div> -->
+</div>
+</fieldset>
+<a href="Kiev.html"> Ref1</a>
+<a href="Kharkiv.html"> Ref2</a>
+<a href="Kherson.html"> Ref4</a>
+<a href="Dnepr.html"> Ref5</a>
+<a href="Poltava.html"> Ref6</a>
+<a href="Krivoirog.html"> Ref7</a>
+<!-- <a href="Web.12.9.html"> Ref8</a> -->
+<script>
+    var print = document.getElementById("city")
+    print.addEventListener("change", cityname);
+    print.addEventListener("change", city);
+    print.addEventListener("change", alerto)
+</script>
+ </body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab11_3</title>
+	<script type="text/javascript">
+		var date=new Date();
+		var options = {
+		  hour: 'numeric',
+		  minute: 'numeric',
+		  second: 'numeric'
+		};
+
+	</script>
+	<style type="text/css">
+		div {
+			text-align: center;
+			color: #808000;
+			font-size: 40px;
+		}
+	</style>
+</head>
+<body bgcolor="#ffffb3">
+	<div id="timeToday"></div>
+	<script type="text/javascript">
+		function formatAMPM(date) {
+		  var hours = date.getHours();
+		  var minutes = date.getMinutes();
+		  var seconds = date.getSeconds();
+		  var ampm = hours >= 12 ? 'pm' : 'am';
+		  hours = hours % 12;
+		  hours = hours ? hours : 12; 
+		  minutes = minutes < 10 ? '0'+minutes : minutes;
+		  var strTime = hours + ':' + minutes  + ampm +':'+seconds;
+		  return strTime;
+		}
+
+
+		document.getElementById('timeToday').innerHTML= formatAMPM(date);
+	</script>
+
+</body>
+</html>
+

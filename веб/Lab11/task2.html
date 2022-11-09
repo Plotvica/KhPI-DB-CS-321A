@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab11_2</title>
+	<script type="text/javascript">
+		var date=new Date();
+		var day=date.getDay();
+		var month=date.getMonth();
+		var year=date.getFullYear();
+		var options = {
+		  year: 'numeric',
+		  month: 'long',
+		  day: 'numeric',
+		};
+	</script>
+	<style type="text/css">
+		div {
+			text-align: center;
+			color: #808000;
+			font-size: 40px;
+		}
+		select, option {
+			text-align: center;
+			color: #808000;
+			font-size: 20px;
+			background-color: #ffffcc;
+			box-shadow: 0px 0px 5px 5px #cccc00;
+		}
+		input[type='button'] {
+			color: #808000;
+			font-size: 20px;
+			background-color: yellow;
+			box-shadow: 0px 0px 5px 5px #cccc00;
+		}
+		 input[type='text'] {
+			color: #808000;
+			font-size: 20px;
+			background-color: #ffffcc;
+			box-shadow: 0px 0px 5px 5px #cccc00;
+		}
+		.disabled {
+			display: none;
+		}
+		.abled {
+			display: block;
+		}
+
+	</style>
+</head>
+<body bgcolor="#ffffb3">
+	<div id="todayDate"></div>
+	<select onchange="changeDate()">
+		<option selected disabled value="Value">Options</option>
+		<option id="day">Day (input)</option>
+		<option id="month">Month (select)</option>
+		<option id="year">Year (random)</option>
+	</select><br><br>
+	<select id="monthOption" class="disabled" onchange="setNewMonth()">
+		<option>Январь</option>
+		<option>Февраль</option>
+		<option>Март</option>
+		<option>Апрель</option>
+		<option>Май</option>
+		<option>Июнь</option>
+		<option>Июль</option>
+		<option>Август</option>
+		<option>Сентябрь</option>
+		<option>Октябрь</option>
+		<option>Ноябрь</option>
+		<option>Декабрь</option>
+	</select><br>
+	<input type="button" id="dayLabel" value="set day" class="disabled" onclick="setNewDay()"><br><input type="text" id="dayText" class="disabled"><br><br>
+	<input onclick="setNewYear()" type="button" value="set year" id="yearButton" class="disabled">
+<script type="text/javascript">
+	var myDate=document.getElementById('todayDate');
+	myDate.innerHTML=date.toLocaleString('ru', options);
+	function changeDate() {
+		if(document.getElementById('month').selected) {
+			monthOption.className='abled';
+			dayLabel.className='disabled';
+			dayText.className='disabled';
+			yearButton.className='disabled';
+		} else if(document.getElementById('day').selected) {
+			monthOption.className='disabled';
+			dayLabel.className='abled';
+			dayText.className='abled';
+			yearButton.className='disabled';
+		} else if(document.getElementById('year').selected) {
+			monthOption.className='disabled';
+			dayLabel.className='disabled';
+			dayText.className='disabled';
+			yearButton.className='abled';
+		}
+	}
+	function setNewMonth() {
+		let numberMonth=monthOption.selectedIndex;
+		//console.log(numberMonth);
+		//console.log(date);
+		var newDate= new Date(date.setMonth(numberMonth));
+		//console.log(newDate.toLocaleString('ru', options));
+		document.getElementById('todayDate').innerHTML=newDate.toLocaleString('ru', options);
+	}
+	function setNewDay() {
+		var days=document.getElementById('dayText').value;
+		//console.log(days);
+		if(date.getMonth()%2==0) {
+			if(days>=1 && days<31) {
+				var newDate=new Date(date.setDate(days));
+				document.getElementById('todayDate').innerHTML=newDate.toLocaleString('ru', options);
+			} else {
+				document.getElementById('dayLabel').value="Enter other one";
+			}
+			//console.log("chetko");
+		} else if(date.getMonth()%2==1) {
+			if(days>=1 && days<32) {
+				var newDate=new Date(date.setDate(days));
+				document.getElementById('todayDate').innerHTML=newDate.toLocaleString('ru', options);
+			} else {
+				document.getElementById('dayLabel').value="Enter other one";
+			}
+		}
+	}
+	function setNewYear() {
+		var newYear=Math.random()*(2020-1988)+1988;
+		var newDate=new Date(date.setFullYear(newYear));
+		document.getElementById('todayDate').innerHTML=newDate.toLocaleString('ru', options);
+	} 
+</script>
+</body>
+</html>

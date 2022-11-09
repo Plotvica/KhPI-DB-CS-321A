@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab12_1.2</title>
+	<style type="text/css"> 
+		#rad1 {
+			vertical-align: middle;
+		}
+		#rad2 {
+			height: 20px;
+			width: 20px;
+			vertical-align: middle;
+		}
+		#rad3 {
+			height: 35px;
+			width: 35px;
+			vertical-align: middle;
+		}
+		#b1 {
+			width: 200px;
+			height: 100px;
+			background-color: rgb(157, 177, 188);
+			border: 0;
+	        top:0;
+	        left:0;
+		}
+		#b2 {
+			position: relative;
+			width: 100px;
+			height: 70px;
+			background-color: rgb(81, 113, 168);
+			border: 0;
+			top: -20px;
+			left: -10%;
+
+			
+		}
+		#b3 {
+			position: relative;
+			width: 50px;
+			height: 50px;
+			background-color: rgb(39, 92, 179);
+			top: -33px;
+			left: -15%;
+		}
+	</style>
+</head>
+<body>
+	<label for="tb">Enter count</label>
+	<input type="text" id="tb">
+	<br><br>
+	<input type="radio" name="rad" id="rad1" onchange="alertResult();"> 
+	<label for="rad1">First</label><br><br>
+	<input type="radio" name="rad" id="rad2" onchange="alertResult();"> 
+	<label for="rad2">Second</label><br><br>
+	<input type="radio" name="rad" id="rad3" onchange="alertResult();"> 
+	<label for="rad3">Third</label><br><br>
+
+	<button id="b1">
+		<button id="b2">
+			<button id="b3">
+			</button>
+		</button>
+	</button>
+
+	<script type="text/javascript">
+		var b1=document.getElementById('b1');
+		var b2=document.getElementById('b2');
+		var b3=document.getElementById('b3');
+		var r1=document.getElementById('rad1');
+		var r2=document.getElementById('rad2');
+		var r3=document.getElementById('rad3');
+
+
+		function setEvent1(){
+			var num= parseInt(document.getElementById('tb').value);
+				var res1=num*2;
+				alert(res1);
+				var res2=num**2;
+				alert(res2);
+				var res3=Math.sqrt(num);
+				alert(res3);
+		}
+		function setEvent2(){
+			var num= parseInt(document.getElementById('tb').value);
+						var res2=num**2;
+						alert(res2);
+						var res3=Math.sqrt(num);
+						alert(res3);
+						var res1=num*2;
+						alert(res1);
+		}
+		function setEvent3() {
+			var num= parseInt(document.getElementById('tb').value);
+						var res3=Math.sqrt(num);
+						alert(res3);
+						var res2=num**2;
+						alert(res2);
+						var res1=num*2;
+						alert(res1);
+		}
+
+		function alertResult() {
+			if(r1.checked){
+				b3.removeEventListener("click", setEvent2);
+				b3.removeEventListener("click", setEvent3);
+				b3.addEventListener('click',setEvent1);
+				
+			} else if(r2.checked) {
+				b3.removeEventListener("click", setEvent1);
+				b3.removeEventListener("click", setEvent3);
+				b3.addEventListener('click',setEvent2);
+
+			} else if(r3.checked) {
+				b3.removeEventListener("click", setEvent1);
+				b3.removeEventListener("click", setEvent2);
+				b3.addEventListener('click',setEvent3);
+
+
+			}
+		}
+
+	</script>
+</body>
+</html>

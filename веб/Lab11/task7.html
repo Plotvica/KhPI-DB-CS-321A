@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>lab11_7</title>
+	<script type="text/javascript">
+		const COUNT_UP=30;
+		const COUNT_DOWN=10;
+		const EL_UP=10;
+		const EL_DOWN=-10;
+		
+		function randCount() {
+			return Math.floor(Math.random()*(COUNT_UP - COUNT_DOWN)+ COUNT_DOWN);
+		}
+		function randArray() {
+			return Math.floor(Math.random()*(EL_UP- EL_DOWN)+ EL_DOWN);
+		}
+
+	</script>
+	<style type="text/css">
+		div#num1 {
+			border: 2px dotted purple;
+			width: 70%;
+			height: 200px;
+			background:#ffff66;
+			overflow: auto;
+			font-size: 3ex;
+			color: #9999ff;
+		}
+		div#num2 {
+			border: 2px inset red;
+			width: 70%;
+			height: 200px;
+			background:#ffff66;
+			overflow: auto;
+			font-size: 3ex;
+			color: #9999ff;
+
+		}
+		div#num3 {
+			border: 2px outset red;
+			width: 70%;
+			height: 200px;
+			background:#ffff66;
+			overflow: auto;
+			font-size: 3ex;
+			color: #9999ff;
+		}
+		
+	</style>
+</head>
+<body bgcolor="yellow">
+	<form>
+	<fieldset >
+		<legend>Create random Array</legend>
+
+<input type="button" value="Make an Array" onclick="realArray();"><br>
+	<div id="num1"></div><br>
+
+<input type="button" value="Sort" id="sort" ><input type="radio" id="rbup" name="sorted"><label for="rbup">UP</label> <input type="radio" name="sorted" id="rbdown"><label for="rbdown">DOWN</label><br><br>	
+
+<input type="button" id="copy" value="Copy reversed">
+<div id="num2"></div><br>
+
+<input type="button" id="filter" value="Filter + elements">
+<div id="num3"></div><br>
+
+<input type="button" id="statistik" value="Statiskit: SUM"><div id="sum" style="width: 20%; height: 20px; border: 1px inset yellow; background-color: #ffff66;"></div><br>
+
+<input type="button" id="modifikation" value="Modifikation"><div id="modif" style="width: 70%; height: 200px; border: 1px dotted black; background-color: #ffff66; overflow: auto;"></div>
+
+</fieldset >
+</form>
+<script type="text/javascript">
+	function realArray() {
+		let arr=[];
+		let n=10000;
+		for(let i=0;i<n;i++) {
+			arr.push(randArray());
+		}
+		num1.innerHTML=arr.join(" ");
+
+		document.getElementById('sort').addEventListener('click', ()=> {
+			arr.sort(function(a,b){
+				if(rbup.checked) {
+					return a-b;
+				}
+				else {
+					return b-a;
+
+				}
+
+			});
+			num1.innerHTML=arr.join(" ");
+
+			const start1= new Date().getTime();
+			for (var i = 0, endI = arr.length - 1; i < endI; i++) {
+		        for (var j = 0, endJ = endI - i; j < endJ; j++) {
+		            if (arr[j] > arr[j + 1]) {
+		                var swap = arr[j];
+		                arr[j] = arr[j + 1];
+		                arr[j + 1] = swap;
+		            }
+		        }
+		    }
+			const end1 = new Date().getTime();
+			console.log(`Sort (for): ${end1-start1}ms`);
+
+
+		});
+		document.getElementById('copy').addEventListener('click', ()=>{
+			let copyArray= arr.slice().reverse();
+			num2.innerHTML=copyArray.join(' ');
+
+		});
+		document.getElementById('filter').addEventListener('click',()=> {
+			const start1= new Date().getTime();
+			arr.forEach(function(element) {
+				if (element>0){
+			num3.innerHTML+=element+' ';
+				}
+			});
+			const end1 = new Date().getTime();
+			console.log(`Filter (foreach): ${end1-start1}ms`);
+			
+
+			num3.innerHTML='';
+			const start2= new Date().getTime();
+			for(let i=0; i<n; i++) {
+				if(arr[i]>0) {
+					num3.innerHTML+=arr[i]+' ';
+				}
+			}
+			const end2 = new Date().getTime();
+			console.log(`Filter (for): ${end2-start2}ms`);
+
+
+		});
+		document.getElementById('statistik').addEventListener('click', ()=> {
+
+			let suma1=0;
+			const start1= new Date().getTime();
+			arr.forEach(function(el) {
+				suma1=suma1+el;
+
+			});
+			const end1 = new Date().getTime();
+			console.log(`Sum (for): ${end1-start1}ms`);
+
+
+			let suma2=0;
+			const start2= new Date().getTime();
+			for(let i=0; i<n; i++) {
+				suma2=suma2+arr[i];
+			}
+			const end2 = new Date().getTime();
+			console.log(`Sum (foreach): ${end2-start2}ms`);
+		
+
+			document.getElementById('sum').innerHTML=suma1;
+
+		});
+		document.getElementById('modifikation').addEventListener('click', ()=> {
+			document.getElementById('modif').innerHTML="";
+			let modifArr=arr.slice();
+			
+
+			const start1= new Date().getTime();
+			for(let i=0; i<n; i++) {
+				arr[i]=Math.pow(arr[i],2);
+				document.getElementById('modif').innerHTML+=arr[i]+" ";
+			}
+			const end1 = new Date().getTime();
+			console.log(`Modif (for): ${end1-start1}ms`);
+
+			const start2= new Date().getTime();
+			modifArr.forEach(function(elem) {
+				elem=Math.pow(elem,2);
+				document.getElementById('modif').innerHTML+=elem+" ";
+			});
+			const end2 = new Date().getTime();
+			console.log(`Modif (foreach): ${end2-start2}ms`);
+		});
+
+	}
+	
+</script>
+</body>
+</html>
