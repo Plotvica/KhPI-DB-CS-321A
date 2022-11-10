@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <chrono>
 #include <fstream>
+#include <iomanip>
 #define tonum(c) (c >= 'A' && c <= 'Z' ? c - 'A' : c - 'a' + 26)
 using namespace std;
 
@@ -10,6 +11,13 @@ int counterMerge = 0;
 int counterHeap = 0;
 int counterFinding6 = 0;
 int counterFinding7 = 0;
+
+void printarray(int* arr, int size) {
+	cout << endl << endl;
+	for (size_t i = 0; i < size; i++)
+		cout << arr[i] << setw(4);
+	cout << endl;
+}
 
 void siftDown(int* arr, int size, int bottom)
 {
@@ -92,7 +100,7 @@ void FindLinear(int* arr, int size, int* ans, int h, long key)
 
 	chrono::duration<long double> duration = end - start;
 	long double time = duration.count() * 1000;
-	cout << "Finding time: " << time;
+	//cout << "Finding time: " << time;
 	cout << "\nOperations: " << counter + 1 << endl;
 
 }
@@ -159,7 +167,7 @@ void barrier_seach(int* arr, int size, int* ans, int h, long key)
 
 	chrono::duration<long double> duration = end - start;
 	long double time = duration.count() * 1000;
-	cout << "Finding time: " << time;
+	//cout << "Finding time: " << time;
 	cout << "\nOperations: " << counter + 1 << endl;
 }
 void binary(int* arr, int size, int* ans, int h, long key)
@@ -256,7 +264,7 @@ S:
 
 	chrono::duration<long double> duration = end - start;
 	long double time = duration.count() * 1000;
-	cout << "Finding time: " << time;
+	//cout << "Finding time: " << time;
 	cout << "\nOperations: " << counter + 1 << endl;
 
 	for (size_t i = 0; i < size; i++)
@@ -367,7 +375,7 @@ void KMP(const char* text, const char* pattern, int m, int n)
 
 	chrono::duration<long double> duration = end - start;
 	long double time = duration.count() * 1000;
-	cout << "Finding time: " << time;
+	//cout << "Finding time: " << time;
 	cout << "\nOperations: " << counter + 1 << endl;
 }
 int BMSearch(char* string, char* substring) {
@@ -470,7 +478,6 @@ int RabinKarpMatch(char* T, char* P, int d, int q)
 int main()
 {
 	setlocale(LC_ALL, "ru");
-	srand(time(NULL));
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
@@ -478,313 +485,323 @@ int main()
 	int size;
 	long key;
 	int choose2;
+	while (true) {
 
-	cout << "1 - Массив\n2 - Cтрока\n";
-	cin >> choose2;
-	system("cls");
+		cout << "1 - Массив \n2 - Cтрока \n0 - Exit \n-->";
+		cin >> choose2;
 
-	if (choose2 == 1)
-	{
-		cout << "Размер массива: ";
-		cin >> size;
 
-		int* arr = new int[size];
-		int* ans = new int[size];
-		int h = 0;
-		int choose;
-		int menu;
-		int c = 0;
-
-		system("cls");
-		while (true)
+		if (choose2 == 1)
 		{
+			cout << "Размер массива: ";
+			cin >> size;
 
-			cout << endl << endl;;
-			cout << "1 - Заполнить рандомно\n";
-			cout << "2 - Чтение из файла\n";
-			cout << "3 - Сортировать по возрастанию\n";
-			cout << "4 - Сортировать по убыванию\n";
-			cout << "5 - Удалить массив\n";
-			cout << "6 - Линейный поиск\n";
-			cout << "7 - Поиск с барьером\n";
-			cout << "8 - Бинарный поиск\n";
-			cout << "9 - Запись в файл\n";
-			cin >> menu;
-			string name = "al5.txt";
+			int* arr = new int[size];
+			int* ans = new int[size];
+			int h = 0;
+			int choose;
+			int menu = -1;
+			int c = 0;
 
-			switch (menu)
+
+			while (menu != 0)
 			{
-			case 1:
-			{
-				for (size_t i = 0; i < size; i++)
+
+				cout << endl << endl;
+				cout << "1 - Заполнить рандомно\n";
+				cout << "2 - Чтение из файла\n";
+				cout << "3 - Сортировать по возрастанию\n";
+				cout << "4 - Сортировать по убыванию\n";
+				cout << "5 - Удалить массив\n";
+				cout << "6 - Линейный поиск\n";
+				cout << "7 - Поиск с барьером\n";
+				cout << "8 - Бинарный поиск\n";
+				cout << "9 - Запись в файл\n";
+				cout << "0 - Назад \n";
+				cout << "--> ";
+				cin >> menu;
+				string name = "DataForArray.txt";
+
+				switch (menu)
 				{
-					arr[i] = rand() % 10;
+				case 1:
+				{
+					for (size_t i = 0; i < size; i++)
+						arr[i] = rand() % 10;
+					printarray(arr, size);
+
+					c = 1;
+					break;
 				}
-				c = 1;
-				break;
-			}
-			case 2:
-			{
-				char ch;
-				ifstream file_read;
-
-				file_read.open(name);
-
-				if (!file_read.is_open())
+				case 2:
 				{
-					cout << "Error" << endl;
-				}
-				else
-				{
-					for (size_t j = 0; j < size; j++)
+					char ch;
+					ifstream file_read;
+
+					file_read.open(name);
+
+					if (!file_read.is_open())
 					{
-						file_read >> arr[j];
-					}
-				}
-				file_read.close();
-				c = 1;
-				break;
-			}
-			case 3:
-			{
-				selectionsort(arr, size);
-				break;
-			}
-			case 4:
-			{
-				selsort2(arr, 0, size - 1);
-				break;
-			}
-			case 5:
-			{
-				size = 0;
-				delete[] arr;
-				c = 0;
-				break;
-			}
-			case 6:
-			{
-				cout << "\nВведите число: ";
-				cin >> key;
-				FindLinear(arr, size, ans, h, key);
-				ans = new int[size];
-				break;
-			}
-			case 7:
-			{
-				cout << "\nВведите число: ";
-				cin >> key;
-				barrier_seach(arr, size, ans, h, key);
-				ans = new int[size];
-				break;
-			}
-			case 8:
-			{
-				cout << "\nВведите число: ";
-				cin >> key;
-				binary(arr, size, ans, h, key);
-				ans = new int[size];
-				break;
-			}
-			case 9:
-			{
-				ofstream fout;
-
-				fout.open(name);
-				for (int i = size - 1; i >= 0; i--)
-				{
-					if (i == 0)
-					{
-						fout << arr[i];
+						cout << "Error" << endl;
 					}
 					else
 					{
-						fout << arr[i] << "  ";
+						for (size_t j = 0; j < size; j++)
+						{
+							file_read >> arr[j];
+						}
+					}
+					file_read.close();
+					printarray(arr, size);
+					c = 1;
+					break;
+				}
+				case 3:
+				{
+					selectionsort(arr, size);
+					printarray(arr, size);
+					break;
+				}
+				case 4:
+				{
+					selsort2(arr, 0, size - 1);
+					printarray(arr, size);
+					break;
+				}
+				case 5:
+				{
+					size = 0;
+					delete[] arr;
+					c = 0;
+					break;
+				}
+				case 6:
+				{
+					cout << "\nВведите число: ";
+					cin >> key;
+					FindLinear(arr, size, ans, h, key);
+					ans = new int[size];
+					break;
+				}
+				case 7:
+				{
+					cout << "\nВведите число: ";
+					cin >> key;
+					barrier_seach(arr, size, ans, h, key);
+					ans = new int[size];
+					break;
+				}
+				case 8:
+				{
+					cout << "\nВведите число: ";
+					cin >> key;
+					binary(arr, size, ans, h, key);
+					ans = new int[size];
+					break;
+				}
+				case 9:
+				{
+					ofstream fout;
+
+					fout.open(name);
+					for (int i = size - 1; i >= 0; i--)
+					{
+						if (i == 0)
+						{
+							fout << arr[i];
+						}
+						else
+						{
+							fout << arr[i] << "  ";
+						}
+					}
+					fout.close();
+					break;
+				}
+				}
+			}
+		}
+		else if(choose2 == 2)
+		{
+
+			char arr1[10000];
+			int c = 0;
+			int menu = -1;
+			while (menu != 0)
+			{
+				if (c == 0)
+				{
+
+				}
+				else
+				{
+					for (size_t i = 0; i < strlen(arr1); i++)
+					{
+						cout << arr1[i];
 					}
 				}
-				fout.close();
-				break;
-			}
-			}
-			system("pause");
-			system("cls");
-		}
-	}
-	else
-	{
-		system("cls");
-		char arr1[10000];
-		int c = 0;
-		int menu;
-		while (true)
-		{
-			if (c == 0)
-			{
+				cout << endl << endl;
+				cout << "1 - Ввести строку\n";
+				cout << "2 - Запись из файла\n";
+				cout << "3 - Удалить строку\n";
+				cout << "4 - Прямой поиск\n";
+				cout << "5 - Алгоритм Кнута-Морриса-Пратта\n";
+				cout << "6 - Алгоритм Бойера-Мура\n";
+				cout << "7 - Алгоритм Рабина-Карпа\n";
+				cout << "8 - Запись в файл\n";
+				cout << "0 - Назад\n";
+				cout << "--> ";
+				cin >> menu;
 
-			}
-			else
-			{
-				for (size_t i = 0; i < strlen(arr1); i++)
+				string name1 = "DataForString.txt";
+
+				switch (menu)
 				{
-					cout << arr1[i];
+				case 1:
+				{
+					cin.ignore(32767, '\n');
+					cout << "Введите строку: ";
+					cin.getline(arr1, 10000);
+					c = 1;
+					break;
 				}
-			}
-			cout << endl << endl;;
-			cout << "1 - Ввести строку\n";
-			cout << "2 - Запись из файла\n";
-			cout << "3 - Удалить строку\n";
-			cout << "4 - Прямой поиск\n";
-			cout << "5 - Алгоритм Кнута-Морриса-Пратта\n";
-			cout << "6 - Алгоритм Бойера-Мура\n";
-			cout << "7 - Алгоритм Рабина-Карпа\n";
-			cout << "8 - Запись в файл\n";
-			cin >> menu;
-
-			string name1 = "al5_s.txt";
-
-			switch (menu)
-			{
-			case 1:
-			{
-				cin.ignore(32767, '\n');
-				cout << "Введите строку: ";
-				cin.getline(arr1, 10000);
-				c = 1;
-				break;
-			}
-			case 2:
-			{
-				char ch;
-				ifstream file_read_s;
-
-				file_read_s.open(name1);
-
-				if (!file_read_s.is_open())
+				case 2:
 				{
-					cout << "Error" << endl;
-				}
-				else
-				{
-					file_read_s >> arr1;
-				}
-				file_read_s.close();
-				c = 1;
-				break;
-			}
-			case 3:
-			{
-				strcpy_s(arr1, " ");
-				c = 0;
-				break;
-			}
-			case 4:
-			{
-				int i, n = 0;
-				char arr2[10000];
-				cin.ignore(32767, '\n');
-				cout << "Введите подстроку: ";
-				cin.getline(arr2, 100);
-				auto start = chrono::high_resolution_clock::now();
-				for (i = 1; n != -1; i++)
-				{
-					n = Forward(arr1, arr2, i);
+					char ch;
+					ifstream file_read_s;
 
-					if (n >= 0)
-						cout << "Индекс начала искомой подстроки: " << n << endl;
-				}
-				auto end = chrono::high_resolution_clock::now();
+					file_read_s.open(name1);
 
-				chrono::duration<long double> duration = end - start;
-				long double time = duration.count() * 1000;
-				cout << "Finding time: " << time;
-				cout << "\nOperations: " << counterFinding + 1 << endl;
-				break;
-			}
-			case 5:
-			{
-				char arr2[100];
-				cin.ignore(32767, '\n');
-				cout << "Введите подстроку: ";
-				cin.getline(arr2, 100);
-
-				int n = strlen(arr1);
-				int m = strlen(arr2);
-
-				KMP(arr1, arr2, n, m);
-				break;
-			}
-			case 6:
-			{
-				char arr2[100];
-				cin.ignore(32767, '\n');
-				cout << "Введите подстроку: ";
-				cin.getline(arr2, 100);
-
-				auto start = chrono::high_resolution_clock::now();
-				int pos = BMSearch(arr1, arr2);
-				auto end = chrono::high_resolution_clock::now();
-				if (pos != -1)
-				{
-					cout << "Позиция: " << pos << endl;
-				}
-				else
-				{
-					cout << "Нету такого рядка\n";
-				}
-
-				chrono::duration<long double> duration = end - start;
-				long double time = duration.count() * 1000;
-				cout << "Finding time: " << time;
-				cout << "\nOperations: " << counterFinding6 << endl;
-				break;
-			}
-			case 7:
-			{
-				char arr2[100];
-				cin.ignore(32767, '\n');
-				cout << "Введите подстроку: ";
-				cin.getline(arr2, 100);
-
-				int d = 1, q = 1000;
-				int sovp;
-
-				auto start = chrono::high_resolution_clock::now();
-				sovp = RabinKarpMatch(arr1, arr2, d, q);
-				auto end = chrono::high_resolution_clock::now();
-
-				if (sovp != -1)
-					cout << "Позиция: " << sovp << endl;
-				else
-					cout << "Нету такого подрядка\n";
-
-				chrono::duration<long double> duration = end - start;
-				long double time = duration.count() * 1000;
-				cout << "Finding time: " << time;
-				cout << "\nOperations: " << counterFinding7 << endl;
-				break;
-			}
-			case 8:
-			{
-				ofstream fout;
-
-				fout.open(name1);
-				for (int i = strlen(arr1) - 1; i >= 0; i--)
-				{
-					if (i == 0)
+					if (!file_read_s.is_open())
 					{
-						fout << arr1[i];
+						cout << "Error" << endl;
 					}
 					else
 					{
-						fout << arr1[i] << "  ";
+						file_read_s >> arr1;
 					}
+					file_read_s.close();
+					c = 1;
+					break;
 				}
-				fout.close();
-				break;
+				case 3:
+				{
+					strcpy_s(arr1, " ");
+					c = 0;
+					break;
+				}
+				case 4:
+				{
+					int i, n = 0;
+					char arr2[10000];
+					cin.ignore(32767, '\n');
+					cout << "Введите подстроку: ";
+					cin.getline(arr2, 100);
+					auto start = chrono::high_resolution_clock::now();
+					for (i = 1; n != -1; i++)
+					{
+						n = Forward(arr1, arr2, i);
+
+						if (n >= 0)
+							cout << "Индекс начала искомой подстроки: " << n << endl;
+					}
+					auto end = chrono::high_resolution_clock::now();
+
+					chrono::duration<long double> duration = end - start;
+					long double time = duration.count() * 1000;
+					//cout << "Finding time: " << time;
+					cout << "\nOperations: " << counterFinding + 1 << endl;
+					break;
+				}
+				case 5:
+				{
+					char arr2[100];
+					cin.ignore(32767, '\n');
+					cout << "Введите подстроку: ";
+					cin.getline(arr2, 100);
+
+					int n = strlen(arr1);
+					int m = strlen(arr2);
+
+					KMP(arr1, arr2, n, m);
+					break;
+				}
+				case 6:
+				{
+					char arr2[100];
+					cin.ignore(32767, '\n');
+					cout << "Введите подстроку: ";
+					cin.getline(arr2, 100);
+
+					auto start = chrono::high_resolution_clock::now();
+					int pos = BMSearch(arr1, arr2);
+					auto end = chrono::high_resolution_clock::now();
+					if (pos != -1)
+					{
+						cout << "Позиция: " << pos << endl;
+					}
+					else
+					{
+						cout << "Нету такого рядка\n";
+					}
+
+					chrono::duration<long double> duration = end - start;
+					long double time = duration.count() * 1000;
+					//cout << "Finding time: " << time;
+					cout << "\nOperations: " << counterFinding6 << endl;
+					break;
+				}
+				case 7:
+				{
+					char arr2[100];
+					cin.ignore(32767, '\n');
+					cout << "Введите подстроку: ";
+					cin.getline(arr2, 100);
+
+					int d = 1, q = 1000;
+					int sovp;
+
+					auto start = chrono::high_resolution_clock::now();
+					sovp = RabinKarpMatch(arr1, arr2, d, q);
+					auto end = chrono::high_resolution_clock::now();
+
+					if (sovp != -1)
+						cout << "Позиция: " << sovp << endl;
+					else
+						cout << "Нету такого подрядка\n";
+
+					chrono::duration<long double> duration = end - start;
+					long double time = duration.count() * 1000;
+					//cout << "Finding time: " << time;
+					cout << "\nOperations: " << counterFinding7 << endl;
+					break;
+				}
+				case 8:
+				{
+					ofstream fout;
+
+					fout.open(name1);
+					for (int i = strlen(arr1) - 1; i >= 0; i--)
+					{
+						if (i == 0)
+						{
+							fout << arr1[i];
+						}
+						else
+						{
+							fout << arr1[i] << "  ";
+						}
+					}
+					fout.close();
+					break;
+				}
+				}
 			}
-			}
-			system("pause");
-			system("cls");
 		}
+		else if (choose2 == 0)
+			exit(0);
+		else 
+			continue;
+
 	}
 }
