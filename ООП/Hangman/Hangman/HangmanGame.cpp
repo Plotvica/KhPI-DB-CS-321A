@@ -14,6 +14,7 @@ void main() {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Hangman::HangmanGame form;
 	Application::Run(% form);
+
 	
 }
 
@@ -32,40 +33,63 @@ System::Void Hangman::HangmanGame::OnePlayerMod_Click(System::Object^ sender, Sy
 	transform(CodeWordSet.begin(), CodeWordSet.end(), CodeWordSet.begin(), ::toupper);
 
 	DisplayGuessSet = CodeWordSet;
-	for (int i = 0; i < CodeWordSet.length(); i++) {
+	for (int i = 0; i < CodeWordSet.length(); i++)
 		DisplayGuessSet[i] = '#';
-	}
 
 	Game.setCodeWord(CodeWordSet);
 	Game.setDisplayGuess(DisplayGuessSet);
 
 	OutPutGuees -> Text = Convert_string_to_String(Game.getDisplayGuess());
 
-	
+	picture_of_hangman->Show();
+	keyboardPanel->Show();
+
+	InputButton->Enabled = false;
 	
 }
 
 // TWO PLAYERs MOD
 
+
 System::Void Hangman::HangmanGame::InputButton_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	
-	std::string CodeWordSet = msclr::interop::marshal_as<std::string>(InputTextBox->Text);
+	std::string CodeWordSet; 
+	
+	CodeWordSet = msclr::interop::marshal_as<std::string>(InputTextBox->Text);
 	transform(CodeWordSet.begin(), CodeWordSet.end(), CodeWordSet.begin(), ::toupper);
-
-	std::string DisplayGuessSet = CodeWordSet;
-	for (int i = 0; i < CodeWordSet.length(); i++) {
-		DisplayGuessSet[i] = '#';
+	// переделать под трай кеч
+	bool input = false;
+	
+	for (size_t i = 0; i < CodeWordSet.length(); i++) {
+		if (CodeWordSet[i] >= 'A' && CodeWordSet[i] <= 'Z')
+			input = true;
+		else {
+			input = false;
+			MessageBox::Show("False input", "Error");
+			break;
+		}
 	}
 
-	Game.setCodeWord(CodeWordSet);
-	Game.setDisplayGuess(DisplayGuessSet);
+	if(input == true) {
+			
+		std::string DisplayGuessSet = CodeWordSet;
+		for (int i = 0; i < CodeWordSet.length(); i++)
+			DisplayGuessSet[i] = '#';
+		
 
-	OutPutGuees->Text = Convert_string_to_String(Game.getDisplayGuess());
+		Game.setCodeWord(CodeWordSet);
+		Game.setDisplayGuess(DisplayGuessSet);
+
+		OutPutGuees->Text = Convert_string_to_String(Game.getDisplayGuess());
+
+
+		picture_of_hangman->Show();
+		keyboardPanel->Show();
+			
+	}
 	
-
-	picture_of_hangman->Show();
-	keyboardPanel->Show();
+	
 }
 
 
@@ -76,6 +100,8 @@ System::Void Hangman::HangmanGame::TwoPlayersMod_Click(System::Object^ sender, S
 
 	Game.startNewGame();
 
+	InputButton->Enabled = true;
+	OutPutGuees->Text = " ";
 	OnButtonsKeyboard();
 	
 	
