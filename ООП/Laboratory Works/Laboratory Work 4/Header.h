@@ -343,7 +343,7 @@ public:
 		for (int i = 0; i < size; i++)
 			if (criteria == ob[i]) {
 				cnt++;
-				cout << cnt + 1 << ") " << ob[i] << endl;
+				cout << i + 1 << ") " << ob[i] << endl;
 			}
 	
 		if (cnt != 0)
