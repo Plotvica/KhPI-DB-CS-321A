@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+    <title>Animation</title>
+    <style>
+.controls{
+    margin: 20% auto ;
+    text-align: center;
+}
+.btn{
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover{
+    color: rgb(102, 102, 102);
+}
+.block{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 10px solid black;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.block_1{
+left: 0;
+top: 0;
+}
+.block_2{ 
+right: 0;
+top: 0;
+}
+.block_4{    
+left: 0;
+bottom: 0;
+}
+.block_3{    
+right: 0;
+bottom: 0;
+}
+.reverse{
+    width: 50px;
+    height: 50px;
+}
+    </style>
+</head>
+<body>
+    <div class="controls"> 
+        <button class="play btn"><i class="fa fa-play-circle"></i></button>
+        <button class="pause btn"><i class="fa fa-pause-circle"></i></button>
+        <label>
+            <input type="checkbox" class="reverse">
+            reverse
+        </label>
+    </div>
+    <div class="block_1 block"></div>
+    <div class="block_2 block"></div>
+    <div class="block_3 block"></div>
+    <div class="block_4 block"></div>
+
+
+
+    <script >
+        const playBtn = document.querySelector('.play');
+        const pauseBtn = document.querySelector('.pause');
+        const blocks = document.querySelectorAll('.block');
+        const reverse = document.querySelector('.reverse');
+        let timeOutId;
+
+playBtn.addEventListener('click', animation);
+let i =0;
+let j = blocks.length-1;
+
+function animation(){
+    if(reverse.checked){
+        if(j<0){
+            j=blocks.length-1;
+        }
+        blocks.forEach((value, index, array) => {
+            value.style.background = 'white'
+        })
+        blocks[j].style.background = 'black'
+        j--;
+        timeOutId = setTimeout(animation, 500)
+    }
+    else{
+        if(i==blocks.length){
+            i=0;
+        }
+        blocks.forEach((value, index, array) => {
+            value.style.background = 'white'
+        })
+        blocks[i].style.background = 'black'
+        i++;
+        timeOutId = setTimeout(animation, 500)
+    }
+}
+
+pauseBtn.addEventListener('click', function(){
+    clearTimeout(timeOutId);
+})
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <Windows.h>
-#include <chrono>
+
 #include <fstream>
 #include <iomanip>
 #define tonum(c) (c >= 'A' && c <= 'Z' ? c - 'A' : c - 'a' + 26)
@@ -73,7 +73,7 @@ void FindLinear(int* arr, int size, int* ans, int h, long key)
 {
 
 	int counter = 0;
-	auto start = chrono::high_resolution_clock::now();
+
 
 	for (int i = 0; i < size; i++)
 	{
@@ -96,18 +96,16 @@ void FindLinear(int* arr, int size, int* ans, int h, long key)
 		cout << "\nМы не нашли ключ " << key << " в массиве\n";
 	}
 
-	auto end = chrono::high_resolution_clock::now();
+	
 
-	chrono::duration<long double> duration = end - start;
-	long double time = duration.count() * 1000;
-	//cout << "Finding time: " << time;
+	
 	cout << "\nOperations: " << counter + 1 << endl;
 
 }
 void barrier_seach(int* arr, int size, int* ans, int h, long key)
 {
 	int counter = 0;
-	auto start = chrono::high_resolution_clock::now();
+
 
 	int last = arr[size - 1];
 	arr[size - 1] = key;
@@ -163,11 +161,9 @@ void barrier_seach(int* arr, int size, int* ans, int h, long key)
 		cout << "Мы не нашли ключ " << key << " в массиве\n";
 	}
 
-	auto end = chrono::high_resolution_clock::now();
 
-	chrono::duration<long double> duration = end - start;
-	long double time = duration.count() * 1000;
-	//cout << "Finding time: " << time;
+
+
 	cout << "\nOperations: " << counter + 1 << endl;
 }
 void binary(int* arr, int size, int* ans, int h, long key)
@@ -195,7 +191,7 @@ void binary(int* arr, int size, int* ans, int h, long key)
 	}
 	cout << endl << endl;
 
-	auto start = chrono::high_resolution_clock::now();
+
 
 	while ((l <= r) && (flag != true))
 	{
@@ -260,11 +256,8 @@ S:
 
 
 
-	auto end = chrono::high_resolution_clock::now();
 
-	chrono::duration<long double> duration = end - start;
-	long double time = duration.count() * 1000;
-	//cout << "Finding time: " << time;
+
 	cout << "\nOperations: " << counter + 1 << endl;
 
 	for (size_t i = 0; i < size; i++)
@@ -319,7 +312,7 @@ int Forward(char* s, char* c, int n)
 void KMP(const char* text, const char* pattern, int m, int n)
 {
 	int counter = 0;
-	auto start = chrono::high_resolution_clock::now();
+
 
 	// базовый случай 1: шаблон равен NULL или пуст
 	if (*pattern == '\0' || n == 0) {
@@ -371,11 +364,7 @@ void KMP(const char* text, const char* pattern, int m, int n)
 			i--;    // так как `i` будет увеличен на следующей итерации
 		}
 	}
-	auto end = chrono::high_resolution_clock::now();
 
-	chrono::duration<long double> duration = end - start;
-	long double time = duration.count() * 1000;
-	//cout << "Finding time: " << time;
 	cout << "\nOperations: " << counter + 1 << endl;
 }
 int BMSearch(char* string, char* substring) {
@@ -477,7 +466,7 @@ int RabinKarpMatch(char* T, char* P, int d, int q)
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
+
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
@@ -697,7 +686,7 @@ int main()
 					cin.ignore(32767, '\n');
 					cout << "Введите подстроку: ";
 					cin.getline(arr2, 100);
-					auto start = chrono::high_resolution_clock::now();
+
 					for (i = 1; n != -1; i++)
 					{
 						n = Forward(arr1, arr2, i);
@@ -705,11 +694,7 @@ int main()
 						if (n >= 0)
 							cout << "Индекс начала искомой подстроки: " << n << endl;
 					}
-					auto end = chrono::high_resolution_clock::now();
-
-					chrono::duration<long double> duration = end - start;
-					long double time = duration.count() * 1000;
-					//cout << "Finding time: " << time;
+				
 					cout << "\nOperations: " << counterFinding + 1 << endl;
 					break;
 				}
@@ -733,9 +718,9 @@ int main()
 					cout << "Введите подстроку: ";
 					cin.getline(arr2, 100);
 
-					auto start = chrono::high_resolution_clock::now();
+
 					int pos = BMSearch(arr1, arr2);
-					auto end = chrono::high_resolution_clock::now();
+
 					if (pos != -1)
 					{
 						cout << "Позиция: " << pos << endl;
@@ -745,9 +730,7 @@ int main()
 						cout << "Нету такого рядка\n";
 					}
 
-					chrono::duration<long double> duration = end - start;
-					long double time = duration.count() * 1000;
-					//cout << "Finding time: " << time;
+		
 					cout << "\nOperations: " << counterFinding6 << endl;
 					break;
 				}
@@ -761,18 +744,16 @@ int main()
 					int d = 1, q = 1000;
 					int sovp;
 
-					auto start = chrono::high_resolution_clock::now();
+	
 					sovp = RabinKarpMatch(arr1, arr2, d, q);
-					auto end = chrono::high_resolution_clock::now();
+				
 
 					if (sovp != -1)
 						cout << "Позиция: " << sovp << endl;
 					else
 						cout << "Нету такого подрядка\n";
 
-					chrono::duration<long double> duration = end - start;
-					long double time = duration.count() * 1000;
-					//cout << "Finding time: " << time;
+				
 					cout << "\nOperations: " << counterFinding7 << endl;
 					break;
 				}

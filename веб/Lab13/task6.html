@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styyle.css">
+ 
+</head>
+<body>
+
+    <script>
+        function loadScript(src) {
+            return new Promise(function(resolve, reject) {
+                let script = document.createElement('script');
+                script.src = src;
+                script.onload = () => resolve(script);
+                script.onerror = () => reject(new Error(`Incorrect loading${src}`));
+                document.head.append(script);
+            });
+        }
+    
+        loadScript('tassk6.js').then(function(script) {
+                loading();
+            });
+    </script>
+    
+
+    <div class = "task_1">
+
+        <select name="" id="select_task_2">
+            <option value="class_1" id="optn_1">Клас 1</option>
+            <option value="class_2" id="optn_2">Клас 2</option>
+            <option value="class_3" id="optn_3">Клас 3</option>
+        </select>
+        <br>
+        <br>
+        <div class = "formT2" id = "divTask2">
+
+        </div>
+        
+    </div>
+</body>
+</html>

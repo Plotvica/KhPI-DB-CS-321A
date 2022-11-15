@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 50px;
+        }
+        td{
+            padding: 10px 20px;
+        }
+        input{
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <table class="table" border="1px">
+<tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+</tr>
+<tr>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+</tr>
+
+    </table>
+    <script>
+const rezultTable = document.querySelector('.table')
+        rezultTable.addEventListener('click', function(event){
+    if(event.target.closest('td')){
+        const input = document.createElement('input');
+        input.value = event.target.innerText;
+        event.target.innerText = '';
+        event.target.append(input);
+        input.focus();
+        input.addEventListener('blur', function(){
+            event.target.innerText = input.value;
+            
+        })
+    }
+})
+    </script>
+</body>
+</html>

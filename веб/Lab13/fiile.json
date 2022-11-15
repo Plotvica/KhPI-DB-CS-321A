@@ -1,0 +1,12 @@
+{
+    "cod" : [21,16,15,19,16],
+    "name" : ["Mouse","Phone","Pencs","Notel","Lapto"],
+    "amount" : [1533,1531,6562,2516,8432],
+    "price" : ["13102Uah", "15600Uah","10022Uah","12223Uah","14022Uah"],
+    "namepr" : ["Appleee","Samsung","Xiaomiw","LGGGGGG","Googlee"],
+    "adrespr" : ["Shevchenko1","Shevchenko2","Shevchenko3","Shevchenko4","Shevchenko5"],
+    "phonepr" : [622152,622153,622154,622155,622156],
+    "mailpr" : ["jdlk@gamail.com","jsdlk@gmail.com","sacd@dgmail.com","jsazk@gmail.com","jaask@gmail.com"],
+    "count" : [8381,8392,8562,2022,5132],
+    "termin" : ["25.12.24","26.12.24","27.12.24","28.12.24","29.12.24"]
+}

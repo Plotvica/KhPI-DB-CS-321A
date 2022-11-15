@@ -1,0 +1,21 @@
+<main>
+
+    <book author="fbgfgbf" title="fsbhs" introduce="345" price="3434"></book>
+    <book author="fgbfdb" title="sfbsb" introduce="3443" price="3443"></book>
+    <book author="gbgbngb" title="sfbsbgr" introduce="4554" price="543"></book>
+    <book author="rgtsd" title="ergsrgrse" introduce="2516" price="344"></book>
+    <book author="fdbdb" title="dtbhdhg" introduce="8432" price="3433"></book>
+
+
+    <reader name="Liza" address="fdvdvfd" telephone="654564545" ></reader>
+    <reader name="Katya" address="dscvscvdc" telephone="76545643" ></reader>
+    <reader name="Oleg" address="sdcsc" telephone="5433434" ></reader>
+    <reader name="Misha" address="ewfrewf" telephone="4324434" ></reader>
+    <reader name="Vasya" address="ergerger" telephone="8765444" ></reader>
+
+    <r datefirst="20.04.22" datelast="25.12.22" date="23.04.22"></r>
+    <r datefirst="23.11.22" datelast="25.12.22" date="23.02.22"></r>
+    <r datefirst="30.03.22" datelast="23.12.22" date="23.11.22"></r>
+    <r datefirst="20.04.22" datelast="25.12.22" date="05.03.22"></r>
+    <r datefirst="23.11.22" datelast="04.10.22" date="08.04.22"></r>
+</main>

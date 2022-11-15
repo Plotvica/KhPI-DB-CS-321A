@@ -1,0 +1,81 @@
+<main>
+
+    <book>
+
+        <author>Шекспір</author>
+        <title>Гамлет</title>
+        <introduce>2004</introduce>
+        <price>250</price>
+
+       <author>Лондон</author>
+        <title>Білий клик</title>
+        <introduce>1985</introduce>
+        <price>350</price>
+
+        <author>Шекспір</author>
+        <title>Ромео та Джульєтта</title>
+        <introduce>1855</introduce>
+        <price>2000</price>
+
+        <author>Гьоте</author>
+        <title>Фауст</title>
+        <introduce>2005</introduce>
+        <price>500</price>
+
+
+        <author>Шевченко</author>
+        <title>Катерина</title>
+        <introduce>2008</introduce>
+        <price>400</price>
+
+
+    </warehouse>
+
+    <provider>
+
+         <name>Liza</name>
+        <address>Geroiv Truda</address>
+        <telephone>0500112899</telephone>
+     
+        <name>Oleg</name>
+        <address>5-Khatki</address>
+        <telephone>0985674356</telephone>
+        
+        <name>Katya</name>
+        <address>Saltovka</address>
+        <telephone>0963456789</telephone>
+
+        <name>Misha</name>
+        <address>Odesskaya</address>
+        <telephone>0952345678</telephone>
+
+       <name>Vasya</name>
+        <address>Centre</address>
+        <telephone>0985524534</telephone>
+
+    </provider>
+
+    <order>
+
+        <datefirst>24.02.22</datefirst>
+        <datelast>24.05.22</datelast>
+        <date>5.06.22</date>
+
+       <datefirst>22.08.22</datefirst>
+        <datelast>25.09.22</datelast>
+        <date>25.12.22</date>
+
+        <datefirst>11.04.22</datefirst>
+        <datelast>25.12.22</datelast>
+        <date>20.12.22</date>
+
+       <datefirst>8.08.22</datefirst>
+        <datelast>25.10.22</datelast>
+        <date>25.08.22</date>
+
+       <datefirst>14.01.22</datefirst>
+        <datelast>14.05.22</datelast>
+        <date>14.05.22</date>
+    </order>
+
+</main>
