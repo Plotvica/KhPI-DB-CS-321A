@@ -1,9 +1,9 @@
 #include "Header.h"
+#include "Oper.h"
 
 
 
-
-void Main::main() const
+void Main::main()
 {
 	srand(time(NULL));
 
@@ -42,7 +42,7 @@ void Main::main() const
 			cout << "Second array: \n";
 			newarr->print(newarr, size);
 			cout << endl;
-		break;
+			break;
 
 		case 2:
 			cout << "\nChoose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
@@ -51,8 +51,8 @@ void Main::main() const
 				cout << "Invalid input\n\n"; break;
 			}
 			result = arr[fchoose - 1] + newarr[schoose - 1];
-				cout << "\nResult: \n" << arr[fchoose-1] << "\n + \n" << newarr[schoose-1] << endl << " ======= "<< endl << result << endl << endl;
-		break;
+			cout << "\nResult: \n" << arr[fchoose - 1] << "\n + \n" << newarr[schoose - 1] << endl << " ======= " << endl << result << endl << endl;
+			break;
 
 		case 3:
 			cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
@@ -62,7 +62,7 @@ void Main::main() const
 			}
 			result = arr[fchoose - 1] - newarr[schoose - 1];
 			cout << "\nResult: \n" << arr[fchoose - 1] << "\n - \n" << newarr[schoose - 1] << endl << " ======= " << endl << result << endl << endl;
-		break;
+			break;
 
 		case 4:
 			cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
@@ -72,7 +72,7 @@ void Main::main() const
 			}
 			result = arr[fchoose - 1] / newarr[schoose - 1];
 			cout << "\nResult: \n" << arr[fchoose - 1] << "\n ------------------- \n" << newarr[schoose - 1] << endl << " ======= " << endl << result << endl << endl;
-		break;
+			break;
 
 		case 5:
 			cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
@@ -82,7 +82,7 @@ void Main::main() const
 			}
 			result = arr[fchoose - 1] * newarr[schoose - 1];
 			cout << "\nResult: \n" << arr[fchoose - 1] << "\n * \n" << newarr[schoose - 1] << endl << " ======= " << endl << result << endl << endl;
-		break;
+			break;
 
 		case 6:
 			cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
@@ -91,7 +91,7 @@ void Main::main() const
 				cout << "Invalid input\n\n"; break;
 			}
 			arr[fchoose - 1] = newarr[schoose - 1];
-		break;
+			break;
 
 		case 7:
 			system("cls");
@@ -124,17 +124,17 @@ void Main::main() const
 					cout << "Second array: \n";
 					newarr->print(newarr, size);
 					cout << endl;
-				break;
+					break;
 				case 2:
 					cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
 					cout << "\nSecond array`s element-->"; cin >> schoose;
-					if (fchoose - 1 > size or fchoose - 1 < 0 or schoose - 1 > size or schoose - 1 < 0) {cout << "\nInvalid input!\n\n"; break;}
+					if (fchoose - 1 > size or fchoose - 1 < 0 or schoose - 1 > size or schoose - 1 < 0) { cout << "\nInvalid input!\n\n"; break; }
 					cout << "Your chosen comparison \"=\" \n";
 					if (arr[fchoose - 1] == newarr[schoose - 1])
 						cout << "\n\t True \t\n\n";
-					else 
+					else
 						cout << "\n\t False \t\n\n";
-				break;
+					break;
 				case 3:
 					cout << "Choose one lemenet from first array and than from second \n\nFirst array`s element -->"; cin >> fchoose;
 					cout << "\nSecond array`s element-->"; cin >> schoose;
@@ -187,18 +187,18 @@ void Main::main() const
 					break;
 				case 0:
 					system("cls");
-				break;
+					break;
 				default:
 					break;
 				}
 
 			}
 
-		break;
+			break;
 
 		case 8:
 			cout << "\nSelect the array to which this operation will be applied \n1 - First array \n2 - Second array \n--> "; cin >> button;
-			if (button != 1 and button != 2) { cout << "\nInvalid input!\n\n"; break;}
+			if (button != 1 and button != 2) { cout << "\nInvalid input!\n\n"; break; }
 
 			if (button == 1)
 				arr->task(arr, size);
@@ -212,68 +212,19 @@ void Main::main() const
 			newarr->print(newarr, size);
 			cout << endl;
 
-		break;
+			break;
 
 		case 0:
 			system("cls");
 			exit(0);
-		break;
+			break;
 
 		default:
 			break;
 		}
 	}
-	
+
 }
-
-
-
-void Fraction::print(Fraction arr[], int size)
-{
-	for (size_t i = 0; i < size; i++)
-		cout << i+1 << ") " << arr[i] << endl;
-}
-
-
-
-
-Fraction& operator+(const Fraction& ob1, const Fraction& ob2)
-{
-	Fraction result( (ob1.denominator * ob2.numerator) + (ob2.denominator * ob1.numerator), ob1.numerator * ob2.numerator);
-	return result;
-}
-
-Fraction& operator-(const Fraction& ob1, const Fraction& ob2)
-{
-	Fraction result((ob1.denominator * ob2.numerator) - (ob2.denominator * ob1.numerator), ob1.numerator * ob2.numerator);
-	return result;
-}
-
-Fraction& operator/(const Fraction& ob1, const Fraction& ob2)
-{
-	Fraction result(ob2.numerator * ob1.denominator, ob2.denominator * ob1.numerator);
-	return result;
-}
-
-Fraction& operator*(const Fraction& ob1, const Fraction& ob2)
-{
-	Fraction result(ob1.denominator * ob2.denominator, ob1.numerator * ob2.numerator);
-	return result;
-}
-
-Fraction& Fraction::operator=(const Fraction& ob)
-{
-	denominator = ob.denominator; numerator = ob.numerator;
-	return *this;
-}
-
-void Fraction::task(Fraction arr[], int& size)
-{
-	for (int i = 0; i < size; i++)
-		if ((i+1) % 2 == 0 and i - 1 >= 0) 
-			arr[i] = arr[i] + arr[i - 1];
-}
-
 
 
 
