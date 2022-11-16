@@ -1,16 +1,20 @@
-#include "Header.h"
+#include "pch.h" 
+#include "func.h"
 
-
+string dataNames[32] = { "Ethan", "Josh", "Sam", "Tom", "Bruse", "Michael", "Diego", "Adrian", "Brian", "Carl", "Caleb", "Charles", "Daniel", "Derek", "Elliot", "Kuel",
+						   "Sophia", "Amelia", "Ella", "Chloe", "Penelope", "Emma", "Ava", "Isabella", "Elizabath", "Ginna", "Layla", "Zoey", "Olivia", "Sarah", "Rachel", "Emily" };
+string dataSecondNames[50] = { "Smith", "Johnson", "Williams", "Jones", "Brown","Davis","Miller", "Wilson","Moore","Taylor", "Anderson","Thomas","Jackson", "White","Harris","Martin", "Thompson","Garcia","Martinez", "Robinson","Clark","Rodriguez", "Lewis","Lee","Walker", "Hall","Allen","Young", "Hernandez","King","Wright", "Lopez","Hill","Scott", "Green","Adams","Baker",
+	"Gonzalez", "Nelson","Carter","Mitchell", "Perez","Roberts","Turner", "Phillips","Campbell","Parker", "Evans","Edwards","Collins" };
 
 // main class
+
 
 void Main::main()
 {
 	short int count, button, checker;
 	Abiturient* head = NULL, * tail = NULL;
 
-	while (true){
-		//cout << "Work with data - 1 \nSave data - 2 \nLoad data - 3 \nClear data - 4 \nExit - 0 \n-->"; cin >> button;
+	while (true) {
 		cout << "Work with data - 1 \nClear data - 4 \nExit - 0 \n-->"; cin >> button;
 		if (cin.fail()) {
 			system("cls");
@@ -18,7 +22,7 @@ void Main::main()
 			cin.ignore(32767, '\n');
 			cout << " \t\t\tIncorrect input! ERROR! " << endl;
 			continue;
-		} 
+		}
 		switch (button)
 		{
 		case 1:
@@ -148,17 +152,17 @@ void Main::main()
 				default:
 					break;
 				}
-				
+
 			}
 			break;
-		/*case 2:
-			system("cls");
-			SaveInFileList(head);
-			break;
-		case 3:
-			system("cls");
-			LoadFromFileList(&head, &tail);
-			break;*/
+			/*case 2:
+				system("cls");
+				SaveInFileList(head);
+				break;
+			case 3:
+				system("cls");
+				LoadFromFileList(&head, &tail);
+				break;*/
 		case 4:
 			system("cls");
 			if (DcheckNULL(head) != 0)
@@ -209,7 +213,8 @@ short int Abiturient::getterGrade() const { return this->grade; }
 // show method
 void Abiturient::show()
 {
-	cout << "|" << setw(17) << this->FullName << setw(9) << "|" << setw(12) << this->address << setw(9) << "|" << setw(4) << this->grade << setw(4) << "|" << endl;
+	cout << "|" << setw(22) << this->FullName << setw(4) << "|" << setw(32) << this->address << setw(4) << "|" << setw(4) << this->grade << setw(4) << "|";
+	cout << "\n ---------------------------------------------------------------------\n";
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -223,7 +228,7 @@ void Main::unsatisfactory(Abiturient** head)
 	Abiturient* unsatisfactoryGrade = new Abiturient[MAXSIZE];
 
 
-	if (DcheckNULL((*head)) == 0) {return;}
+	if (DcheckNULL((*head)) == 0) { return; }
 	else {
 		while (current) {
 			if (current->getterGrade() < 60) {
@@ -238,17 +243,17 @@ void Main::unsatisfactory(Abiturient** head)
 		cout << "\t Students with unsatisfactory grades: " << count << endl;
 		table_header();
 		for (size_t i = 0; i < count; i++) {
-			unsatisfactoryGrade[i].show(); cout << endl;
+			unsatisfactoryGrade[i].show();
 		}
 	}
-	else 
+	else
 		cout << "\tStudents haven`t been found!\n";
-	
+
 
 	delete[] unsatisfactoryGrade; unsatisfactoryGrade = NULL;
 }
 
-void Main::byGrade(Abiturient** head, short int setted ) 
+void Main::byGrade(Abiturient** head, short int setted)
 {
 	int count = 0;
 	Abiturient* current = *head;
@@ -270,12 +275,12 @@ void Main::byGrade(Abiturient** head, short int setted )
 		cout << "\t Students with grades higher " << setted << ": " << count << endl;
 		table_header();
 		for (size_t i = 0; i < count; i++) {
-			byGrade[i].show(); cout << endl;
+			byGrade[i].show();
 		}
 	}
-	else 
+	else
 		cout << "\tStudents haven`t been found!\n";
-	
+
 
 	delete[] byGrade; byGrade = NULL;
 }
@@ -291,7 +296,7 @@ void Main::hightesGradeandHalf(Abiturient** head)
 	if (DcheckNULL((*head)) == 0) { return; }
 	else {
 		while (current) {
-			if (current->getterGrade() > 89 or ( current->getterGrade() > 34 and current->getterGrade() < 60)) {
+			if (current->getterGrade() > 89 or (current->getterGrade() > 34 and current->getterGrade() < 60)) {
 				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade());
 				count++;
 			}
@@ -305,7 +310,7 @@ void Main::hightesGradeandHalf(Abiturient** head)
 		cout << "\tStudents " << ": " << count << endl;
 		table_header();
 		for (size_t i = 0; i < count; i++) {
-			byGrade[i].show(); cout << endl;
+			byGrade[i].show();
 		}
 
 		if (count != 1) {
@@ -333,7 +338,7 @@ void Main::hightesGradeandHalf(Abiturient** head)
 			if (flag != 0) {
 				table_header();
 				for (size_t i = 0; i < flag; i++) {
-					chosen[i].show(); cout << endl;
+					chosen[i].show();
 				}
 			}
 			else
@@ -345,13 +350,13 @@ void Main::hightesGradeandHalf(Abiturient** head)
 			cout << "You shouldn`t to choose the one student!\n";
 		}
 
-		
+
 	}
-	else 
+	else
 		cout << "\tStudents haven`t been found!\n";
-	
-	delete[] byGrade; byGrade = NULL; 
-	
+
+	delete[] byGrade; byGrade = NULL;
+
 }
 
 
@@ -361,9 +366,9 @@ void Main::hightesGradeandHalf(Abiturient** head)
 
 void Main::table_header()
 {
-	cout << "\n -------------------------------------------------------\n";
-	cout << "|" << setw(17) << "Full Name" << setw(9) << "|" << setw(12) << "Email" << setw(9) << "|" << setw(6) << "Grade" << setw(2) << "|";
-	cout << "\n -------------------------------------------------------\n";
+	cout << "\n ---------------------------------------------------------------------\n";
+	cout << "|" << setw(17) << "Full Name" << setw(9) << "|" << setw(23) << "Email" << setw(13) << "|" << setw(6) << "Grade" << setw(2) << "|";
+	cout << "\n ---------------------------------------------------------------------\n";
 }
 
 
@@ -378,13 +383,15 @@ void Main::table_header()
 
 void Main::CreateList(short int count, Abiturient** head, Abiturient* tail)
 {
-	string FullName = "Student ", init, address; short int grade;
+	string FullName, buffer, address; short int grade;
 	if (count > 0) {
 		(*head) = new Abiturient;
-		//cout << "Input you value \n--->"; //cin >> FullName >> address >> grade;
-		init = rand() % 26 + 65; init += '.'; init += rand() % 26 + 65; init += '.';
-		FullName += init;
-		address += rand() %26 + 65; address += "@mail.com";
+		FullName = dataNames[rand()%32];
+		address += FullName;
+		FullName += " ";
+		buffer = dataSecondNames[rand() % 32];
+		FullName += buffer;
+		address += buffer += "@gmail.com";
 		grade = rand() % 101;
 		(*head)->setterAll(FullName, address, grade);
 		(*head)->prev = tail;
@@ -399,7 +406,6 @@ void Main::CreateList(short int count, Abiturient** head, Abiturient* tail)
 void Main::PrintList(Abiturient* head) {
 	if (head != NULL) {
 		head->show();
-		cout << endl;
 		PrintList(head->next);
 	}
 	else cout << endl << endl;
@@ -432,12 +438,13 @@ void Main::Insert(Abiturient** head, Abiturient** tail, int pos) {
 			temp->prev = current;
 		}
 	}
-	string FullName = "Student ", init, address; short int grade;
-	//cout << "Insert: ";
-	//cin >> FullName >> address >> grade;
-	init = rand() % 26 + 65; init += '.'; init += rand() % 26 + 65; init += '.';
-	FullName += init;
-	address += rand() % 26 + 65; address += "@mail.com";
+	string FullName, buffer, address; short int grade;
+	FullName = dataNames[rand() % 32];
+	address += FullName;
+	FullName += " ";
+	buffer = dataSecondNames[rand() % 32];
+	FullName += buffer;
+	address += buffer += "@gmail.com";
 	grade = rand() % 101;
 	temp->setterAll(FullName, address, grade);
 
@@ -542,50 +549,11 @@ void Sort(Abiturient** head, short int set) {
 	}
 }
 
-
-void SaveInFileList(Abiturient* head) { // writing in data.txt
-	Abiturient* current = head;
-	FILE* data;
-	fopen_s(&data, "data.txt", "w");
-	if (!data) {
-		cout << "ERROR. Missing data.txt" << endl;
-	}
-	while (current) {
-		fprintf(data, "\t%s\t%s\t%i\n", current->FullName, current->address, current->grade);
-		current = current->next;
-	}
-	fclose(data);
+void complite()
+{
+	srand(time(NULL)); Main main; main.main();
 }
 
 
-void LoadFromFileList(Abiturient** head, Abiturient** tail) { // reading from data.txt
-	Abiturient* current, * prev;
-	prev = current = (*head) = new Abiturient;
-	(*head)->prev = NULL;
-	FILE* data;
-	fopen_s(&data, "data.txt", "r");
-	if (!data) {
-		cout << "ERROR. Missing data.txt";
-		delete current;
-		(*head) = NULL;
-		return;
-	}
-	if (fgetc(data) == EOF) {
-		cout << "File is empty.";
-		delete current;
-		(*head) = nullptr;
-		return;
-	}
-	fscanf(data, "\t%s\t%s\t%i\n", current->FullName, current->address, current->grade);
-	while (!feof(data)) {
-		current = new Abiturient;
-		fscanf(data, "\t%s\t%s\t%i\n", current->FullName, current->address, current->grade);
-		prev->next = current;
-		current->prev = prev;
-		prev = current;
-	}
-	current->next = NULL;
-	*tail = current;
-	cout << "File has been successfully saved." << endl;
-	fclose(data);
-}
+
+

@@ -1,11 +1,19 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
+#ifdef FUNC_EXPORTS
+#define FUNC_API __declspec(dllexport)
+#else
+#define FUNC_API __declspec(dllimport)
+#endif
+
+#define  MAXSIZE 300
+
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <ctime>
 
-#define  MAXSIZE 300
+
 
 using namespace std;
 
@@ -14,7 +22,7 @@ class Abiturient {
 	string FullName;
 	string address;
 	short int grade;
-	
+
 
 public:
 
@@ -29,23 +37,20 @@ public:
 
 	void show();
 
-	~Abiturient(){};
+	//~Abiturient() {};
 	friend void Sort(Abiturient** head, short int set);
-	friend void LoadFromFileList(Abiturient** head, Abiturient** tail);
-	friend void SaveInFileList(Abiturient* head);
 };
 
 
-
-class Main
+ class Main
 {
 private:
 	int size;
-	
+
 public:
-	Main() : size(0) {};
-	
-	int GetSize() { return size; };
+	Main() noexcept : size(0) {};
+
+	int GetSize() noexcept { return size; };
 	void CreateList(short int count, Abiturient** head, Abiturient* tail);
 	void PrintList(Abiturient* head);
 	void Insert(Abiturient** head, Abiturient** tail, int pos);
@@ -53,7 +58,7 @@ public:
 	bool DcheckNULL(Abiturient* head);
 	void FreeList(Abiturient** head);
 	void table_header();
-	
+
 	// main tasks
 	void unsatisfactory(Abiturient** head);
 	void byGrade(Abiturient** head, short int setted);
@@ -61,8 +66,8 @@ public:
 
 	// working method
 	void main();
-	
-	~Main() {};
+
+	//~Main() {};
 };
 
-
+extern "C++" FUNC_API void complite();
