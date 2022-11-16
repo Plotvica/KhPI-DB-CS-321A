@@ -33,12 +33,12 @@ public:
 	friend istream& operator >> (istream& in, Fraction& ob) { cout << "Denominator --> "; in >> ob.denominator; cout << "Numerator --> "; in >> ob.numerator; return in; };
 
 	// ar operation 
-	friend Fraction& operator + (const Fraction& ob1, const Fraction& ob2);
-	friend Fraction& operator - (const Fraction& ob1, const Fraction& ob2);
-	friend Fraction& operator / (const Fraction& ob1, const Fraction& ob2);
-	friend Fraction& operator * (const Fraction& ob1, const Fraction& ob2);
+	friend Fraction& operator +  (const Fraction& ob1, const Fraction& ob2) noexcept;
+	friend Fraction& operator -  (const Fraction& ob1, const Fraction& ob2) noexcept;
+	friend Fraction& operator /  (const Fraction& ob1, const Fraction& ob2) noexcept;
+	friend Fraction& operator *  (const Fraction& ob1, const Fraction& ob2) noexcept;
 
-	Fraction& operator = (const Fraction& ob);
+	Fraction& operator = (const Fraction& ob) noexcept;
 
 	//compering operations
 	bool operator == (const Fraction& ob) noexcept { return (denominator / numerator == ob.denominator / ob.numerator); }
@@ -50,8 +50,8 @@ public:
 
 
 	// tt function
-	void task(Fraction arr[], int& size);
+	void task(Fraction arr[], int& size) const;
 	float operator[](const int i) noexcept { return denominator / numerator; };
-	void print(Fraction arr[], int size);
+	void print(Fraction arr[], int size) const;
 };
 

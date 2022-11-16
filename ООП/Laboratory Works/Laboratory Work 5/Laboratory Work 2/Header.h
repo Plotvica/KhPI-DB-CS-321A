@@ -2,7 +2,7 @@
 
 #include "Oper.h"
 
-class Main
+class Main 
 {
 public:
 	void main();

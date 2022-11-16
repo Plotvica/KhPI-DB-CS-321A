@@ -1,5 +1,5 @@
 #include "Header.h"
-#include "Oper.h"
+
 
 
 
@@ -18,6 +18,7 @@ void Main::main()
 	cout << "Second array: \n";
 	newarr->print(newarr, size);
 	cout << endl;
+
 
 	while (true) {
 
