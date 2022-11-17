@@ -58,7 +58,7 @@ void HashTable::Read_file(string name)
 	int value;
 	ifst.open(name);
 	if (!ifst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	while (ifst >> value)
 		Add(value);
@@ -78,7 +78,7 @@ void HashTable::Write_file(string name)
 	ofstream ofst;
 	ofst.open(name);
 	if (!ofst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	for (int i = 0; i < m; i++)
 	{
@@ -92,7 +92,7 @@ int HashTable::Search(int key)
 {
 	if (mas[HashFoo(key)] == 0)
 	{
-		cout << endl << "Такого элемента в таблице нет" << endl;
+		cout << endl << "This element does not exist in hash table" << endl;
 		return -1;
 	}
 	else
@@ -104,11 +104,11 @@ void HashTable::Delete(int key)
 {
 	if (mas[HashFoo(key)] == 0)
 	{
-		cout << endl << "Такого элемента в таблице нет" << endl;
+		cout << endl << "This element does not exist in hash table" << endl;
 	}
 	else
 	{
-		cout << endl << "Элемент таблицы успешно удален" << endl;
+		cout << endl << "Element has been deleted" << endl;
 		mas[HashFoo(key)] = 0;
 	}
 }
@@ -210,11 +210,11 @@ void HashTableWithChains::Search(int key)
 
 	if (index == -1)
 	{
-		cout << endl << "Элемент не найден" << endl;
+		cout << endl << "Element hasn`t been found" << endl;
 	}
 	else {
-		cout << endl << "Элемент найден в строке " << hash
-			<< " под индексом " << index << endl;
+		cout << endl << "Element has been found in " << hash
+			<< " point " << index << endl;
 	}
 }
 int HashTableWithChains::Delete(int key)
@@ -256,7 +256,7 @@ void HashTableWithChains::Read_file(string name)
 	int value;
 	ifst.open(name);
 	if (!ifst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	while (ifst >> value)
 		Add(value);
@@ -267,7 +267,7 @@ void HashTableWithChains::Write_file(string name)
 	ofstream ofst;
 	ofst.open(name);
 	if (!ofst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	for (int i = 0; i < 9; i++)
 	{
@@ -472,7 +472,7 @@ void HashTableWithOpenAdressing::Read_file_Quadratic(string name)
 	int value;
 	ifst.open(name);
 	if (!ifst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	while (ifst >> value)
 		AddQuadratic(value);
@@ -484,7 +484,7 @@ void HashTableWithOpenAdressing::Read_file_Double(string name)
 	int value;
 	ifst.open(name);
 	if (!ifst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	while (ifst >> value)
 		AddDouble(value);
@@ -495,14 +495,14 @@ void HashTableWithOpenAdressing::Write_file(string name)
 	ofstream ofst;
 	ofst.open(name);
 	if (!ofst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	for (int i = 0; i < m; i++)
 	{
 		ofstream ofst;
 		ofst.open(name);
 		if (!ofst.is_open()) {
-			throw exception("Файл не найден");
+			throw exception("File hasn`t been found");
 		}
 		for (int i = 0; i < 9; i++)
 		{
