@@ -227,7 +227,19 @@ void Main::main()
 
 }
 
+void Fraction::print(Fraction arr[], int size) const
+{
+	for (size_t i = 0; i < size; i++)
+		cout << i + 1 << ") " << arr[i] << endl;
+}
 
+
+void Fraction::task(Fraction arr[], int& size) const
+{
+	for (int i = 0; i < size; i++)
+		if ((i + 1) % 2 == 0 and i - 1 >= 0)
+			arr[i] = arr[i] + arr[i - 1];
+}
 
 
 

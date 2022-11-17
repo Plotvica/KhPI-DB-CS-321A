@@ -1,4 +1,5 @@
-#include "Header.h"
+#include "pch.h"
+#include "cumtrol.h"
 
 void Main::main() {
 
@@ -27,28 +28,28 @@ void Main::main() {
 			cout << "Choose the number of data which will bee deleted --> "; cin >> choose;
 			deleteOneElement(List, size, choose);
 			system("pause");
-		break;
+			break;
 		case 2:
 			cout << "Choose the number of data which will bee added --> "; cin >> choose;
 			addOneElement(List, size, choose);
 			system("pause");
-		break;
+			break;
 		case 3:
 			cout << "Choose the number of data which will bee rewrited --> "; cin >> choose;
 			rewriteOneElement(List, size, choose);
 			system("pause");
-		break;
+			break;
 		case 4:
 			system("cls");
 			cout << "Sort by: \nBy First Name - 1 \nBy Second Name - 2 \nBy PassID - 3 \n-->"; cin >> button;
 			Sort(List, size, button);
-		break;
+			break;
 		default:
 			break;
 		}
 
 	}
-	
+
 	system("cls");
 	delete[] List; List = NULL;
 
@@ -59,9 +60,9 @@ void Main::create(Human** List, int size)
 {
 	for (size_t i = 0; i < size; i++) {
 		int Nrand = rand() % 5 + 1;
-		if(Nrand == 1)
+		if (Nrand == 1)
 			List[i] = new FullTime;
-		else if(Nrand == 2)
+		else if (Nrand == 2)
 			List[i] = new Extramural;
 		else if (Nrand == 3)
 			List[i] = new Abiturient;
@@ -86,7 +87,7 @@ void Main::printList(Human** List, int size)
 	}
 
 }
-void Main::rewriteOneElement(Human** List, int& size, int check) 
+void Main::rewriteOneElement(Human** List, int& size, int check)
 {
 	if (check - 1 < 0 or check - 1 > size) {
 		cout << "\t\t\tError!\n"; return;
@@ -96,7 +97,7 @@ void Main::rewriteOneElement(Human** List, int& size, int check)
 
 	for (size_t i = 0; i < size; i++) {
 		if (check - 1 != i) {
-			NewList[i] = List[i]; 
+			NewList[i] = List[i];
 		}
 		else
 		{
@@ -169,7 +170,7 @@ void Main::deleteOneElement(Human** List, int& size, int check)
 		if (check - 1 != i) {
 			NewList[j] = List[i]; j++;
 		}
-	
+
 	size--;
 	for (size_t i = 0; i < size; i++) List[i] = NewList[i];
 
@@ -221,6 +222,8 @@ void Main::Sort(Human** List, int size, int button)
 	}
 	else
 		cout << "\n\t ERROR! Incorrect input! \n";
-	
-	
+
+
 }
+
+CUMTROL_API void cumtrol() { srand(time(NULL));	Main main; main.main(); }
