@@ -1,5 +1,8 @@
 #pragma once
 #include <HumanLibrary.h>
+#include <StaffLibrary.h>
+#include <StudentLibrary.h>
+
 #ifdef CUMTROL_EXPORTS
 
 #define CUMTROL_API __declspec(dllexport)
