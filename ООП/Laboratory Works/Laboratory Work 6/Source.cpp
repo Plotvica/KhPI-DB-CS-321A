@@ -4,6 +4,8 @@ string dataNames[32] = { "Ethan", "Josh", "Sam", "Tom", "Bruse", "Michael", "Die
 						   "Sophia", "Amelia", "Ella", "Chloe", "Penelope", "Emma", "Ava", "Isabella", "Elizabath", "Ginna", "Layla", "Zoey", "Olivia", "Sarah", "Rachel", "Emily" };
 string dataSecondNames[50] = { "Smith", "Johnson", "Williams", "Jones", "Brown","Davis","Miller", "Wilson","Moore","Taylor", "Anderson","Thomas","Jackson", "White","Harris","Martin", "Thompson","Garcia","Martinez", "Robinson","Clark","Rodriguez", "Lewis","Lee","Walker", "Hall","Allen","Young", "Hernandez","King","Wright", "Lopez","Hill","Scott", "Green","Adams","Baker",
 	"Gonzalez", "Nelson","Carter","Mitchell", "Perez","Roberts","Turner", "Phillips","Campbell","Parker", "Evans","Edwards","Collins" };
+string dataSubjects[11] = { "Arts", "Bilogy", "History", "Music", "Math", "Chemistry", "Geography", "PE", "Economics", "English", "Polska" };
+
 
 // main class
 
@@ -184,11 +186,12 @@ void Main::main()
 
 
 //set methods
-void Student::setterAll(string FullName,  string address, short int grade)
+void Student::setterAll(string FullName, string address, short int grade, string subject)
 {
 	this->FullName = FullName;
 	this->address = address;
-	this->grade.setter(grade);
+	this->grade.setterGrade(grade);
+	this->grade.setterSubject(subject);
 
 }
 
@@ -198,14 +201,16 @@ string Student::getterFullname()  { return this->FullName; }
 
 string Student::getterAddress()  { return this->address; }
 
-short int Student::getterGrade()  { return grade.getterGrade(); }
+short int Student::getterGrade() { return grade.getterGrade(); }
+
+string Student::getterSubject(){ return grade.getterSubject();}
 
 
 // show method
 void Student::show()
 {
-	cout << "|" << setw(22) << this->FullName << setw(4) << "|" << setw(32) << this->address << setw(4) << "|" << setw(4) << this->grade.getterGrade() << setw(4) << "|";
-	cout << "\n -------------------------------------------------------------------------------------\n";
+	cout << "|" << setw(22) << this->FullName << setw(4) << "|" << setw(32) << this->address << setw(4) << "|" << setw(4) << this->grade.getterGrade() << setw(4) << "|" << setw(12) << this->grade.getterSubject() << setw(4) << "|" << setw(18) << this->departament.getterDepName() << setw(4) << "|" << setw(6) << boolalpha << this->departament.getterfullDay() << setw(6) << "|";
+	cout << "\n -----------------------------------------------------------------------------------------------------------------------\n";
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -223,7 +228,7 @@ void Main::unsatisfactory(Student** head)
 	else {
 		while (current) {
 			if (current->getterGrade() < 60) {
-				unsatisfactoryGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade());
+				unsatisfactoryGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade(), current->getterSubject());
 				count++;
 			}
 			current = current->next;
@@ -255,7 +260,7 @@ void Main::byGrade(Student** head, short int setted)
 	else {
 		while (current) {
 			if (current->getterGrade() > setted) {
-				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade());
+				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade(), current->getterSubject());
 				count++;
 			}
 			current = current->next;
@@ -288,7 +293,7 @@ void Main::hightesGradeandHalf(Student** head)
 	else {
 		while (current) {
 			if (current->getterGrade() > 89 or (current->getterGrade() > 34 and current->getterGrade() < 60)) {
-				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade());
+				byGrade[count].setterAll(current->getterFullname(), current->getterAddress(), current->getterGrade(), current->getterSubject());
 				count++;
 			}
 			current = current->next;
@@ -357,9 +362,9 @@ void Main::hightesGradeandHalf(Student** head)
 
 void Main::table_header()
 {
-	cout << "\n -------------------------------------------------------------------------------------\n";
-	cout << "|" << setw(17) << "Full Name" << setw(9) << "|" << setw(23) << "Email" << setw(13) << "|" << setw(6) << "Grade" << setw(2) << "|" << setw(12) << "Subject" << setw(4) << "|";
-	cout << "\n -------------------------------------------------------------------------------------\n";
+	cout << "\n -----------------------------------------------------------------------------------------------------------------------\n";
+	cout << "|" << setw(17) << "Full Name" << setw(9) << "|" << setw(23) << "Email" << setw(13) << "|" << setw(6) << "Grade" << setw(2) << "|" << setw(12) << "Subject" << setw(4) << "|" << setw(18) << "Department" << setw(4) << "|" << setw(6) << "FTS" << setw(6) << "|";
+	cout << "\n -----------------------------------------------------------------------------------------------------------------------\n";
 }
 
 
@@ -374,7 +379,8 @@ void Main::table_header()
 
 void Main::CreateList(short int count, Student** head, Student* tail)
 {
-	string FullName, buffer, address; short int grade;
+	string FullName, buffer, address, subject; short int grade;
+	
 	if (count > 0) {
 		(*head) = new Student;
 		FullName = dataNames[rand() % 32];
@@ -384,7 +390,8 @@ void Main::CreateList(short int count, Student** head, Student* tail)
 		FullName += buffer;
 		address += buffer += "@gmail.com";
 		grade = rand() % 101;
-		(*head)->setterAll(FullName, address, grade);
+		subject = dataSubjects[rand() % 11];
+		(*head)->setterAll(FullName, address, grade, subject);
 		(*head)->prev = tail;
 		(*head)->next = NULL;
 		CreateList(count - 1, &((*head)->next), (*head));
@@ -429,7 +436,7 @@ void Main::Insert(Student** head, Student** tail, int pos) {
 			temp->prev = current;
 		}
 	}
-	string FullName, buffer, address; short int grade;
+	string FullName, buffer, address, subject; short int grade;
 	FullName = dataNames[rand() % 32];
 	address += FullName;
 	FullName += " ";
@@ -437,7 +444,8 @@ void Main::Insert(Student** head, Student** tail, int pos) {
 	FullName += buffer;
 	address += buffer += "@gmail.com";
 	grade = rand() % 101;
-	temp->setterAll(FullName, address, grade);
+	subject = dataSubjects[rand() % 11];
+	temp->setterAll(FullName, address, grade, subject);
 
 }
 
@@ -521,8 +529,8 @@ void Sort(Student** head, short int set) {
 
 				if (right->grade.getterGrade() > left->grade.getterGrade()) {
 
-					temp->grade.setter(right->grade.getterGrade());
-					right->grade.setter(left->grade.getterGrade());
+					temp->grade.setterGrade(right->grade.getterGrade());
+					right->grade.setterGrade(left->grade.getterGrade());
 					left->grade = temp->grade;
 
 				}

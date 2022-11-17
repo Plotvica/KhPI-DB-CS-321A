@@ -9,19 +9,34 @@
 
 using namespace std;
 
+
+class Department
+{
+	string DepName;
+	bool fullDay;
+	string dataDepNames[5] = { "Computer Science", "Computer Modeling", "Integrated Tech. ", "Geom. Modeling", "SGC" };
+public:
+	Department() { DepName = dataDepNames[rand() % 5]; fullDay = rand() % 2; }
+	string getterDepName() { return DepName; }
+	bool getterfullDay() { return fullDay; }
+};
+
+
 class Student {
-	class Grade {
+	class GradeSub {
 		short int grade;
 		string subject;
 	public:
-		void setter(const short int& grade) noexcept { this->grade = grade; } ;
+		void setterGrade(const short int& grade) noexcept { this->grade = grade; } ;
+		void setterSubject(const string& subject) { this->subject = subject; };
 		short int getterGrade() noexcept { return grade; };
+		string getterSubject() { return subject; };
 	};
 
 	string FullName;
 	string address;
-	Grade grade;
-	
+	GradeSub grade;
+	Department departament;
 
 public:
 
@@ -29,14 +44,14 @@ public:
 	//Student();
 
 	// setter
-	void setterAll( string FullName,  string address, short int grade);
-
+	void setterAll( string FullName,  string address, short int grade, string subject);
+	
 	//getters
-	string getterFullname(); string getterAddress(); short int getterGrade();
+	string getterFullname(); string getterAddress(); short int getterGrade(); string getterSubject();
 
 	void show();
 
-	~Student(){};
+	//~Student(){};
 	friend void Sort(Student** head, short int set);
 	
 };
