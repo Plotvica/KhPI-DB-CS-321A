@@ -14,7 +14,7 @@ class Department
 {
 	string DepName;
 	bool fullDay;
-	string dataDepNames[5] = { "Computer Science", "Computer Modeling", "Integrated Tech. ", "Geom. Modeling", "SGC" };
+	string dataDepNames[5] = { "Computer Science", "Computer Modeling", "Integrated Tech", "Geom. Modeling", "SGC" };
 public:
 	Department() { DepName = dataDepNames[rand() % 5]; fullDay = rand() % 2; }
 	string getterDepName() { return DepName; }

@@ -118,7 +118,7 @@ void barrier_seach(int* arr, int size, int* ans, int h, long key)
 
 		for (;;)
 		{
-			counter++;
+			
 			if (p == size)
 			{
 				goto S1;
@@ -126,6 +126,7 @@ void barrier_seach(int* arr, int size, int* ans, int h, long key)
 
 			if (arr[i] == key && i > k)
 			{
+				counter++;
 				goto S;
 			}
 			else
@@ -164,7 +165,7 @@ void barrier_seach(int* arr, int size, int* ans, int h, long key)
 
 
 
-	cout << "\nOperations: " << counter + 1 << endl;
+	cout << "\nOperations: " << counter << endl;
 }
 void binary(int* arr, int size, int* ans, int h, long key)
 {
@@ -258,7 +259,7 @@ S:
 
 
 
-	cout << "\nOperations: " << counter + 1 << endl;
+	cout << "\nOperations: " << counter << endl;
 
 	for (size_t i = 0; i < size; i++)
 	{
@@ -365,7 +366,7 @@ void KMP(const char* text, const char* pattern, int m, int n)
 		}
 	}
 
-	cout << "\nOperations: " << counter + 1 << endl;
+	cout << "\nOperations: " << counter << endl;
 }
 int BMSearch(char* string, char* substring) {
 	int  sl = 0;
