@@ -212,7 +212,7 @@ void Student::show()
 	if (this->grade.getterGrade() != -1)
 	cout << "|" << setw(22) << this->FullName << setw(4) << "|" << setw(32) << this->address << setw(4) << "|" << setw(4) << this->grade.getterGrade() << setw(4) << "|" << setw(12) << this->grade.getterSubject() << setw(4) << "|" << setw(18) << this->departament.getterDepName() << setw(4) << "|" << setw(6) << boolalpha << this->departament.getterfullDay() << setw(6) << "|";
 	else
-		cout << "|" << setw(22) << this->FullName << setw(4) << "|" << setw(32) << this->address << setw(4) << "|" << setw(4) << "404" << setw(4) << "|" << setw(12) << "404" << setw(4) << "|" << setw(18) << this->departament.getterDepName() << setw(4) << "|" << setw(6) << boolalpha << this->departament.getterfullDay() << setw(6) << "|";
+		cout << "|" << setw(22) << "USER INVALID" << setw(4) << "|" << setw(32) << "ERROR" << setw(4) << "|" << setw(4) << "404" << setw(4) << "|" << setw(12) << "404" << setw(4) << "|" << setw(18) << "404" << setw(4) << "|" << setw(6) << boolalpha << "ERROR" << setw(6) << "|";
 	cout << "\n -----------------------------------------------------------------------------------------------------------------------\n";
 }
 

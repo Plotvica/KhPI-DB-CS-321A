@@ -58,7 +58,7 @@ System::Void Hangman::HangmanGame::InputButton_Click(System::Object^ sender, Sys
 	
 	CodeWordSet = msclr::interop::marshal_as<std::string>(InputTextBox->Text);
 	transform(CodeWordSet.begin(), CodeWordSet.end(), CodeWordSet.begin(), ::toupper);
-	// переделать под трай кеч
+	
 	bool input = false;
 	
 	for (size_t i = 0; i < CodeWordSet.length(); i++) {
