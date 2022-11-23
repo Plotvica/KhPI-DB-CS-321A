@@ -356,11 +356,11 @@ void HashTableWithOpenAdressing::DeleteLinear(int key)
 
 	if (ind == -1)
 	{
-		cout << "\nДанного элемента не существует\n";
+		cout << "\nThis element does not exitst\n";
 	}
 	else
 	{
-		cout << "\nЭлемент удален\n";
+		cout << "\nElement has been deleted\n";
 		mas[ind].data = 0;
 		mas[ind].empty = true;
 	}
@@ -385,11 +385,11 @@ void HashTableWithOpenAdressing::DeleteQuadratic(int key)
 
 	if (ind == -1)
 	{
-		cout << "\nДанного элемента не существует\n";
+		cout << "\nThis element does not exitst\n";
 	}
 	else
 	{
-		cout << "\nЭлемент удален\n";
+		cout << "\nElement has been deleted\n";
 		mas[ind].data = 0;
 		mas[ind].empty = true;
 	}
@@ -421,11 +421,11 @@ void HashTableWithOpenAdressing::DeleteDouble(int key)
 
 	if (ind == -1)
 	{
-		cout << "\nДанного элемента не существует\n";
+		cout << "\nThis element does not exitst\n";
 	}
 	else
 	{
-		cout << "\nЭлемент удален\n";
+		cout << "\nElement has been deleted\n";
 		mas[ind].data = 0;
 		mas[ind].empty = true;
 	}
@@ -460,7 +460,7 @@ void HashTableWithOpenAdressing::Read_file_Linear(string name)
 	int value;
 	ifst.open(name);
 	if (!ifst.is_open()) {
-		throw exception("Файл не найден");
+		throw exception("File hasn`t been found");
 	}
 	while (ifst >> value)
 		AddLinear(value);
@@ -580,7 +580,7 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	int choose;
-	cout << "1- Хеш-таблица \n2 - Хеш-таблиця ланцюжком \n3 - Открытая адресация \n --> ";
+	cout << "1 - Hash table \n2 - Hash table in lancet \n3 - Open addressing \n--> ";
 	cin >> choose;
 
 
@@ -603,16 +603,16 @@ int main()
 			string name1 = "al6_1.txt";
 			int choosing;
 			int key;
-			cout << "1 - Добавить данные" << endl;
-			cout << "2 - Чтение из файла" << endl;
-			cout << "3 - Добавить в файл" << endl;
-			cout << "4 - Поиск" << endl;
-			cout << "5 - Удалить элемент" << endl;
+			cout << "1 - Add data" << endl;
+			cout << "2 - Read from data file" << endl;
+			cout << "3 - Save in data file" << endl;
+			cout << "4 - Search" << endl;
+			cout << "5 - Delete one element" << endl;
 			cin >> choosing;
 			switch (choosing)
 			{
 			case 1:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				a.Add(key);
 				break;
@@ -623,12 +623,12 @@ int main()
 				a.Write_file(name1);
 				break;
 			case 4:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				cout << a.Search(key);
 				break;
 			case 5:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				a.Delete(key);
 				break;
@@ -654,16 +654,16 @@ int main()
 			string name2 = "al6_2.txt";
 			int choosing;
 			int key;
-			cout << "1 - Добавить данные" << endl;
-			cout << "2 - Чтение из файла" << endl;
-			cout << "3 - Добавить в файл" << endl;
-			cout << "4 - Поиск" << endl;
-			cout << "5 - Удалить элемент" << endl;
+			cout << "1 - Add data" << endl;
+			cout << "2 - Read from data file" << endl;
+			cout << "3 - Save in data file" << endl;
+			cout << "4 - Search" << endl;
+			cout << "5 - Delete one element" << endl;
 			cin >> choosing;
 			switch (choosing)
 			{
 			case 1:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				a1.Add(key);
 				p = 1;
@@ -676,12 +676,12 @@ int main()
 				a1.Write_file(name2);
 				break;
 			case 4:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				a1.Search(key);
 				break;
 			case 5:
-				cout << "Введите ключ: ";
+				cout << "Enter key: ";
 				cin >> key;
 				a1.Delete(key);
 				break;
@@ -718,17 +718,17 @@ int main()
 				cout << endl << endl << endl;
 				int choosing;
 				int key;
-				cout << "1 - Добавить данные" << endl;
-				cout << "2 - Чтение из файла" << endl;
-				cout << "3 - Добавить в файл" << endl;
-				cout << "4 - Поиск" << endl;
-				cout << "5 - Удалить элемент" << endl;
+				cout << "1 - Add data" << endl;
+				cout << "2 - Read from data file" << endl;
+				cout << "3 - Save in data file" << endl;
+				cout << "4 - Search" << endl;
+				cout << "5 - Delete one element" << endl;
 				cout << "6 - Поменять" << endl;
 				cin >> choosing;
 				switch (choosing)
 				{
 				case 1:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.AddLinear(key);
 					p = 1;
@@ -741,12 +741,12 @@ int main()
 					a3.Write_file(name2);
 					break;
 				case 4:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.SearchLinear(key);
 					break;
 				case 5:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.DeleteLinear(key);
 					break;
@@ -772,17 +772,17 @@ int main()
 				cout << endl << endl << endl;
 				int choosing;
 				int key;
-				cout << "1 - Добавить данные" << endl;
-				cout << "2 - Чтение из файла" << endl;
-				cout << "3 - Добавить в файл" << endl;
-				cout << "4 - Поиск" << endl;
-				cout << "5 - Удалить элемент" << endl;
+				cout << "1 - Add data" << endl;
+				cout << "2 - Read from data file" << endl;
+				cout << "3 - Save in data file" << endl;
+				cout << "4 - Search" << endl;
+				cout << "5 - Delete one element" << endl;
 				cout << "6 - Поменять" << endl;
 				cin >> choosing;
 				switch (choosing)
 				{
 				case 1:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.AddQuadratic(key);
 					p = 1;
@@ -795,12 +795,12 @@ int main()
 					a3.Write_file(name2);
 					break;
 				case 4:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.SearchQuadratic(key);
 					break;
 				case 5:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.DeleteQuadratic(key);
 					break;
@@ -827,17 +827,17 @@ int main()
 				cout << endl << endl << endl;
 				int choosing;
 				int key;
-				cout << "1 - Добавить данные" << endl;
-				cout << "2 - Чтение из файла" << endl;
-				cout << "3 - Добавить в файл" << endl;
-				cout << "4 - Поиск" << endl;
-				cout << "5 - Удалить элемент" << endl;
+				cout << "1 - Add data" << endl;
+				cout << "2 - Read from data file" << endl;
+				cout << "3 - Save in data file" << endl;
+				cout << "4 - Search" << endl;
+				cout << "5 - Delete one element" << endl;
 				cout << "6 - Поменять" << endl;
 				cin >> choosing;
 				switch (choosing)
 				{
 				case 1:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.AddDouble(key);
 					p = 1;
@@ -850,12 +850,12 @@ int main()
 					a3.Write_file(name2);
 					break;
 				case 4:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.SearchDouble(key);
 					break;
 				case 5:
-					cout << "Введите ключ: ";
+					cout << "Enter key: ";
 					cin >> key;
 					a3.DeleteDouble(key);
 					break;

@@ -4,6 +4,9 @@ using namespace std;
 
 int main() {
 
+    // a*b - это найти все строки, если в которых на первом месте a по середине все зведочки, а на последнем b
+
+
     system("chcp 1251"); system("cls");
     
     string primestring = "lmnabcwkl4as71r?k0000";

@@ -1,4 +1,4 @@
-#include "Hangman Funcions.h"
+﻿#include "Hangman Funcions.h"
 
 
 void HangmanStartTheGame::check(char response)
@@ -22,11 +22,11 @@ void HangmanStartTheGame::check(char response)
 
     if (opened == code_word.length()) {
         Won = true;
-        MessageBox::Show("You`ve Won ;)", "Rules");
+        MessageBox::Show(L"You`ve Won 😊", "HangmanGame");
     }
     else if (mistakes == 7) {
         Lose = true;
-        MessageBox::Show("You`ve Lose :(", "Rules");
+        MessageBox::Show(L"You`ve Lose 😥", "HangmanGame");
         display_guess = code_word;
     }
 
