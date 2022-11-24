@@ -579,132 +579,71 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	int choose;
-	cout << "1 - Hash table \n2 - Hash table in lancet \n3 - Open addressing \n--> ";
-	cin >> choose;
+	
+	int choose = -1;
+	while (choose != 0) {
+		cout << "\n1 - Hash table \n2 - Hash table with chains \n3 - Open addressing \n--> ";
+		cin >> choose;
 
 
 
-	if (choose == 1)
-	{
-		HashTable a;
-		while (true)
+		if (choose == 1)
 		{
-			if (a.Empty() == 0)
+			int choosing = -1;
+			HashTable a;
+			while (choosing != 0)
 			{
-				cout << "\nEmpty";
-			}
-			else
-			{
-				cout << endl;
-				a.Print();
-			}
-			cout << endl << endl << endl;
-			string name1 = "al6_1.txt";
-			int choosing;
-			int key;
-			cout << "1 - Add data" << endl;
-			cout << "2 - Read from data file" << endl;
-			cout << "3 - Save in data file" << endl;
-			cout << "4 - Search" << endl;
-			cout << "5 - Delete one element" << endl;
-			cin >> choosing;
-			switch (choosing)
-			{
-			case 1:
-				cout << "Enter key: ";
-				cin >> key;
-				a.Add(key);
-				break;
-			case 2:
-				a.Read_file(name1);
-				break;
-			case 3:
-				a.Write_file(name1);
-				break;
-			case 4:
-				cout << "Enter key: ";
-				cin >> key;
-				cout << a.Search(key);
-				break;
-			case 5:
-				cout << "Enter key: ";
-				cin >> key;
-				a.Delete(key);
-				break;
+				if (a.Empty() == 0)
+				{
+					cout << "\nEmpty";
+				}
+				else
+				{
+					cout << endl;
+					a.Print();
+				}
+				cout << endl << endl << endl;
+				string name1 = "al6_1.txt";
+
+				int key;
+				cout << "1 - Add data" << endl;
+				cout << "2 - Read from data file" << endl;
+				cout << "3 - Save in data file" << endl;
+				cout << "4 - Search" << endl;
+				cout << "5 - Delete one element" << endl;
+				cin >> choosing;
+				switch (choosing)
+				{
+				case 1:
+					cout << "Enter key: ";
+					cin >> key;
+					a.Add(key);
+					break;
+				case 2:
+					a.Read_file(name1);
+					break;
+				case 3:
+					a.Write_file(name1);
+					break;
+				case 4:
+					cout << "Enter key: ";
+					cin >> key;
+					cout << a.Search(key);
+					break;
+				case 5:
+					cout << "Enter key: ";
+					cin >> key;
+					a.Delete(key);
+					break;
+				}
 			}
 		}
-	}
-	else if (choose == 2)
-	{
-		int p = 0;
-		HashTableWithChains a1;
-		while (true)
+		else if (choose == 2)
 		{
-			if (p == 0)
-			{
-				cout << "\nEmpty";
-			}
-			else
-			{
-				cout << endl;
-				a1.Print();
-			}
-			cout << endl << endl << endl;
-			string name2 = "al6_2.txt";
-			int choosing;
-			int key;
-			cout << "1 - Add data" << endl;
-			cout << "2 - Read from data file" << endl;
-			cout << "3 - Save in data file" << endl;
-			cout << "4 - Search" << endl;
-			cout << "5 - Delete one element" << endl;
-			cin >> choosing;
-			switch (choosing)
-			{
-			case 1:
-				cout << "Enter key: ";
-				cin >> key;
-				a1.Add(key);
-				p = 1;
-				break;
-			case 2:
-				a1.Read_file(name2);
-				p = 1;
-				break;
-			case 3:
-				a1.Write_file(name2);
-				break;
-			case 4:
-				cout << "Enter key: ";
-				cin >> key;
-				a1.Search(key);
-				break;
-			case 5:
-				cout << "Enter key: ";
-				cin >> key;
-				a1.Delete(key);
-				break;
-			}
-
-		}
-	}
-	else
-	{
-	M:
-		HashTableWithOpenAdressing a3;
-		string name2 = "al6_3.txt";
-		int choose3;
-		cout << "С каким видом пробирования будет строиться хэш-таблица: \n";
-		cout << "1. Линейное\n";
-		cout << "2. Квадратичное\n";
-		cout << "3. Двойное\n";
-		cin >> choose3;
-
-		int p = 0;
-		if (choose3 == 1)
-		{
-			while (true)
+			int choosing = -1;
+			int p = 0;
+			HashTableWithChains a1;
+			while (choosing != 0)
 			{
 				if (p == 0)
 				{
@@ -713,99 +652,42 @@ int main()
 				else
 				{
 					cout << endl;
-					a3.Print();
+					a1.Print();
 				}
 				cout << endl << endl << endl;
-				int choosing;
+				string name2 = "al6_2.txt";
+
 				int key;
 				cout << "1 - Add data" << endl;
 				cout << "2 - Read from data file" << endl;
 				cout << "3 - Save in data file" << endl;
 				cout << "4 - Search" << endl;
 				cout << "5 - Delete one element" << endl;
-				cout << "6 - Поменять" << endl;
 				cin >> choosing;
 				switch (choosing)
 				{
 				case 1:
 					cout << "Enter key: ";
 					cin >> key;
-					a3.AddLinear(key);
+					a1.Add(key);
 					p = 1;
 					break;
 				case 2:
-					a3.Read_file_Linear(name2);
+					a1.Read_file(name2);
 					p = 1;
 					break;
 				case 3:
-					a3.Write_file(name2);
+					a1.Write_file(name2);
 					break;
 				case 4:
 					cout << "Enter key: ";
 					cin >> key;
-					a3.SearchLinear(key);
+					a1.Search(key);
 					break;
 				case 5:
 					cout << "Enter key: ";
 					cin >> key;
-					a3.DeleteLinear(key);
-					break;
-				case 6:
-					goto M;
-					break;
-				}
-			}
-		}
-		else if (choose3 == 2)
-		{
-			while (true)
-			{
-				if (p == 0)
-				{
-					cout << "\nEmpty";
-				}
-				else
-				{
-					cout << endl;
-					a3.Print();
-				}
-				cout << endl << endl << endl;
-				int choosing;
-				int key;
-				cout << "1 - Add data" << endl;
-				cout << "2 - Read from data file" << endl;
-				cout << "3 - Save in data file" << endl;
-				cout << "4 - Search" << endl;
-				cout << "5 - Delete one element" << endl;
-				cout << "6 - Поменять" << endl;
-				cin >> choosing;
-				switch (choosing)
-				{
-				case 1:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.AddQuadratic(key);
-					p = 1;
-					break;
-				case 2:
-					a3.Read_file_Quadratic(name2);
-					p = 1;
-					break;
-				case 3:
-					a3.Write_file(name2);
-					break;
-				case 4:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.SearchQuadratic(key);
-					break;
-				case 5:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.DeleteQuadratic(key);
-					break;
-				case 6:
-					goto M;
+					a1.Delete(key);
 					break;
 				}
 
@@ -813,55 +695,182 @@ int main()
 		}
 		else
 		{
-			while (true)
-			{
-				if (p == 0)
+		M:
+			HashTableWithOpenAdressing a3;
+			string name2 = "al6_3.txt";
+			int choose3 = -1;
+			while (choose3 != 0) {
+				cout << "С каким видом пробирования будет строиться хэш-таблица: \n";
+				cout << "1. Линейное\n";
+				cout << "2. Квадратичное\n";
+				cout << "3. Двойное\n";
+				cin >> choose3;
+
+				int p = 0;
+				if (choose3 == 1)
 				{
-					cout << "\nEmpty";
+					while (true)
+					{
+						if (p == 0)
+						{
+							cout << "\nEmpty";
+						}
+						else
+						{
+							cout << endl;
+							a3.Print();
+						}
+						cout << endl << endl << endl;
+						int choosing;
+						int key;
+						cout << "1 - Add data" << endl;
+						cout << "2 - Read from data file" << endl;
+						cout << "3 - Save in data file" << endl;
+						cout << "4 - Search" << endl;
+						cout << "5 - Delete one element" << endl;
+						cout << "6 - Поменять" << endl;
+						cin >> choosing;
+						switch (choosing)
+						{
+						case 1:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.AddLinear(key);
+							p = 1;
+							break;
+						case 2:
+							a3.Read_file_Linear(name2);
+							p = 1;
+							break;
+						case 3:
+							a3.Write_file(name2);
+							break;
+						case 4:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.SearchLinear(key);
+							break;
+						case 5:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.DeleteLinear(key);
+							break;
+						case 6:
+							goto M;
+							break;
+						}
+					}
 				}
-				else
+				else if (choose3 == 2)
 				{
-					cout << endl;
-					a3.Print();
+					int choosing = -1;
+					while (choosing != 0)
+					{
+						if (p == 0)
+						{
+							cout << "\nEmpty";
+						}
+						else
+						{
+							cout << endl;
+							a3.Print();
+						}
+						cout << endl << endl << endl;
+
+						int key;
+						cout << "1 - Add data" << endl;
+						cout << "2 - Read from data file" << endl;
+						cout << "3 - Save in data file" << endl;
+						cout << "4 - Search" << endl;
+						cout << "5 - Delete one element" << endl;
+						cout << "6 - Поменять" << endl;
+						cin >> choosing;
+						switch (choosing)
+						{
+						case 1:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.AddQuadratic(key);
+							p = 1;
+							break;
+						case 2:
+							a3.Read_file_Quadratic(name2);
+							p = 1;
+							break;
+						case 3:
+							a3.Write_file(name2);
+							break;
+						case 4:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.SearchQuadratic(key);
+							break;
+						case 5:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.DeleteQuadratic(key);
+							break;
+						case 6:
+							goto M;
+							break;
+						}
+
+					}
 				}
-				cout << endl << endl << endl;
-				int choosing;
-				int key;
-				cout << "1 - Add data" << endl;
-				cout << "2 - Read from data file" << endl;
-				cout << "3 - Save in data file" << endl;
-				cout << "4 - Search" << endl;
-				cout << "5 - Delete one element" << endl;
-				cout << "6 - Поменять" << endl;
-				cin >> choosing;
-				switch (choosing)
+				else if (choose3 == 3)
 				{
-				case 1:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.AddDouble(key);
-					p = 1;
-					break;
-				case 2:
-					a3.Read_file_Double(name2);
-					p = 1;
-					break;
-				case 3:
-					a3.Write_file(name2);
-					break;
-				case 4:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.SearchDouble(key);
-					break;
-				case 5:
-					cout << "Enter key: ";
-					cin >> key;
-					a3.DeleteDouble(key);
-					break;
-				case 6:
-					goto M;
-					break;
+					int choosing = -1;
+					while (choosing != 0)
+					{
+						if (p == 0)
+						{
+							cout << "\nEmpty";
+						}
+						else
+						{
+							cout << endl;
+							a3.Print();
+						}
+						cout << endl << endl << endl;
+
+						int key;
+						cout << "1 - Add data" << endl;
+						cout << "2 - Read from data file" << endl;
+						cout << "3 - Save in data file" << endl;
+						cout << "4 - Search" << endl;
+						cout << "5 - Delete one element" << endl;
+						cout << "6 - Поменять" << endl;
+						cin >> choosing;
+						switch (choosing)
+						{
+						case 1:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.AddDouble(key);
+							p = 1;
+							break;
+						case 2:
+							a3.Read_file_Double(name2);
+							p = 1;
+							break;
+						case 3:
+							a3.Write_file(name2);
+							break;
+						case 4:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.SearchDouble(key);
+							break;
+						case 5:
+							cout << "Enter key: ";
+							cin >> key;
+							a3.DeleteDouble(key);
+							break;
+						case 6:
+							goto M;
+							break;
+						}
+					}
 				}
 			}
 		}
