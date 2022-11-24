@@ -1,5 +1,4 @@
-﻿#include <windows.h>
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <fstream>
 
@@ -576,9 +575,6 @@ int HashTableWithOpenAdressing::DoubleProb(int key)
 int main()
 {
 	srand(time(NULL));
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
 	
 	int choose = -1;
 	while (choose != 0) {
@@ -611,6 +607,7 @@ int main()
 				cout << "3 - Save in data file" << endl;
 				cout << "4 - Search" << endl;
 				cout << "5 - Delete one element" << endl;
+				cout << "--> ";
 				cin >> choosing;
 				switch (choosing)
 				{
@@ -663,6 +660,7 @@ int main()
 				cout << "3 - Save in data file" << endl;
 				cout << "4 - Search" << endl;
 				cout << "5 - Delete one element" << endl;
+				cout << "--> ";
 				cin >> choosing;
 				switch (choosing)
 				{
@@ -700,10 +698,11 @@ int main()
 			string name2 = "al6_3.txt";
 			int choose3 = -1;
 			while (choose3 != 0) {
-				cout << "С каким видом пробирования будет строиться хэш-таблица: \n";
-				cout << "1. Линейное\n";
-				cout << "2. Квадратичное\n";
-				cout << "3. Двойное\n";
+				cout << "With what type of probing will the hash table be built: \n";
+				cout << "1 - Liner\n";
+				cout << "2 - Quadratic\n";
+				cout << "3 - Double hasing\n";
+				cout << "--> ";
 				cin >> choose3;
 
 				int p = 0;
@@ -728,7 +727,8 @@ int main()
 						cout << "3 - Save in data file" << endl;
 						cout << "4 - Search" << endl;
 						cout << "5 - Delete one element" << endl;
-						cout << "6 - Поменять" << endl;
+						cout << "6 - Change probing" << endl;
+						cout << "--> ";
 						cin >> choosing;
 						switch (choosing)
 						{
@@ -783,7 +783,8 @@ int main()
 						cout << "3 - Save in data file" << endl;
 						cout << "4 - Search" << endl;
 						cout << "5 - Delete one element" << endl;
-						cout << "6 - Поменять" << endl;
+						cout << "6 - Change probing" << endl;
+						cout << "--> ";
 						cin >> choosing;
 						switch (choosing)
 						{
@@ -839,7 +840,8 @@ int main()
 						cout << "3 - Save in data file" << endl;
 						cout << "4 - Search" << endl;
 						cout << "5 - Delete one element" << endl;
-						cout << "6 - Поменять" << endl;
+						cout << "6 - Change probing" << endl;
+						cout << "--> ";
 						cin >> choosing;
 						switch (choosing)
 						{
