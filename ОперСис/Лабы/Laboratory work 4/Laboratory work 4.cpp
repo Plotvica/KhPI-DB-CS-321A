@@ -1,15 +1,16 @@
 ﻿#include<iostream>   
-#include<string>   
+#include<string>  
+
 using namespace std;
 
 int main() {
 
-    // a*b - это найти все строки, если в которых на первом месте a по середине все зведочки, а на последнем b
+    
 
 
     system("chcp 1251"); system("cls");
     
-    string primestring = "lmnabcwkl4as71r?k0000";
+    string primestring = "lmnabcwkl4as71r?k0000jfhgjfhgonvbfjhufgu";
     cout << primestring << endl;
 
     string request = "abc[qwe]k?[345]as[67]?r/?";
@@ -23,7 +24,7 @@ int main() {
     int count = 0;
     int count_breckets = 0;
     int bracket = 2;
-
+    
     
     for (int i = 0; i < request.length(); i++) {
         if (i != 0 and request[i - 1] != '/' and request[i] == '?') {
@@ -53,8 +54,8 @@ int main() {
         count++;
     }
 
-    /*cout << endl;
-    for (int i = 0; i < count_breckets; i++) cout << brackets[i] << endl;*/
+    cout << endl;
+    for (int i = 0; i < count_breckets; i++) cout << brackets[i] << endl;
 
     cout << endl << mask << endl;
    
@@ -81,5 +82,40 @@ int main() {
                     }
                     else cout << primestring[i] << "\t" << result_string[j] << endl;   
                 }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    ////////////////////// DOP * //////////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    string star = "g*j*f";
+
+    cout << "\nStar regex: " << star << endl;
+
+    for (size_t i = 0; i < primestring.length(); i++)
+        if (primestring[i] == star[0]) {
+            int count = 1;
+            i++; 
+            int j = 1;
+            while (true) {
+                if (primestring[i] != star[j] and star[j] != '*' or primestring[i] == primestring[primestring.length()-1]) {
+                    if(j == 1)
+                        count--;
+                    break;
+                }
+                else if (star[j] == '*'){
+                    while (true){
+                        if (primestring[i] == star[j + 1]) { j++; break; }
+                        i++;count++;
+                    }
+                }
+                i++; j++; count++;
+            }
+           if(count > 0) cout << "TEST: " << count << endl;
+        }       
+    
+
+    
 
 }
