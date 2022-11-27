@@ -5,12 +5,7 @@ using namespace std;
 
 int main() {
 
-    
-
-
-    system("chcp 1251"); system("cls");
-    
-    string primestring = "lmnabcwkl4as71r?k0000jfhgjfhgonvbfjhufgu";
+    string primestring = "lmnabcwkl4as71r?k0000jfhgjfhgggonvbfjhufffgu";
     cout << primestring << endl;
 
     string request = "abc[qwe]k?[345]as[67]?r/?";
@@ -91,28 +86,44 @@ int main() {
 
     string star = "g*j*f";
 
+    bool crSet = true;
+
+    for (size_t i = 0; i < star.length(); i++)
+        if (star[i] == '*')
+            if (i == star.length() - 1)
+                crSet = false;
+
     cout << "\nStar regex: " << star << endl;
 
-    for (size_t i = 0; i < primestring.length(); i++)
+    if (crSet == false)
+        cout << "False input!\n";
+
+    else for (size_t i = 0; i < primestring.length(); i++)
         if (primestring[i] == star[0]) {
+            int stepFlag = i;
             int count = 1;
             i++; 
             int j = 1;
+            while (true) { if (primestring[i] == star[0]) { count++; i++; } else break; }
             while (true) {
                 if (primestring[i] != star[j] and star[j] != '*' or primestring[i] == primestring[primestring.length()-1]) {
+
                     if(j == 1)
                         count--;
                     break;
                 }
                 else if (star[j] == '*'){
                     while (true){
+                        if (i == primestring.length() - 1 and primestring[primestring.length() - 1] != star[star.length()]) { count = 0; break; }
                         if (primestring[i] == star[j + 1]) { j++; break; }
                         i++;count++;
                     }
                 }
+                if (count == 0) break;
                 i++; j++; count++;
             }
-           if(count > 0) cout << "TEST: " << count << endl;
+            while (true) { if (primestring[i] == star[star.length() - 1]) { count++; i++; } else break;} 
+            if(count > 1) cout << stepFlag <<"*: " << count << endl;
         }       
     
 
