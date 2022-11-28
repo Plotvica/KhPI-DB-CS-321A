@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-    string primestring = "lmnabcwkl4as71r?k0000jfhgjfhgggonvbfjhufffgu";
+    string primestring = "lmnabcwkl4as71r?k0000jfhgjfhgggonvbfffjhugu";
     cout << primestring << endl;
 
     string request = "abc[qwe]k?[345]as[67]?r/?";
@@ -104,14 +104,14 @@ int main() {
             int count = 1;
             i++; 
             int j = 1;
+            if (primestring[stepFlag+1] != star[j] and star[j] != '*') continue;
             while (true) { if (primestring[i] == star[0]) { count++; i++; } else break; }
             while (true) {
-                if (primestring[i] != star[j] and star[j] != '*' or primestring[i] == primestring[primestring.length()-1]) {
-
-                    if(j == 1)
-                        count--;
+                if (primestring[i] != star[j] and star[j] != '*' or primestring[i] == primestring[primestring.length()-1]){
+                    if(j == 1){ count = 0;break;}
                     break;
                 }
+                else if (primestring[i] != star[j] and star[j] != '*') { count = 0; break; }
                 else if (star[j] == '*'){
                     while (true){
                         if (i == primestring.length() - 1 and primestring[primestring.length() - 1] != star[star.length()]) { count = 0; break; }
@@ -123,7 +123,7 @@ int main() {
                 i++; j++; count++;
             }
             while (true) { if (primestring[i] == star[star.length() - 1]) { count++; i++; } else break;} 
-            if(count > 1) cout << stepFlag <<"*: " << count << endl;
+            if(count > 0) cout << stepFlag <<"*: " << count << endl;
         }       
     
 
